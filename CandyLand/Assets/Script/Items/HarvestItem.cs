@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New harvestItem", menuName = "Item/HarvestItem")]
 public class HarvestItem : Item {
+    [Header("HarvestItem")]
     public int durability;
     public CanMin[] canMine;
     public enum Minin { Stone, Iron};
