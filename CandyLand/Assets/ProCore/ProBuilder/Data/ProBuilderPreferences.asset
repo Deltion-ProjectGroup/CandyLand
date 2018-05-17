@@ -13,17 +13,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Bool_keys:
   - pbShowMover
+  - pb_SmoothingGroupEditor::m_ShowPreview
+  - pbIconGUI
+  - pbEnableBackfaceSelection
   m_Int_keys:
   - pbDefaultEditLevel
   - pbDefaultSelectionMode
   - pb_GIWorkflowMode
-  m_Float_keys: []
-  m_String_keys: []
+  - pbHandleAlignment
+  - pbExtrudeMethod
+  m_Float_keys:
+  - pbEditorScroll.x
+  - pbEditorScroll.y
+  - pbExtrudeDistance
+  m_String_keys:
+  - pbCurrentMaterialPalette
   m_Color_keys: []
   m_Material_keys: []
-  m_Bool_values: 01
-  m_Int_values: 010000000200000000000000
-  m_Float_values: []
-  m_String_values: []
+  m_Bool_values: 01010100
+  m_Int_values: 0100000002000000000000000200000001000000
+  m_Float_values:
+  - 0
+  - 0
+  - 1
+  m_String_values:
+  - Assets/ProCore/ProBuilder/Data/Default Material Palette.asset
   m_Color_values: []
   m_Material_values: []
