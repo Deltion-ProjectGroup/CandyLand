@@ -7,6 +7,8 @@ public class Player : Character {
     public float speedMultiplier = 1;
     private Vector3 camRotate;
     public float rotateMultiplier = 1;
+    public Vector3 jumpAmt;
+    private bool canJump = true;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +18,10 @@ public class Player : Character {
 	void Update () {
         RotateCam(camRotate, rotateMultiplier);
         Movement(movePos, speedMultiplier);
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
 	}
     public override void Movement(Vector3 mover, float speed)
     {
@@ -31,5 +37,20 @@ public class Player : Character {
     {
         rotator.y = Input.GetAxis("Mouse X");
         transform.Rotate(rotator * speed * Time.deltaTime);
+    }
+    public void Jump()
+    {
+        if(canJump)
+        {
+            canJump = false;
+            gameObject.GetComponent<Rigidbody>().velocity = jumpAmt;
+        }
+    }
+    public void OnCollisionEnter(Collision hit)
+    {
+        if(hit.gameObject.tag == "Terrain")
+        {
+            canJump = true;
+        }
     }
 }

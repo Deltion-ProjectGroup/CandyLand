@@ -16,6 +16,7 @@ public class Camerah : MonoBehaviour {
     public RaycastHit hit;
     // Use this for initialization
     void Start () {
+        Cursor.lockState = CursorLockMode.Locked;
         rotateMultiplier = GetComponentInParent<Player>().rotateMultiplier;
 	}
 	
@@ -26,6 +27,7 @@ public class Camerah : MonoBehaviour {
         {
             FireRaycast(hit);
         }
+        Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10);
 	}
     public void RotateCam(Vector3 rotator, float speed)
     {
@@ -35,11 +37,11 @@ public class Camerah : MonoBehaviour {
     public void FireRaycast(RaycastHit hitter)
     {
         Physics.Raycast(transform.position, transform.forward, out hitter, interactionRange);
-        if(hitter.transform.gameObject != null)
+        if(hitter.transform != null)
         {
             if(hitter.transform.gameObject.tag == "Interactable")
             {
-                GetComponentInChildren<Player>().Interact(hitter);
+                GetComponentInParent<Player>().Interact(hitter);
             }
         }
     }
