@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler
 {
-    Inventory inventory;
     public Item itemI;
     public int itemAmount;
     public bool stackFull;
@@ -17,7 +16,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void AddItem(Item item, int amount, bool full)
     {
-        inventory = Inventory.instance;
         itemI = item;
         stackFull = full;
         itemAmount = amount;
@@ -29,9 +27,9 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (itemI != null)
         {
-            inventory.nameInfo.text = itemI.name;
-            inventory.icon.GetComponent<Image>().sprite = itemI.icon;
-            inventory.info.text = itemI.description;
+            Inventory.instance.nameInfo.text = itemI.name;
+            Inventory.instance.icon.GetComponent<Image>().sprite = itemI.icon;
+            Inventory.instance.info.text = itemI.description;
         }
     }
 

@@ -69,8 +69,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   selected: 0
-  selectedColor: {r: 0, g: 0.67427063, b: 1, a: 0.7607843}
-  defaultColor: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.78431374}
+  selectedColor: {r: 0.9716981, g: 0.28875935, b: 0.76279914, a: 0.7607843}
+  defaultColor: {r: 0.5133945, g: 0.7830189, b: 0.51598704, a: 0.78431374}
   slotID: 0
 --- !u!222 &222636832144639476
 CanvasRenderer:

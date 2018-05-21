@@ -21,6 +21,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         inventory = Inventory.instance;
         transform.localScale = new Vector3(1f, 1f, 1f);
         c = GetComponent<Image>();
+        c.color = defaultColor;
         selected = false;
         slot = Inventory.instance.slots;
     }
@@ -66,7 +67,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         isSelected = true;
-        transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);
     }
 
     // makes the slot to the original size for some feedback 

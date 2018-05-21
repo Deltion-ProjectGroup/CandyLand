@@ -13,7 +13,10 @@ public class UseTool : UseItem {
 	void Update () {
         if (Input.GetButtonDown("Fire1"))
         {
-            Use();
+            if (!Inventory.instance.inventorySwitch)
+            {
+                Use();
+            }
         }
 	}
     public override void Use()

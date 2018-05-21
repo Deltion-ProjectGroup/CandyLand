@@ -5,13 +5,16 @@ using UnityEngine;
 public class HarvestableItem : MonoBehaviour {
     public int requiredID; //Each item has its own ID
     public int health;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
     public void Drop()
