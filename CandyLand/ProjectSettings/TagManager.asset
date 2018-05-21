@@ -7,6 +7,8 @@ TagManager:
   - Terrain
   - Harvestable
   - Interactable
+  - InventoryPanel
+  - SlotPanel
   layers:
   - Default
   - TransparentFX

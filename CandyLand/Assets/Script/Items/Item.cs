@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Item : ScriptableObject {
+
+[CreateAssetMenu(fileName = "New Pickup", menuName = "Item/Pickup")]
+public class Item : ScriptableObject
+{
     [Header("Item")]
     public string itemName;
     public string description;
@@ -11,4 +14,7 @@ public class Item : ScriptableObject {
     public int maxAmount;
     public bool isStackable;
     public Animation animation;
+    
+    // is not necessary
+    public bool isDefaultItem = false;
 }
