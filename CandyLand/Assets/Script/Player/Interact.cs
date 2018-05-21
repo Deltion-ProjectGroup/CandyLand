@@ -52,7 +52,7 @@ public class Interact : MonoBehaviour
         {
             press.SetActive(false);
         }
-        Debug.DrawRay(cameraPosition.position, cameraPosition.forward * 3, Color.red);
+        //Debug.DrawRay(cameraPosition.position, cameraPosition.forward * 2, Color.red);
     }
 }
 

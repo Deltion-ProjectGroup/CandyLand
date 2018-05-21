@@ -30,7 +30,7 @@ public class Camerah : MonoBehaviour
         {
             FireRaycast(hit);
         }
-        Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10);
+        //Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10);
 	}
 
     public void RotateCam(Vector3 rotator, float speed)

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HarvestableItem : MonoBehaviour {
+public class HarvestableItem : MonoBehaviour
+{
     public int requiredID; //Each item has its own ID
     public int health;
 

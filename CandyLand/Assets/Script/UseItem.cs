@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseItem : MonoBehaviour {
-    public Animation anim;
+public class UseItem : MonoBehaviour
+{
     public bool canUse = true;
 
     public virtual void Use()
@@ -13,7 +13,7 @@ public class UseItem : MonoBehaviour {
     }
     public IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(anim.clip.length);
+        yield return new WaitForSeconds(0);
         canUse = true;
     }
 }

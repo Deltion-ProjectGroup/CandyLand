@@ -13,8 +13,7 @@ public class Item : ScriptableObject
     public int amount;
     public int maxAmount;
     public bool isStackable;
-    public Animation animation;
     
-    // is not necessary
+    // is not necessary ??
     public bool isDefaultItem = false;
 }
