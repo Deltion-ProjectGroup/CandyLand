@@ -22,7 +22,6 @@ public class UseTool : UseItem
         {
             if (!Inventory.instance.inventorySwitch)
             {
-                print("Fire");
                 Use();
             }
         }
@@ -36,22 +35,20 @@ public class UseTool : UseItem
 
     void Harvest()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 2))
+        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, 2))
         {
             if (hit.transform.tag == "Harvestable")
             {
-                print(hit);
                 GameObject n = Instantiate(partical, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
                 n.transform.parent = hit.transform;
-                if (canUse != false)// set to true after we have animations, right now it is just on collision
+                if (canUse != true)// set to true after we have animations, right now it is just on collision
                 {
                     for (int i = 0; i < harvestSO.mineID.Length; i++)
                     {
                         if (harvestSO.mineID[i] == hit.transform.GetComponent<HarvestableItem>().requiredID) //Each resource has its own ID value
                         {
-                            print("Mined");
-                            hit.transform.GetComponent<HarvestableItem>().Drop();
-                            hit.transform.GetComponent<HarvestableItem>().health -= Random.Range(1, 11);
+                            hit.transform.GetComponent<HarvestableItem>().Drop(harvestSO.minHarvest, harvestSO.maxHarvest + 1);
+                            hit.transform.GetComponent<HarvestableItem>().health -= Random.Range(10, 51);
                             if (hit.transform.GetComponent<HarvestableItem>().health <= 0)
                             {
                                 hit.transform.GetComponent<HarvestableItem>().Death();
@@ -75,7 +72,7 @@ public class UseTool : UseItem
                     if (harvestSO.mineID[i] == hit.gameObject.GetComponent<HarvestableItem>().requiredID) //Each resource has its own ID value
                     {
                         print("Mined");
-                        hit.gameObject.GetComponent<HarvestableItem>().Drop();
+                        hit.gameObject.GetComponent<HarvestableItem>().Drop(harvestSO.minHarvest, harvestSO.maxHarvest);
                         hit.gameObject.GetComponent<HarvestableItem>().health -= Random.Range(1, 11);
                         if (hit.gameObject.GetComponent<HarvestableItem>().health <= 0)
                         {

@@ -6,21 +6,11 @@ public class HarvestableItem : MonoBehaviour
 {
     public int requiredID; //Each item has its own ID
     public int health;
+    public Item item;
 
-	// Use this for initialization
-	void Start ()
+    public void Drop(int minAmt, int maxAmt)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-    public void Drop()
-    {
-
+        Inventory.instance.Add(item, Random.Range(minAmt, maxAmt), false);
     }
     public void Death()
     {

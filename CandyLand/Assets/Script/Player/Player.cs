@@ -3,26 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character {
-    private Vector3 movePos;
-    public float speedMultiplier = 1;
-    private Vector3 camRotate;
+    [Header("Movement")]
+    Vector3 movePos;
+    public float walkSpeed = 1;
+    public float sprintSpeed;
+    float baseWalkSpeed;
+    float stamina = 100;
+    float maxStamina = 100;
+    public float sprintCost;
+    [Header("Camera")]
+    Vector3 camRotate;
     public float rotateMultiplier = 1;
+    [Header("Jumping")]
     public Vector3 jumpAmt;
-    private bool canJump = true;
+    bool canJump = true;
 	// Use this for initialization
 	void Start ()
     {
-		
+        baseWalkSpeed = walkSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
         RotateCam(camRotate, rotateMultiplier);
-        Movement(movePos, speedMultiplier);
+        Movement(movePos, walkSpeed);
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+        }
+        if (Input.GetButton("Sprint"))
+        {
+            if(stamina >= sprintCost)
+            {
+                if(walkSpeed != sprintSpeed)
+                {
+                    walkSpeed = sprintSpeed;
+                }
+                stamina -= sprintCost;
+            }
+        }
+        else
+        {
+            if(walkSpeed != baseWalkSpeed)
+            {
+                walkSpeed = baseWalkSpeed;
+            }
+            if(stamina < maxStamina)
+            {
+                stamina += 0.01f;
+            }
         }
 	}
     public override void Movement(Vector3 mover, float speed)
