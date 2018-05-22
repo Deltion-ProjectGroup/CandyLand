@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : Character {
     [Header("Movement")]
     Vector3 movePos;
-    public float walkSpeed = 1;
+    public float walkSpeed;
     public float sprintSpeed;
     float baseWalkSpeed;
     float stamina = 100;

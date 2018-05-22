@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UseTool : UseItem
 {
+    [SerializeField] float raylenght;
     Animator anim;
     RaycastHit hit;
     [SerializeField] GameObject partical;
@@ -35,7 +36,7 @@ public class UseTool : UseItem
 
     void Harvest()
     {
-        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, 2))
+        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, raylenght))
         {
             if (hit.transform.tag == "Harvestable")
             {
@@ -57,7 +58,7 @@ public class UseTool : UseItem
                     }
                 }
             }
-            Debug.DrawRay(transform.position, transform.forward * 2, Color.yellow);
+            Debug.DrawRay(transform.position, transform.forward * raylenght, Color.yellow);
         }
     }
 

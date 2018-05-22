@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9b5bbce29c63f4ab5a5b63354c67d6ca, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2056,10 +2056,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  walkSpeed: 1
-  sprintSpeed: 3
+  walkSpeed: 3
+  sprintSpeed: 4
   sprintCost: 1
-  rotateMultiplier: 80
+  rotateMultiplier: 100
   jumpAmt: {x: 0, y: 4, z: 0}
 --- !u!4 &962834753
 Transform:
@@ -2118,6 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
+  raylenght: 1
   partical: {fileID: 1925936899569744, guid: c4713dd932c714845a75eb697bd3ca51, type: 2}
   harvestSO: {fileID: 11400000, guid: 0ae736c641daf8742b5276b0d8c38c04, type: 2}
 --- !u!1 &1136695361
