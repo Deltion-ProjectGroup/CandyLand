@@ -5,10 +5,17 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
-    public GameObject target;
+    [HideInInspector] public Transform target;
     public RaycastHit searchRay;
     NavMeshAgent agent;
+    Transform pos;
+
+    [Header("isAttacking/isChasing")]
+    [HideInInspector] public bool sensfield = false;
     public bool isChasing = false;
+    [SerializeField] GameObject chargePos;
+    RaycastHit hitPartical;
+
 
     [Header("WalkArea")]
     [SerializeField] float randomUnitCircleRadiusMin;
@@ -23,48 +30,19 @@ public class Enemy : Character
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        thinkTimer -= Time.deltaTime;
-        {
-
-            if (attackTime <= 0)
-            {
-                Attack();
-                attackTime = attackTimeStart;
-            }
-
-            if (thinkTimer <= 0) // Subtract ThinkTimer over time.
-            {
-                randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax);
-                Think();
-                thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax);
-            }
-        }
+        ThinkTimer();
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            target = other.gameObject;
-        }
-    }
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            target = null;
-        }
-    }
     #region Normal Script
     /*
     public virtual void SetTarget(GameObject target)
     {
         gameObject.GetComponent<NavMeshAgent>().SetDestination(target.transform.position);//Sets the destination of the navMeshAgent to the sensed Player
-        //agent.SetDestination(target.transform.position);
         Physics.Raycast(transform.position, transform.forward, out searchRay, 3);//Shoots out a raycast
         if(searchRay.transform != null)//Checks if it at least hit an object with the raycast
         {
@@ -78,7 +56,27 @@ public class Enemy : Character
     #endregion 
 
 
-    private void Think()
+
+    void ThinkTimer()
+    {
+        thinkTimer -= Time.deltaTime;
+        {
+
+            if (attackTime <= 0)
+            {
+                Attack();
+                attackTime = attackTimeStart;
+            }
+
+            if (thinkTimer <= 0) // Subtract ThinkTimer over time.
+            {
+                randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax); // Give a random value radius
+                RandomPos();
+                thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax); // Give a random value thinkTimer
+            }
+        }
+    }
+    void RandomPos()
     {
         // Think if Not Chasing
         if (isChasing == false)
@@ -94,8 +92,23 @@ public class Enemy : Character
         }
     }
 
+    public void SensField()
+    {
+        Attack();
+    }
+
     public virtual void Attack()
     {
-        print("Attack Player");//Attacks THE FUCKING PLAYER
+        if (Physics.Raycast(transform.position, -Vector3.up, out hitPartical))
+        {
+            if (hitPartical.transform.tag == ("Terrain"))
+            {
+                pos = Instantiate(chargePos, target.position, target.rotation).transform;
+                Vector3 currentPosition = pos.transform.position;
+                currentPosition.y = currentPosition.y + -0.3f; // make a Y pos offset
+                pos.transform.position = currentPosition;
+            }
+        }
+        //agent.SetDestination(target.position);
     }
 }
