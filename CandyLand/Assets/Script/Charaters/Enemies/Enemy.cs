@@ -111,4 +111,21 @@ public class Enemy : Character
         }
         //agent.SetDestination(target.position);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            sensfield = true;
+            SensField();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            sensfield = false;
+        }
+    }
 }
