@@ -24,7 +24,7 @@ public class Interact : MonoBehaviour
     {
         if (Physics.Raycast(cameraPosition.position, cameraPosition.forward, out hit, raycastLength))
         {
-            PickUp item = hit.transform.gameObject.GetComponent<PickUp>();
+            Interactable item = hit.transform.gameObject.GetComponent<Interactable>();
 
             if (inventoryActive)
             {
@@ -39,7 +39,8 @@ public class Interact : MonoBehaviour
                     infoItem.text = item.item.name;
                     if (Input.GetButtonDown("Press[E]"))
                     {
-                        item.Pickup();
+                        print("E");
+                        item.Interact(gameObject);
                     }
                 }
                 else

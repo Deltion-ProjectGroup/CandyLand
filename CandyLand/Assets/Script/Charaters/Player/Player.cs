@@ -13,7 +13,8 @@ public class Player : Character {
     public float sprintCost;
     [Header("Camera")]
     Vector3 camRotate;
-    public float rotateMultiplier = 1;
+    public float rotateMultiplier = 20;
+    public float rotateMultiplierBackUp;
     [Header("Jumping")]
     public Vector3 jumpAmt;
     bool canJump = true;
@@ -21,6 +22,7 @@ public class Player : Character {
 	void Start ()
     {
         baseWalkSpeed = walkSpeed;
+        rotateMultiplierBackUp = rotateMultiplier;
 	}
 	
 	// Update is called once per frame
@@ -60,10 +62,6 @@ public class Player : Character {
         mover.x = Input.GetAxis("Horizontal");
         mover.z = Input.GetAxis("Vertical");
         transform.Translate(mover * speed * Time.deltaTime);
-    }
-    public void Interact(RaycastHit hitObj)
-    {
-        hitObj.transform.gameObject.GetComponent<Interactable>().Interact(gameObject);
     }
     public void RotateCam(Vector3 rotator, float speed)
     {
