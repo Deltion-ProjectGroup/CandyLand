@@ -11,11 +11,17 @@ public class Enemy : Character
     Transform pos;
 
     [Header("isAttacking/isChasing")]
-    [HideInInspector] public bool sensfield = false;
     public bool isChasing = false;
-    [SerializeField] GameObject chargePos;
+    [SerializeField] float chargeThinkingMax;
+    [SerializeField] float chargeThinkingMin;
+    [HideInInspector] public bool sensfield = false;
+    float mainchargeThinking;
     RaycastHit hitPartical;
 
+
+    [Header("SensField")]
+    [SerializeField] float sensfieldTimer;
+    float mainsensfieldTimer;
 
     [Header("WalkArea")]
     [SerializeField] float randomUnitCircleRadiusMin;
@@ -29,6 +35,7 @@ public class Enemy : Character
 
     void Start()
     {
+        mainsensfieldTimer = sensfieldTimer;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -59,20 +66,42 @@ public class Enemy : Character
 
     void ThinkTimer()
     {
-        thinkTimer -= Time.deltaTime;
+        // if the player is detected
+        if (sensfield)
         {
+            mainsensfieldTimer -= Time.deltaTime;
 
-            if (attackTime <= 0)
+            if (mainsensfieldTimer <= 0)
             {
-                Attack();
-                attackTime = attackTimeStart;
+                mainsensfieldTimer = sensfieldTimer;
+                sensfield = false;
             }
-
-            if (thinkTimer <= 0) // Subtract ThinkTimer over time.
+        }
+        // the enemy has to think befor he can charged
+        else if (isChasing)
+        {
+            mainchargeThinking = Random.Range(chargeThinkingMin, chargeThinkingMax);
+            mainchargeThinking -= Time.deltaTime;
+            if (mainchargeThinking <= 0)
             {
-                randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax); // Give a random value radius
-                RandomPos();
-                thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax); // Give a random value thinkTimer
+                mainchargeThinking = 0;
+                DistanceAttack();
+            }
+            isChasing = false;
+        }
+        else // it pickes a random pos out of the radius  
+        {
+            thinkTimer -= Time.deltaTime;
+            {
+                // Subtract ThinkTimer over time.
+                if (thinkTimer <= 0)
+                {
+                    // Give a random value radius
+                    randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax);
+                    RandomPos();
+                    // Give a random value thinkTimer
+                    thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax);
+                }
             }
         }
     }
@@ -94,22 +123,17 @@ public class Enemy : Character
 
     public void SensField()
     {
-        Attack();
+        DistanceAttack();
     }
 
-    public virtual void Attack()
+    public virtual void DistanceAttack()
     {
-        if (Physics.Raycast(transform.position, -Vector3.up, out hitPartical))
+        if (!isChasing)
         {
-            if (hitPartical.transform.tag == ("Terrain"))
-            {
-                pos = Instantiate(chargePos, target.position, target.rotation).transform;
-                Vector3 currentPosition = pos.transform.position;
-                currentPosition.y = currentPosition.y + -0.3f; // make a Y pos offset
-                pos.transform.position = currentPosition;
-            }
+            transform.LookAt(target);
+            agent.isStopped = true;
+            isChasing = true;
         }
-        //agent.SetDestination(target.position);
     }
 
     void OnTriggerEnter(Collider other)
