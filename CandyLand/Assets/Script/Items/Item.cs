@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Pickup", menuName = "Item/Pickup")]
+[CreateAssetMenu(fileName = "New Pickup", menuName = "Item/Pickup/PickUp")]
 public class Item : ScriptableObject
 {
     [Header("Item")]

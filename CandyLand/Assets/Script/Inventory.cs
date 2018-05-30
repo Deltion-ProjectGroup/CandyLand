@@ -65,31 +65,36 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        InventoryOnOff();
-    }
-
-    void InventoryOnOff()
-    {
         if (Input.GetButtonDown("Tab"))
         {
-            inventorySwitch = !inventorySwitch;
+            if (Crafting.crafting.isCrafting)
+            {
+                Crafting.crafting.craftingUI.SetActive(false);
+                Crafting.crafting.isCrafting = false;
+            }
+            InventoryOnOff();
+        }
+    }
 
-            if (inventorySwitch)
-            {
-                inventoryPanel.gameObject.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                playerSpeed.rotateMultiplier = 0;
-                camemraSpeed.rotateMultiplier = 0;
-            }
-            else if (!inventorySwitch)
-            {
-                inventoryPanel.gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                playerSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
-                camemraSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
-                switchSlot = true;
-                ClearColorSlots(idSlot);
-            }
+    public void InventoryOnOff()
+    {
+        inventorySwitch = !inventorySwitch;
+
+        if (inventorySwitch)
+        {
+            inventoryPanel.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            playerSpeed.rotateMultiplier = 0;
+            camemraSpeed.rotateMultiplier = 0;
+        }
+        else if (!inventorySwitch)
+        {
+            inventoryPanel.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            playerSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
+            camemraSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
+            switchSlot = true;
+            ClearColorSlots(idSlot);
         }
     }
 
