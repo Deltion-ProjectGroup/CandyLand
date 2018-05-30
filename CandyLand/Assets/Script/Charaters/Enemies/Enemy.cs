@@ -11,10 +11,13 @@ public class Enemy : Character
     Transform pos;
 
     [Header("isAttacking/isChasing")]
-    public bool isChasing = false;
     [SerializeField] float chargeThinkingMax;
     [SerializeField] float chargeThinkingMin;
+    [SerializeField] Transform attackPos;
+    [SerializeField] float attackRange;
+    RaycastHit hit;
     [HideInInspector] public bool sensfield = false;
+    bool isChasing = false;
     float mainchargeThinking;
     RaycastHit hitPartical;
 
@@ -38,11 +41,13 @@ public class Enemy : Character
         mainsensfieldTimer = sensfieldTimer;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent.speed = 1.5f;
     }
 
     void Update()
     {
         ThinkTimer();
+        isAttacking();
     }
 
     #region Normal Script
@@ -87,7 +92,7 @@ public class Enemy : Character
                 mainchargeThinking = 0;
                 DistanceAttack();
             }
-            isChasing = false;
+            //isChasing = false;
         }
         else // it pickes a random pos out of the radius  
         {
@@ -130,10 +135,23 @@ public class Enemy : Character
     {
         if (!isChasing)
         {
-            transform.LookAt(target);
             agent.isStopped = true;
             isChasing = true;
         }
+        agent.isStopped = false;
+        agent.speed = 3;
+        agent.SetDestination(target.position);
+    }
+    void isAttacking()
+    {
+        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, attackRange))
+        {
+            if (hit.transform.tag == "Player")
+            {
+                print("hit player");
+            }
+        }
+        Debug.DrawRay(attackPos.position, attackPos.forward * attackRange, Color.red);
     }
 
     void OnTriggerEnter(Collider other)
@@ -145,11 +163,20 @@ public class Enemy : Character
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        transform.LookAt(target);
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "Player")
         {
+            transform.LookAt(null);
             sensfield = false;
+            isChasing = false;
+            print(isChasing);
         }
     }
+
 }
