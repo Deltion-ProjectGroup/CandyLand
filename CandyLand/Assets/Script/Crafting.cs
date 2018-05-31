@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Crafting : Interactable
 {
@@ -8,7 +9,7 @@ public class Crafting : Interactable
     public GameObject craftingUI;
     public GameObject craftingSlotHolder; //To find the components in the UI that will show the cost etc. later
     public GameObject craftingSlot;
-    public GameObject craftingImg;
+    public GameObject[] craftingStuff; // 0 is image, 1 is itemName, 2 is itemDescription
     public static Crafting crafting;
     public AudioClip cannotCraft;
     public AudioClip canCraft;
@@ -36,6 +37,7 @@ public class Crafting : Interactable
     {
         GameObject theSlot = Instantiate(craftingSlot, Vector3.zero, Quaternion.identity);
         theSlot.GetComponent<CraftingItem>().craftingBlueprint = blueprint;
+        theSlot.GetComponent<Image>().sprite = blueprint.craftingItem.icon;
         theSlot.transform.SetParent(craftingSlotHolder.transform);
     }
 }

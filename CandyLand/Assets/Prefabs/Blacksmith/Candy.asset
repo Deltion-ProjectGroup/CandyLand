@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems:
   - requiredItem: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
-    requiredAmt: 10
+    requiredAmt: 7
   craftingItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
