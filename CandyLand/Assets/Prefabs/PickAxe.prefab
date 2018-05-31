@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 33965485415809656}
   - component: {fileID: 23129487958781332}
   - component: {fileID: 95473910131786810}
-  m_Layer: 0
+  - component: {fileID: 114053330258564566}
+  m_Layer: 10
   m_Name: PickAxe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1941890794245240}
   m_LocalRotation: {x: 0.103626974, y: -0, z: -0, w: 0.99461627}
-  m_LocalPosition: {x: 0.314, y: 0, z: 0.343}
+  m_LocalPosition: {x: 0.31400013, y: -0.32, z: 0.3430004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,3 +103,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114053330258564566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941890794245240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7035e93eebcb9aa4bb0b2999df7b84d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUse: 1
+  raylenght: 1
+  partical: {fileID: 1925936899569744, guid: c4713dd932c714845a75eb697bd3ca51, type: 2}
+  harvestSO: {fileID: 11400000, guid: 0ae736c641daf8742b5276b0d8c38c04, type: 2}
