@@ -15,11 +15,11 @@ public class Enemy : Character
     [SerializeField] float chargeThinkingMin;
     [SerializeField] Transform attackPos;
     [SerializeField] float attackRange;
-    RaycastHit hit;
     [HideInInspector] public bool sensfield = false;
-    bool isChasing = false;
     float mainchargeThinking;
     RaycastHit hitPartical;
+    bool isChasing = false;
+    RaycastHit hit;
 
 
     [Header("SensField")]
@@ -31,9 +31,9 @@ public class Enemy : Character
     [SerializeField] float randomUnitCircleRadiusMax;
     [SerializeField] float thinkTimerMin;
     [SerializeField] float thinkTimerMax;
-    float thinkTimer;
     public float attackTime = 1f;
     public float attackTimeStart;
+    float thinkTimer;
     float randomUnitCircleRadius;
 
     void Start()
@@ -165,14 +165,17 @@ public class Enemy : Character
 
     private void OnTriggerStay(Collider other)
     {
-        transform.LookAt(target);
+        if (other.transform.tag == "Player")
+        {
+            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "Player")
         {
-            transform.LookAt(null);
+            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(null);
             sensfield = false;
             isChasing = false;
             print(isChasing);
