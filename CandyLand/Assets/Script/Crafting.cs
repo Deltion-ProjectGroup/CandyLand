@@ -10,6 +10,8 @@ public class Crafting : Interactable
     public GameObject craftingSlot;
     public GameObject craftingImg;
     public static Crafting crafting;
+    public AudioClip cannotCraft;
+    public AudioClip canCraft;
 	// Use this for initialization
 	void Start ()
     {

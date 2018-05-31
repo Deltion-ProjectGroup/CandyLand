@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -47,13 +48,14 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         if (canCraft)
         {
+            Crafting.crafting.gameObject.GetComponent<AudioSource>().clip = Crafting.crafting.canCraft;
             Craft(foundHolder);
-            print("crafted");
         }
         else
         {
-            print("Wtf");
+            Crafting.crafting.gameObject.GetComponent<AudioSource>().clip = Crafting.crafting.cannotCraft;
         }
+        Crafting.crafting.gameObject.GetComponent<AudioSource>().Play();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
