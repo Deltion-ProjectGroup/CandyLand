@@ -61,29 +61,26 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Crafting.crafting.craftingStuff[3].SetActive(true);
-        Crafting.crafting.craftingStuff[4].SetActive(true);
-        Crafting.crafting.craftingStuff[0].GetComponent<Image>().enabled = true;
+        for(int i = 0; i < Crafting.crafting.craftingStuff.Length; i++)
+        {
+            Crafting.crafting.craftingStuff[i].SetActive(true);
+        }
         transform.localScale = new Vector3(backUpScale.x + 0.05f, backUpScale.y + 0.05f, backUpScale.z + 0.05f);
         Crafting.crafting.craftingStuff[0].GetComponent<Image>().sprite = craftingBlueprint.craftingItem.icon;
         Crafting.crafting.craftingStuff[1].GetComponent<Text>().text = "Name: " + craftingBlueprint.craftingItem.itemName;
         Crafting.crafting.craftingStuff[2].GetComponent<Text>().text = "Description: " + craftingBlueprint.craftingItem.description;
         for (int i = 0; i < craftingBlueprint.requiredItems.Length; i++)
         {
-            Crafting.crafting.craftingUI.GetComponentInChildren<Text>().text += craftingBlueprint.requiredItems[i].requiredItem.itemName + ": " + craftingBlueprint.requiredItems[i].requiredAmt.ToString() + " \n";
+            Crafting.crafting.craftingStuff[4].GetComponent<Text>().text += craftingBlueprint.requiredItems[i].requiredItem.itemName + ": " + craftingBlueprint.requiredItems[i].requiredAmt.ToString() + " \n";
         }
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Crafting.crafting.craftingStuff[3].SetActive(false);
+        for (int i = 0; i < Crafting.crafting.craftingStuff.Length; i++)
+        {
+            Crafting.crafting.craftingStuff[i].SetActive(false);
+        }
         Crafting.crafting.craftingStuff[4].GetComponent<Text>().text = null;
-        Crafting.crafting.craftingStuff[4].SetActive(false);
-        Crafting.crafting.craftingStuff[0].GetComponent<Image>().enabled = false;
-        Crafting.crafting.craftingUI.GetComponentInChildren<Text>().text = null;
-        Crafting.crafting.craftingStuff[0].GetComponent<Image>().sprite = null;
-        Crafting.crafting.craftingStuff[1].GetComponent<Text>().text = null;
-        Crafting.crafting.craftingStuff[2].GetComponent<Text>().text = null;
-        transform.localScale = backUpScale;
     }
     public void Craft(List<InventoryItem> requiredItem)
     {

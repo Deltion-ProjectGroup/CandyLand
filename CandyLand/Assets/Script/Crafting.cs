@@ -9,7 +9,7 @@ public class Crafting : Interactable
     public GameObject craftingUI;
     public GameObject craftingSlotHolder; //To find the components in the UI that will show the cost etc. later
     public GameObject craftingSlot;
-    public GameObject[] craftingStuff; // 0 is image, 1 is itemName, 2 is itemDescription
+    public GameObject[] craftingStuff; // 0 is image, 1 is itemName, 2 is itemDescription, 4 is for the requiredItemText, 
     public static Crafting crafting;
     public AudioClip cannotCraft;
     public AudioClip canCraft;
