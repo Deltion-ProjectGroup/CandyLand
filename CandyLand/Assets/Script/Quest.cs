@@ -19,4 +19,16 @@ public class Quest : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void AcceptQuest()
+    {
+
+    }
+    public void CancelQuest()
+    {
+
+    }
+    public void CollectQuest()
+    {
+
+    }
 }

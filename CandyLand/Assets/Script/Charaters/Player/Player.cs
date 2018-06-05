@@ -18,6 +18,8 @@ public class Player : Character {
     [Header("Jumping")]
     public Vector3 jumpAmt;
     bool canJump = true;
+    [Header("Quest")]
+    public bool hasQuest;
 	// Use this for initialization
 	void Start ()
     {
