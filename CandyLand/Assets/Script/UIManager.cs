@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public GameObject healthBar;
     public GameObject[] questStuff;
-    public UIManager uiManager;
+    public static UIManager uiManager;
 	// Use this for initialization
 	void Start () {
         uiManager = this;
