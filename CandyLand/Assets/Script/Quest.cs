@@ -48,6 +48,7 @@ public class Quest : Interactable {
     }
     public override void Interact(GameObject interactor)
     {
+        Cursor.lockState = CursorLockMode.None;
         UIManager.uiManager.questStuff[UIManager.uiManager.questStuff.Length - 1].SetActive(true);
         UIManager.uiManager.questStuff[0].GetComponent<Text>().text = questName;
         UIManager.uiManager.questStuff[1].GetComponent<Text>().text = questType.ToString();
