@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 73c4c051986dc7d40b5291d5475b27f7, type: 2}
   rewards:
-  - itemRewards: {fileID: 11400000, guid: 0ae736c641daf8742b5276b0d8c38c04, type: 2}
+  - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
     rewardAmt: 1
   questType: 0
   currencyReward: 0
@@ -291,6 +291,8 @@ MonoBehaviour:
   questDialog: Hey get me this shit
   completed: 0
   inProgress: 0
+  hasItems: 0
+  collected: 0
   requiredItems:
   - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
     requiredAmt: 5
@@ -323,7 +325,7 @@ RectTransform:
   m_Children:
   - {fileID: 672772172}
   m_Father: {fileID: 1100261729}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1119,7 +1121,7 @@ RectTransform:
   m_Children:
   - {fileID: 568170673}
   m_Father: {fileID: 1100261729}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1164,7 +1166,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 453708140}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 804482345}
+        m_MethodName: AcceptQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &453708140
@@ -1230,7 +1243,7 @@ RectTransform:
   m_Children:
   - {fileID: 408667090}
   m_Father: {fileID: 1100261729}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1275,7 +1288,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 459546910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 804482345}
+        m_MethodName: CompleteQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &459546910
@@ -3203,11 +3227,11 @@ RectTransform:
   - {fileID: 608475377}
   - {fileID: 1805296737}
   - {fileID: 1707916379}
+  - {fileID: 65077815}
+  - {fileID: 1818463205}
   - {fileID: 453708138}
   - {fileID: 1734249154}
   - {fileID: 459546908}
-  - {fileID: 65077815}
-  - {fileID: 1818463205}
   m_Father: {fileID: 804482344}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4665,7 +4689,7 @@ RectTransform:
   m_Children:
   - {fileID: 330290137}
   m_Father: {fileID: 1100261729}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4710,7 +4734,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1734249156}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 804482345}
+        m_MethodName: CancelQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1734249156
@@ -5018,7 +5053,7 @@ RectTransform:
   m_Children:
   - {fileID: 1993816260}
   m_Father: {fileID: 1100261729}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

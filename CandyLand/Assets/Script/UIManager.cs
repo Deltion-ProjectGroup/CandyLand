@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour {
     public GameObject healthBar;
     public GameObject[] questStuff;
     public static UIManager uiManager;
+    public delegate void questOptions();
+    public questOptions acceptQuest;
+    public questOptions cancelQuest;
+    public questOptions completeQuest;
 	// Use this for initialization
 	void Start () {
         uiManager = this;
@@ -19,5 +23,17 @@ public class UIManager : MonoBehaviour {
     public void RefreshHealth()
     {
         healthBar.GetComponent<Image>().fillAmount = (1 / GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().maxHealth) * GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().health;
+    }
+    public void AcceptQuest()
+    {
+        acceptQuest();
+    }
+    public void CancelQuest()
+    {
+        cancelQuest();
+    }
+    public void CompleteQuest()
+    {
+        completeQuest();
     }
 }
