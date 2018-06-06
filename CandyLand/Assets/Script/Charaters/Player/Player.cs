@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character {
+public class Player : Character
+{
     [Header("Movement")]
     Vector3 movePos;
     public float walkSpeed;

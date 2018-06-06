@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
-    [HideInInspector] public Transform target;
+    public Transform target;
     public RaycastHit searchRay;
     NavMeshAgent agent;
     Transform pos;
@@ -158,20 +158,22 @@ public class Enemy : Character
     {
         if (other.transform.tag == "Player")
         {
+            print("enterTrigger");
             sensfield = true;
             SensField();
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.transform.tag == "Player")
         {
+            print(target);
             transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.transform.tag == "Player")
         {
