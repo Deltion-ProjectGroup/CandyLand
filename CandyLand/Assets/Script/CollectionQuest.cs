@@ -34,7 +34,12 @@ public class CollectionQuest : Quest {
                         Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount -= requiredItems[i].requiredAmt;
                         if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount <= 0)
                         {
+                            Destroy(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().gameObject);
                             Inventory.instance.slots.RemoveAt(q);
+                        }
+                        else
+                        {
+                            Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().GetComponentInChildren<Text>().text = Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount.ToString();
                         }
                     }
                 }
@@ -51,45 +56,57 @@ public class CollectionQuest : Quest {
         {
             UIManager.uiManager.questStuff[3].GetComponent<Text>().text += requiredItems[q].requiredAmt + " * " + requiredItems[q].requiredItem.itemName + "\n";
         }
+        checkIfComplete();
         base.Interact(interactor);
     }
-    public void checkIfComplete()
+    public override void checkIfComplete()
     {
-        for (int i = 0; i < Inventory.instance.slots.Count; i++)
+        if (inProgress)
         {
-            if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>() != null)
+            for (int i = 0; i < Inventory.instance.slots.Count; i++)
             {
-                hasItems = true;
-                break;
-            }
-        }
-        if (hasItems)
-        {
-            for (int q = 0; q < requiredItems.Length; q++)
-            {
-                for (int i = 0; i < Inventory.instance.slots.Count; i++)
+                if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>() != null)
                 {
-                    if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI == requiredItems[q].requiredItem)
-                    {
-                        break;
-                    }
-                    acquired = false;
-                }
-                if (!acquired)
-                {
+                    hasItems = true;
                     break;
                 }
             }
-            if (acquired)
+            if (hasItems)
             {
-                inProgress = false;
-                completed = true;
+                hasItems = false;
+                for (int q = 0; q < requiredItems.Length; q++)
+                {
+                    for (int i = 0; i < Inventory.instance.slots.Count; i++)
+                    {
+                        if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>() != null)
+                        {
+                            if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI == requiredItems[q].requiredItem)
+                            {
+                                if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI.amount >= requiredItems[q].requiredAmt)
+                                {
+                                    acquired = true;
+                                    break;
+                                }
+                                acquired = false;
+                            }
+                            acquired = false;
+                        }
+                    }
+                }
+                if (!acquired)
+                {
+                    completed = false;
+                }
+                if (acquired)
+                {
+                    print("Disabled");
+                    completed = true;
+                }
+            }
+            else
+            {
+                completed = false;
             }
         }
-    }
-    public override void AcceptQuest()
-    {
-        checkIfComplete();
-        base.AcceptQuest();
     }
 }
