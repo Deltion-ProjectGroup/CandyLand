@@ -72,6 +72,11 @@ public class Inventory : MonoBehaviour
                 Crafting.crafting.craftingUI.SetActive(false);
                 Crafting.crafting.isCrafting = false;
             }
+            if (Quest.interactedQuest)
+            {
+                Quest.interactedQuest = false;
+                UIManager.uiManager.questStuff[UIManager.uiManager.questStuff.Length - 1].SetActive(false);
+            }
             InventoryOnOff();
         }
     }

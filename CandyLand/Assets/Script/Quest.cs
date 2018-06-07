@@ -17,6 +17,7 @@ public class Quest : Interactable {
     public bool inProgress;
     public bool hasItems;
     public bool collected;
+    public static bool interactedQuest;
     // Use this for initialization
     void Start () {
 
@@ -24,24 +25,36 @@ public class Quest : Interactable {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
+    public virtual void checkIfComplete()
+    {
+
+    }
     public virtual void AcceptQuest()
     {
         print("ACCEPTED");
+        checkIfComplete();
         if (!GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = true;
             inProgress = true;
+            checkIfComplete();
             RefreshButtons();
         }
     }
-    public void CancelQuest()
+    public virtual void CancelQuest()
     {
         print("CANCELLED");
         if (inProgress)
         {
             inProgress = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+            RefreshButtons();
+        }
+        if (completed)
+        {
+            inProgress = false;
+            completed = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
             RefreshButtons();
         }
@@ -53,17 +66,20 @@ public class Quest : Interactable {
         {
             Inventory.instance.Add(rewards[i].itemRewards, rewards[i].rewardAmt, false);
         }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
         collected = true;
         RefreshButtons();
     }
     public override void Interact(GameObject interactor)
     {
+        interactedQuest = true;
         interactorr = interactor;
         Cursor.lockState = CursorLockMode.None;
         UIManager.uiManager.acceptQuest = AcceptQuest;
         UIManager.uiManager.cancelQuest = CancelQuest;
         UIManager.uiManager.completeQuest = CollectQuest;
         UIManager.uiManager.questStuff[UIManager.uiManager.questStuff.Length - 1].SetActive(true);
+        Inventory.instance.InventoryOnOff();
         UIManager.uiManager.questStuff[0].GetComponent<Text>().text = questName;
         UIManager.uiManager.questStuff[1].GetComponent<Text>().text = questType.ToString();
         UIManager.uiManager.questStuff[2].GetComponent<Text>().text = questDialog;
@@ -88,13 +104,13 @@ public class Quest : Interactable {
         {
             UIManager.uiManager.questStuff[q].SetActive(false);
         }
-        if (!inProgress && !collected)
+        if (!inProgress && !collected && !completed)
         {
             UIManager.uiManager.questStuff[6].SetActive(true);
         }
         else
         {
-            if (inProgress && !collected)
+            if (!collected)
             {
                 UIManager.uiManager.questStuff[7].SetActive(true);
             }

@@ -21,6 +21,8 @@ public class Player : Character
     bool canJump = true;
     [Header("Quest")]
     public bool hasQuest;
+    public delegate void delegatVoids();
+    public delegatVoids movementDelegate;
 	// Use this for initialization
 	void Start ()
     {
@@ -65,6 +67,10 @@ public class Player : Character
         mover.x = Input.GetAxis("Horizontal");
         mover.z = Input.GetAxis("Vertical");
         transform.Translate(mover * speed * Time.deltaTime);
+        if(movementDelegate != null)
+        {
+            movementDelegate();
+        }
     }
     public void RotateCam(Vector3 rotator, float speed)
     {
