@@ -3,53 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeEnemy : Character
+public class MeleeEnemy : Enemy
 {
-    NavMeshAgent agent;
-    [SerializeField] float randomUnitCircleRadiusMin;
-    [SerializeField] float randomUnitCircleRadiusMax;
-    [SerializeField] float thinkTimerMin;
-    [SerializeField] float thinkTimerMax;
-    float thinkTimer;
-    float randomUnitCircleRadius;
-
-    void Start()
+    public override void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-    }
-    void Update()
-    {
-        ThinkTimer();
+        agent.enabled = true;
+        base.Start();
     }
 
-    void ThinkTimer()
+    public override void Update()
     {
-        thinkTimer -= Time.deltaTime;
-        {
-            // Subtract ThinkTimer over time.
-            if (thinkTimer <= 0)
-            {
-                // Give a random value radius
-                randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax);
-                // Give a random value thinkTimer
-                Walking();
-                thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax);
-            }
-        }
+        base.Update();
     }
 
-    void Walking()
+    public override void RandomPos()
     {
+        agent.enabled = true;
         // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
         Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
         // Put the newPos in the setDestination
         agent.SetDestination(newPos);
         // has to jump Jump()
         // disable navmeshAgent
+        Jump();
+    }
+
+    public override void ThinkTimer()
+    {
+        base.ThinkTimer();
     }
 
     void Jump()
     {
-
+        agent.enabled = false;
+        GetComponent<Rigidbody>().AddForce(-transform.up * 10);
     }
 }
