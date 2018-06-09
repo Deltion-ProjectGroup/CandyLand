@@ -23,7 +23,8 @@ public class CollectionQuest : Quest {
     }
     public override void CollectQuest()
     {
-        for(int i = 0; i < requiredItems.Length; i++)
+        base.CollectQuest();
+        for (int i = 0; i < requiredItems.Length; i++)
         {
             for(int q = 0; q < Inventory.instance.slots.Count; q++)
             {
@@ -35,7 +36,6 @@ public class CollectionQuest : Quest {
                         if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount <= 0)
                         {
                             Destroy(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().gameObject);
-                            Inventory.instance.slots.RemoveAt(q);
                         }
                         else
                         {
@@ -45,7 +45,6 @@ public class CollectionQuest : Quest {
                 }
             }
         }
-        base.CollectQuest();
     }
     public override void Interact(GameObject interactor)
     {
@@ -82,8 +81,10 @@ public class CollectionQuest : Quest {
                         {
                             if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI == requiredItems[q].requiredItem)
                             {
-                                if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI.amount >= requiredItems[q].requiredAmt)
+                                if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemAmount >= requiredItems[q].requiredAmt)
                                 {
+                                    print(requiredItems[q].requiredAmt);
+                                    print(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemAmount);
                                     acquired = true;
                                     break;
                                 }
