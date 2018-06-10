@@ -5,27 +5,41 @@ using UnityEngine.AI;
 
 public class MeleeEnemy : Enemy
 {
+    [Header("Jump")]
+    [SerializeField] float jumpUp;
+    [SerializeField] float jumpForward;
+    bool isjumping;
+    [SerializeField] float jumptime;
+    float jumpTime;
+
+    [Header("WalkField")]
+    [SerializeField] int raycastLenght;
+    [SerializeField] Transform midPoint;
+    [SerializeField] Transform look;
+    RaycastHit walk;
+
     public override void Start()
     {
-        agent.enabled = true;
-        base.Start();
+        jumpTime = jumptime;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void Update()
     {
         base.Update();
+        Jump();
+        WalkField();
     }
 
     public override void RandomPos()
     {
-        agent.enabled = true;
         // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
         Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
         // Put the newPos in the setDestination
-        agent.SetDestination(newPos);
+        transform.LookAt(newPos);
         // has to jump Jump()
         // disable navmeshAgent
-        Jump();
+        isjumping = true;
     }
 
     public override void ThinkTimer()
@@ -35,7 +49,33 @@ public class MeleeEnemy : Enemy
 
     void Jump()
     {
-        agent.enabled = false;
-        GetComponent<Rigidbody>().AddForce(-transform.up * 10);
+        if (isjumping)
+        {
+            jumpTime -= Time.deltaTime;
+            if (jumpTime <=0)
+            {
+                jumpTime = jumptime;
+                GetComponent<Rigidbody>().AddForce(transform.up * jumpUp * 3);
+                GetComponent<Rigidbody>().AddForce(transform.forward * jumpForward * 3);
+            }
+        }
+    }
+
+    void WalkField()
+    {
+        transform.GetComponentInChildren<MidArea>().Mid(midPoint);
+
+        if (Physics.Raycast(look.position, look.forward, out walk, raycastLenght << LayerMask.NameToLayer("MidPoint")))
+        {
+            Vector3 hitPosition = walk.point;
+            midPoint.LookAt(hitPosition);
+
+            //print(walk.distance);
+            if (walk.distance > 20)
+            {
+                transform.LookAt(midPoint);
+            }
+        }
+        Debug.DrawRay(look.position, look.forward * raycastLenght, Color.blue);
     }
 }

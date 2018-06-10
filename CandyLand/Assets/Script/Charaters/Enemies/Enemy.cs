@@ -7,7 +7,7 @@ public class Enemy : Character
 {
     public RaycastHit searchRay;
     [HideInInspector] public Transform target;
-    [HideInInspector] public NavMeshAgent agent;
+    NavMeshAgent agent;
     Transform pos;
 
     [Header("isAttacking/isChasing")]
