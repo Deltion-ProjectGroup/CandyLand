@@ -48,9 +48,10 @@ public class LocationQuest : Quest {
             {
                 if (playerPos.x < questPositions[1] && playerPos.x > questPositions[3])
                 {
-                    print("Completed");
                     inProgress = false;
                     completed = true;
+                    StartCoroutine(Completemsg(questName));
+                    print("Completed");
                 }
             }
         }

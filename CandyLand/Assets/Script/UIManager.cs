@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public GameObject healthBar;
     public GameObject[] questStuff;
+    public AnimationClip[] UIAnims;
     public static UIManager uiManager;
     public delegate void questOptions();
     public questOptions acceptQuest;

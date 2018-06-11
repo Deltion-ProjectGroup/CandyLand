@@ -33,18 +33,11 @@ public class CollectionQuest : Quest {
                     if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemI == requiredItems[i].requiredItem)
                     {
                         Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount -= requiredItems[i].requiredAmt;
-                        if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount <= 0)
-                        {
-                            Destroy(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().gameObject);
-                        }
-                        else
-                        {
-                            Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().GetComponentInChildren<Text>().text = Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount.ToString();
-                        }
                     }
                 }
             }
         }
+        Inventory.instance.Refresh();
     }
     public override void Interact(GameObject interactor)
     {
