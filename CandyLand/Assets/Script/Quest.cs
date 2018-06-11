@@ -120,6 +120,14 @@ public class Quest : Interactable {
             }
         }
     }
+    public IEnumerator Completemsg(string questName)
+    {
+        UIManager.uiManager.questStuff[9].SetActive(true);
+        UIManager.uiManager.questStuff[10].GetComponent<Text>().text = "Quest: " + questName;
+        UIManager.uiManager.questStuff[9].GetComponent<Animation>().Play("QuestCompleteAnim");
+        yield return new WaitForSeconds(UIManager.uiManager.UIAnims[0].length);
+        UIManager.uiManager.questStuff[9].SetActive(false);
+    }
     [System.Serializable]
     public class Rewards
     {

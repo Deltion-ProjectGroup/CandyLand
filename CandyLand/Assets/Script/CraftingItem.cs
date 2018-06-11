@@ -89,6 +89,7 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             requiredItem[i].itemAmount -= craftingBlueprint.requiredItems[i].requiredAmt;
             requiredItem[i].GetComponentInChildren<Text>().text = requiredItem[i].itemAmount.ToString();
         }
+        Inventory.instance.Refresh();
         Inventory.instance.Add(craftingBlueprint.craftingItem, 1, false);
     }
     [System.Serializable]
