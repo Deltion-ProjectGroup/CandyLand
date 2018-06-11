@@ -13,6 +13,8 @@ public class MeleeEnemy : Enemy
     float jumpTime;
 
     [Header("WalkField")]
+    [SerializeField] float degreesPerSecond;
+    [SerializeField] float distance;
     [SerializeField] int raycastLenght;
     [SerializeField] Transform midPoint;
     [SerializeField] Transform look;
@@ -35,7 +37,7 @@ public class MeleeEnemy : Enemy
     {
         // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
         Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
-        // Put the newPos in the setDestination
+        // Put the newPos in the setDestination      
         transform.LookAt(newPos);
         // has to jump Jump()
         // disable navmeshAgent
@@ -65,17 +67,20 @@ public class MeleeEnemy : Enemy
     {
         transform.GetComponentInChildren<MidArea>().Mid(midPoint);
 
-        if (Physics.Raycast(look.position, look.forward, out walk, raycastLenght << LayerMask.NameToLayer("MidPoint")))
-        {
-            Vector3 hitPosition = walk.point;
-            midPoint.LookAt(hitPosition);
+        distance = Vector3.Distance(transform.position, midPoint.position);
 
-            //print(walk.distance);
-            if (walk.distance > 20)
-            {
-                transform.LookAt(midPoint);
-            }
+        if (distance > 20)
+        {
+           // SlowRotate(midPoint.position);
+            transform.LookAt(midPoint);
         }
-        Debug.DrawRay(look.position, look.forward * raycastLenght, Color.blue);
+    }
+
+    void SlowRotate(Vector3 target)
+    {
+        Vector3 dirFromMeToTarget = target - transform.position;
+        dirFromMeToTarget.y = 0.0f;
+        Quaternion lookRotation = Quaternion.LookRotation(dirFromMeToTarget);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (degreesPerSecond / 360.0f));
     }
 }
