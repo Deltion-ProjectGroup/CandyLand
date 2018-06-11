@@ -278,5 +278,22 @@ public class Inventory : MonoBehaviour
             slots[s].transform.SetParent(slotPanel.transform);
         }
     }
+    public void Refresh()
+    {
+        for(int q = 0; q < slots.Count; q++)
+        {
+            if(slots[q].GetComponentInChildren<InventoryItem>() != null)
+            {
+                if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount <= 0)
+                {
+                    Destroy(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().gameObject);
+                }
+                else
+                {
+                    Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().GetComponentInChildren<Text>().text = Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount.ToString();
+                }
+            }
+        }
+    }
 }
 

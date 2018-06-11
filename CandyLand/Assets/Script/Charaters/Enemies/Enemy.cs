@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
-    public Transform target;
     public RaycastHit searchRay;
+    [HideInInspector] public Transform target;
     NavMeshAgent agent;
     Transform pos;
 
@@ -16,9 +16,9 @@ public class Enemy : Character
     [SerializeField] Transform attackPos;
     [SerializeField] float attackRange;
     [HideInInspector] public bool sensfield = false;
+    [HideInInspector] public bool isChasing = false;
     float mainchargeThinking;
     RaycastHit hitPartical;
-    bool isChasing = false;
     RaycastHit hit;
 
 
@@ -34,9 +34,9 @@ public class Enemy : Character
     public float attackTime = 1f;
     public float attackTimeStart;
     float thinkTimer;
-    float randomUnitCircleRadius;
+    public float randomUnitCircleRadius;
 
-    void Start()
+    public virtual void Start()
     {
         mainsensfieldTimer = sensfieldTimer;
         agent = GetComponent<NavMeshAgent>();
@@ -44,7 +44,7 @@ public class Enemy : Character
         agent.speed = 1.5f;
     }
 
-    void Update()
+    public virtual void Update()
     {
         ThinkTimer();
         isAttacking();
@@ -69,7 +69,7 @@ public class Enemy : Character
 
 
 
-    void ThinkTimer()
+    public virtual void ThinkTimer()
     {
         // if the player is detected
         if (sensfield)
@@ -110,7 +110,7 @@ public class Enemy : Character
             }
         }
     }
-    void RandomPos()
+    public virtual void RandomPos()
     {
         // Think if Not Chasing
         if (isChasing == false)
@@ -126,7 +126,7 @@ public class Enemy : Character
         }
     }
 
-    public void SensField()
+    public virtual void SensField()
     {
         DistanceAttack();
     }
@@ -142,7 +142,7 @@ public class Enemy : Character
         agent.speed = 3;
         agent.SetDestination(target.position);
     }
-    void isAttacking()
+    public virtual void isAttacking()
     {
         if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, attackRange))
         {
@@ -153,35 +153,4 @@ public class Enemy : Character
         }
         Debug.DrawRay(attackPos.position, attackPos.forward * attackRange, Color.red);
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            print("enterTrigger");
-            sensfield = true;
-            SensField();
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            print(target);
-            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(null);
-            sensfield = false;
-            isChasing = false;
-            print(isChasing);
-        }
-    }
-
 }

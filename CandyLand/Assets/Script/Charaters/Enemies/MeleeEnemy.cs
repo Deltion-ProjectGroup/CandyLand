@@ -3,53 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MeleeEnemy : Character
+public class MeleeEnemy : Enemy
 {
-    NavMeshAgent agent;
-    [SerializeField] float randomUnitCircleRadiusMin;
-    [SerializeField] float randomUnitCircleRadiusMax;
-    [SerializeField] float thinkTimerMin;
-    [SerializeField] float thinkTimerMax;
-    float thinkTimer;
-    float randomUnitCircleRadius;
+    [Header("Jump")]
+    [SerializeField] float jumpUp;
+    [SerializeField] float jumpForward;
+    bool isjumping;
+    [SerializeField] float jumptime;
+    float jumpTime;
 
-    void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-    }
-    void Update()
-    {
-        ThinkTimer();
-    }
+    [Header("WalkField")]
+    [SerializeField] int raycastLenght;
+    [SerializeField] Transform midPoint;
+    [SerializeField] Transform look;
+    RaycastHit walk;
 
-    void ThinkTimer()
+    public override void Start()
     {
-        thinkTimer -= Time.deltaTime;
-        {
-            // Subtract ThinkTimer over time.
-            if (thinkTimer <= 0)
-            {
-                // Give a random value radius
-                randomUnitCircleRadius = Random.Range(randomUnitCircleRadiusMin, randomUnitCircleRadiusMax);
-                // Give a random value thinkTimer
-                Walking();
-                thinkTimer = Random.Range(thinkTimerMin, thinkTimerMax);
-            }
-        }
+        jumpTime = jumptime;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Walking()
+    public override void Update()
+    {
+        base.Update();
+        Jump();
+        WalkField();
+    }
+
+    public override void RandomPos()
     {
         // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
         Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
         // Put the newPos in the setDestination
-        agent.SetDestination(newPos);
+        transform.LookAt(newPos);
         // has to jump Jump()
         // disable navmeshAgent
+        isjumping = true;
+    }
+
+    public override void ThinkTimer()
+    {
+        base.ThinkTimer();
     }
 
     void Jump()
     {
+        if (isjumping)
+        {
+            jumpTime -= Time.deltaTime;
+            if (jumpTime <=0)
+            {
+                jumpTime = jumptime;
+                GetComponent<Rigidbody>().AddForce(transform.up * jumpUp * 3);
+                GetComponent<Rigidbody>().AddForce(transform.forward * jumpForward * 3);
+            }
+        }
+    }
 
+    void WalkField()
+    {
+        transform.GetComponentInChildren<MidArea>().Mid(midPoint);
+
+        if (Physics.Raycast(look.position, look.forward, out walk, raycastLenght << LayerMask.NameToLayer("MidPoint")))
+        {
+            Vector3 hitPosition = walk.point;
+            midPoint.LookAt(hitPosition);
+
+            //print(walk.distance);
+            if (walk.distance > 20)
+            {
+                transform.LookAt(midPoint);
+            }
+        }
+        Debug.DrawRay(look.position, look.forward * raycastLenght, Color.blue);
     }
 }

@@ -23,7 +23,8 @@ public class CollectionQuest : Quest {
     }
     public override void CollectQuest()
     {
-        for(int i = 0; i < requiredItems.Length; i++)
+        base.CollectQuest();
+        for (int i = 0; i < requiredItems.Length; i++)
         {
             for(int q = 0; q < Inventory.instance.slots.Count; q++)
             {
@@ -32,20 +33,11 @@ public class CollectionQuest : Quest {
                     if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemI == requiredItems[i].requiredItem)
                     {
                         Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount -= requiredItems[i].requiredAmt;
-                        if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount <= 0)
-                        {
-                            Destroy(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().gameObject);
-                            Inventory.instance.slots.RemoveAt(q);
-                        }
-                        else
-                        {
-                            Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().GetComponentInChildren<Text>().text = Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount.ToString();
-                        }
                     }
                 }
             }
         }
-        base.CollectQuest();
+        Inventory.instance.Refresh();
     }
     public override void Interact(GameObject interactor)
     {
@@ -82,8 +74,10 @@ public class CollectionQuest : Quest {
                         {
                             if (Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI == requiredItems[q].requiredItem)
                             {
-                                if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemI.amount >= requiredItems[q].requiredAmt)
+                                if(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemAmount >= requiredItems[q].requiredAmt)
                                 {
+                                    print(requiredItems[q].requiredAmt);
+                                    print(Inventory.instance.slots[i].GetComponentInChildren<InventoryItem>().itemAmount);
                                     acquired = true;
                                     break;
                                 }
