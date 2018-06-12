@@ -13,11 +13,11 @@ public class MeleeEnemy : Enemy
     float jumpTime;
 
     [Header("WalkField")]
-    [SerializeField] float degreesPerSecond;
-    [SerializeField] float distance;
+    [SerializeField] float maxDistance;
     [SerializeField] int raycastLenght;
     [SerializeField] Transform midPoint;
     [SerializeField] Transform look;
+    float distance;
     RaycastHit walk;
 
     public override void Start()
@@ -69,18 +69,9 @@ public class MeleeEnemy : Enemy
 
         distance = Vector3.Distance(transform.position, midPoint.position);
 
-        if (distance > 20)
+        if (distance > maxDistance)
         {
-           // SlowRotate(midPoint.position);
             transform.LookAt(midPoint);
         }
-    }
-
-    void SlowRotate(Vector3 target)
-    {
-        Vector3 dirFromMeToTarget = target - transform.position;
-        dirFromMeToTarget.y = 0.0f;
-        Quaternion lookRotation = Quaternion.LookRotation(dirFromMeToTarget);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * (degreesPerSecond / 360.0f));
     }
 }

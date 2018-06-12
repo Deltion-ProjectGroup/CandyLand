@@ -44,35 +44,6 @@ public class BossEnemy : Enemy
         base.SensField();
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            print("enterTrigger");
-            sensfield = true;
-            SensField();
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            print(target);
-            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            transform.GetComponentInChildren<EnemyIsAttack>().LookAt(null);
-            sensfield = false;
-            isChasing = false;
-            print(isChasing);
-        }
-    }
     [Header("FieldOfView")]
     public float viewRadius;
     [Range(0, 360)]
@@ -114,7 +85,15 @@ public class BossEnemy : Enemy
 
                 if (!Physics.Raycast (transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
+                    isChasing = true;
                     visibleTarget.Add(target);
+
+                    transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
+                }
+                else
+                {
+                    transform.GetComponentInChildren<EnemyIsAttack>().LookAt(null);
+                    isChasing = false;
                 }
             }
         }

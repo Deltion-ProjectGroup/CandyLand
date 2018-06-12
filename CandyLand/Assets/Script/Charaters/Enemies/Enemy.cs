@@ -7,7 +7,7 @@ public class Enemy : Character
 {
     public RaycastHit searchRay;
     [HideInInspector] public Transform target;
-    NavMeshAgent agent;
+    [HideInInspector] public NavMeshAgent agent;
     Transform pos;
 
     [Header("isAttacking/isChasing")]
@@ -15,16 +15,12 @@ public class Enemy : Character
     [SerializeField] float chargeThinkingMin;
     [SerializeField] Transform attackPos;
     [SerializeField] float attackRange;
-    [HideInInspector] public bool sensfield = false;
-    [HideInInspector] public bool isChasing = false;
-    float mainchargeThinking;
+    public bool isChasing = false;
+    [SerializeField] float mainchargeThinking;
     RaycastHit hitPartical;
     RaycastHit hit;
 
 
-    [Header("SensField")]
-    [SerializeField] float sensfieldTimer;
-    float mainsensfieldTimer;
 
     [Header("WalkArea")]
     [SerializeField] float randomUnitCircleRadiusMin;
@@ -38,7 +34,6 @@ public class Enemy : Character
 
     public virtual void Start()
     {
-        mainsensfieldTimer = sensfieldTimer;
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent.speed = 1.5f;
@@ -50,45 +45,22 @@ public class Enemy : Character
         isAttacking();
     }
 
-    #region Normal Script
-    /*
-    public virtual void SetTarget(GameObject target)
+    IEnumerator thinkTime()
     {
-        gameObject.GetComponent<NavMeshAgent>().SetDestination(target.transform.position);//Sets the destination of the navMeshAgent to the sensed Player
-        Physics.Raycast(transform.position, transform.forward, out searchRay, 3);//Shoots out a raycast
-        if(searchRay.transform != null)//Checks if it at least hit an object with the raycast
-        {
-            if(searchRay.transform.gameObject.tag == "Player")//Checks if the hit object is a Player
-            {
-                Attack();// Plays the attack void
-            }
-        }
+        mainchargeThinking = Random.Range(chargeThinkingMin, chargeThinkingMax);
+        yield return new WaitForSeconds(mainchargeThinking);
     }
-    */
-    #endregion 
-
-
 
     public virtual void ThinkTimer()
     {
-        // if the player is detected
-        if (sensfield)
-        {
-            mainsensfieldTimer -= Time.deltaTime;
-
-            if (mainsensfieldTimer <= 0)
-            {
-                mainsensfieldTimer = sensfieldTimer;
-                sensfield = false;
-            }
-        }
         // the enemy has to think befor he can charged
-        else if (isChasing)
+        if (isChasing)
         {
-            mainchargeThinking = Random.Range(chargeThinkingMin, chargeThinkingMax);
-            mainchargeThinking -= Time.deltaTime;
+            print(isChasing);
+
             if (mainchargeThinking <= 0)
             {
+                print("charge");
                 mainchargeThinking = 0;
                 DistanceAttack();
             }
