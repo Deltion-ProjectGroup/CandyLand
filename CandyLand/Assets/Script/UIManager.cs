@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     public GameObject healthBar;
     public GameObject[] questStuff;
+    public GameObject dialogUI;
     public AnimationClip[] UIAnims;
     public static UIManager uiManager;
     public delegate void questOptions();
@@ -21,6 +22,11 @@ public class UIManager : MonoBehaviour {
 	void Update () {
 		
 	}
+    public void Dialog(List<string> dialogText, string charName, string charRole, bool hasAfterEffect = false, int effectIndexNum = 0)
+    {
+        dialogUI.SetActive(true);
+        StartCoroutine(dialogUI.GetComponent<Dialog>().Dialogg(dialogText, charName, charRole, hasAfterEffect, effectIndexNum));
+    }
     public void RefreshHealth()
     {
         healthBar.GetComponent<Image>().fillAmount = (1 / GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().maxHealth) * GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().health;
