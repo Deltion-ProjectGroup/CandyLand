@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
     public void Dialog(List<string> dialogText, string charName, string charRole, bool hasAfterEffect = false, int effectIndexNum = 0)
     {

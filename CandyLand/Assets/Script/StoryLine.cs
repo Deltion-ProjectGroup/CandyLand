@@ -17,8 +17,11 @@ public class StoryLine : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-
-	}
+        if (Input.GetButtonDown("Jump"))
+        {
+            StartCoroutine(Story());
+        }
+    }
     public IEnumerator Story()
     {
         switch (storyCase)
@@ -34,6 +37,7 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 3:
                 UIManager.uiManager.Dialog(dialogs[storyCase].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
+                print("SHIT");
                 //Cam changes towards the tutorial place, Mayors says you can get up trough there
                 //Talk with mayor is on NPC script #3.5
                 break;

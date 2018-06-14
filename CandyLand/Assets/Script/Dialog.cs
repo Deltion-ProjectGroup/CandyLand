@@ -32,12 +32,14 @@ public class Dialog : MonoBehaviour
                     dialogNum = 0;
                     if (dialogStats.afterEffect)
                     {
-                        print("SHIT");
                         StoryLine.storyLine.storyCase = dialogStats.effectIndex;
-                        StartCoroutine(StoryLine.storyLine.Story());
                         //Storyline case run the index
+                        StartCoroutine(StoryLine.storyLine.Story());
                     }
-                    gameObject.SetActive(false);
+                    else
+                    {
+                        gameObject.SetActive(false);
+                    }
                 }
                 else
                 {

@@ -888,7 +888,7 @@ MonoBehaviour:
     - PANCAKEESS!!
     anim: {fileID: 0}
   - dialogText:
-    - I
+    - ORANGE
     - LOVE
     - PANCAKEESS!!
     anim: {fileID: 0}
@@ -4144,7 +4144,6 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   attackRange: 0
   isChasing: 0
-  mainchargeThinking: 0
   randomUnitCircleRadiusMin: 0
   randomUnitCircleRadiusMax: 0
   thinkTimerMin: 0
@@ -5551,7 +5550,6 @@ MonoBehaviour:
   attackPos: {fileID: 0}
   attackRange: 0
   isChasing: 0
-  mainchargeThinking: 0
   randomUnitCircleRadiusMin: 0
   randomUnitCircleRadiusMax: 0
   thinkTimerMin: 0
