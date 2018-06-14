@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class NPC : Interactable {
     public List<string> dialogText = new List<string>();
-    public StoryLine.Chars chars;
+    public string role;
+    public string characterName;
     public bool hasStoryEffect;
     public int storyEffectIndex;
 	// Use this for initialization
@@ -18,6 +19,6 @@ public class NPC : Interactable {
 	}
     public override void Interact(GameObject interactor)
     {
-        UIManager.uiManager.Dialog(dialogText, chars.charName.ToString(), chars.charRole.ToString(), hasStoryEffect, storyEffectIndex);
+        UIManager.uiManager.Dialog(dialogText, characterName, role, hasStoryEffect, storyEffectIndex);
     }
 }

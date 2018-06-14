@@ -348,6 +348,8 @@ MonoBehaviour:
   inProgress: 0
   hasItems: 0
   collected: 0
+  hasStoryEffect: 0
+  storyEffectIndex: 0
   requiredItems: []
 --- !u!1 &65077814
 GameObject:
@@ -872,10 +874,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyCase: 0
   dialogs:
+  - dialogText: []
+    anim: {fileID: 0}
   - dialogText:
-    - I
-    - LOVE
-    - PANCAKEESS!!
+    - HEY YOU!!! WHAT ARE YOU DOING DOWN THERE??Oh I see.. You fell down there didn't
+      you... Well what is your name?
+    - '.... You forgot your memory? Guess that you hit your head when you fell in
+      there, you probably won''t remember who pushed you down here.. But don''t worry
+      because I will get you out of here.. Just follow my instructions'
+    - Okay so to get out of this cliff you have to follow a few simple steps...
+    - Well actually it is just one but I will tell it to you anyway.. I see that you
+      still have your pickaxe that is almost broken, you should try to break that
+      rock over there that is blocking the entrance of the cliff.
+    - Yeah, once you destroyed that rock you should be able to come up and talk better
+      to me.
+    anim: {fileID: 0}
+  - dialogText: []
+    anim: {fileID: 0}
+  - dialogText:
+    - Ah great you made it up here.. I don't really know you but I would like to ask
+      you a favor.. Could you please harvest some stuff that is laying on the ground
+      near here?
+    - You can interact with most things by pressing E, thought I'd tell you that.
+      Come back to me once you have gotten the required amount of candies.
+    - Oh yeah if you want to know what exactly you have to collect you could always
+      talk to me again...
     anim: {fileID: 0}
   - dialogText:
     - I
@@ -883,20 +906,49 @@ MonoBehaviour:
     - PANCAKEESS!!
     anim: {fileID: 0}
   - dialogText:
-    - I
-    - LOVE
-    - PANCAKEESS!!
+    - Ah great.. Thank you for getting me these recources.. I gave you some Ah great
+      you got the recources.. I gave you some rock candies.. These are commonly used
+      to craft basic items.. Maybe we should try to craft something together.. Yeah
+      let's do that right now since I have some time left.
+    - You will just have to keep following me until we are there.. Try not to get
+      lost okay?
     anim: {fileID: 0}
   - dialogText:
-    - ORANGE
-    - LOVE
-    - PANCAKEESS!!
+    - Ah great.. Thank you for getting me these recources.. I gave you some Ah great
+      you got the recources.. I gave you some rock candies.. These are commonly used
+      to craft basic items.. Maybe we should try to craft something together.. Yeah
+      let's do that right now since I have some time left.
+    - You will just have to keep following me until we are there.. Try not to get
+      lost okay?
     anim: {fileID: 0}
   - dialogText:
-    - I
-    - LOVE
-    - PANCAKEESS!!
+    - Well I have to go now do something to keep this town great... Maybe you can
+      try to craft something here.. You should really try that!
+    - It was very nice meeting you.. Don't worry we will meet again sometime and then
+      we'll talk again, until then have a great time!
     anim: {fileID: 0}
+  locQuestPositions:
+  - "co\xF6rdinates":
+    - 11.099
+    - -110.31
+    - 6.58
+    - -113.91
+  questRequirementList:
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 3
+    - itemRewards: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      rewardAmt: 10
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 25
+  Mayor: {fileID: 1559875789}
+  itemList:
+  - {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+  - {fileID: 11400000, guid: 0ae736c641daf8742b5276b0d8c38c04, type: 2}
+  - {fileID: 11400000, guid: 73c4c051986dc7d40b5291d5475b27f7, type: 2}
+  - {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+  - {fileID: 11400000, guid: b351dc00c5a7a224e82773d11d7d1207, type: 2}
 --- !u!4 &156188033
 Transform:
   m_ObjectHideFlags: 0
@@ -1238,7 +1290,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -113.33
+      value: -115.51501
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1246,7 +1298,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 13.68
+      value: 11.099
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2978,7 +3030,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -111.625
+      value: -115.05
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2986,7 +3038,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 11.33
+      value: 8.749
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4570,6 +4622,8 @@ MonoBehaviour:
   inProgress: 0
   hasItems: 0
   collected: 0
+  hasStoryEffect: 0
+  storyEffectIndex: 0
   questRequirement: Find the candy
   questPositions:
   - 13.68
@@ -5240,7 +5294,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -113.33
+      value: -115.51501
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5248,7 +5302,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 8.86
+      value: 6.58
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5350,6 +5404,91 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1508029886}
+--- !u!1 &1559875789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1559875793}
+  - component: {fileID: 1559875792}
+  - component: {fileID: 1559875791}
+  - component: {fileID: 1559875790}
+  m_Layer: 0
+  m_Name: Mayor
+  m_TagString: Interactable
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1559875790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559875789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1559875791
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559875789}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1559875792
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559875789}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1559875793
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559875789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -122.17, y: 0.24, z: 23.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 43
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1610306052
 Prefab:
   m_ObjectHideFlags: 0
@@ -6208,7 +6347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -119.6}
+  m_AnchoredPosition: {x: 0, y: -101}
   m_SizeDelta: {x: 382.3, y: 458.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805296738
@@ -6749,7 +6888,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -115.5
+      value: -118.450005
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6757,7 +6896,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 11.33
+      value: 8.749
       objectReference: {fileID: 0}
     - target: {fileID: 4006870573211894, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
       propertyPath: m_LocalRotation.x

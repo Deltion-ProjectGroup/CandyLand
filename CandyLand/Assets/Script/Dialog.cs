@@ -35,6 +35,7 @@ public class Dialog : MonoBehaviour
                         StoryLine.storyLine.storyCase = dialogStats.effectIndex;
                         //Storyline case run the index
                         StartCoroutine(StoryLine.storyLine.Story());
+                        print(dialogStats.effectIndex);
                     }
                     else
                     {

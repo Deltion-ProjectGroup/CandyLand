@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Quest : Interactable {
     GameObject interactorr;
-    public Rewards[] rewards;
+    public List<Rewards> rewards = new List<Rewards>();
     public enum questTypes { Collect, Find}
     public questTypes questType;
     public int currencyReward;
@@ -64,17 +64,12 @@ public class Quest : Interactable {
     public virtual void CollectQuest()
     {
         print("COLLECTED");
-        for (int i = 0; i < rewards.Length; i++)
+        for (int i = 0; i < rewards.Count; i++)
         {
             Inventory.instance.Add(rewards[i].itemRewards, rewards[i].rewardAmt, false);
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
         collected = true;
-        if (hasStoryEffect)
-        {
-            StoryLine.storyLine.storyCase = storyEffectIndex;
-            StoryLine.storyLine.Story();
-        }
         RefreshButtons();
     }
     public override void Interact(GameObject interactor)
@@ -90,7 +85,7 @@ public class Quest : Interactable {
         UIManager.uiManager.questStuff[0].GetComponent<Text>().text = questName;
         UIManager.uiManager.questStuff[1].GetComponent<Text>().text = questType.ToString();
         UIManager.uiManager.questStuff[2].GetComponent<Text>().text = questDialog;
-        if(rewards.Length > 1)
+        if(rewards.Count > 1)
         {
             UIManager.uiManager.questStuff[4].GetComponent<Text>().text = "QUEST REWARDS";
         }
@@ -99,7 +94,7 @@ public class Quest : Interactable {
             UIManager.uiManager.questStuff[4].GetComponent<Text>().text = "QUEST REWARD";
         }
         UIManager.uiManager.questStuff[5].GetComponent<Text>().text = null;
-        for (int i = 0; i < rewards.Length; i++)
+        for (int i = 0; i < rewards.Count; i++)
         {
             UIManager.uiManager.questStuff[5].GetComponent<Text>().text += rewards[i].rewardAmt + " * " + rewards[i].itemRewards.itemName + "\n";
         }

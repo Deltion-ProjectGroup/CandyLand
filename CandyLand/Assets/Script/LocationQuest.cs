@@ -32,6 +32,11 @@ public class LocationQuest : Quest {
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().movementDelegate -= checkIfComplete;
         base.CollectQuest();
+        if (hasStoryEffect)
+        {
+            StoryLine.storyLine.storyCase = storyEffectIndex;
+            StoryLine.storyLine.Story();
+        }
     }
     public override void Interact(GameObject interactor)
     {
