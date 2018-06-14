@@ -17,6 +17,8 @@ public class Quest : Interactable {
     public bool inProgress;
     public bool hasItems;
     public bool collected;
+    public bool hasStoryEffect = false;
+    public int storyEffectIndex;
     public static bool interactedQuest;
     // Use this for initialization
     void Start () {
@@ -68,6 +70,11 @@ public class Quest : Interactable {
         }
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
         collected = true;
+        if (hasStoryEffect)
+        {
+            StoryLine.storyLine.storyCase = storyEffectIndex;
+            StoryLine.storyLine.Story();
+        }
         RefreshButtons();
     }
     public override void Interact(GameObject interactor)
