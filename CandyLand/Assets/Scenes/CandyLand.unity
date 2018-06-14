@@ -337,22 +337,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 73c4c051986dc7d40b5291d5475b27f7, type: 2}
-  rewards:
-  - itemRewards: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
-    rewardAmt: 1
+  rewards: []
   questType: 0
   currencyReward: 0
-  questName: CollectAdventure
-  completionMsg: CONGRATZ
-  progressMsg: In progress.
-  questDialog: Hey get me this shit
+  questName: 
+  completionMsg: 
+  progressMsg: 
+  questDialog: 
   completed: 0
   inProgress: 0
   hasItems: 0
   collected: 0
-  requiredItems:
-  - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
-    requiredAmt: 7
+  requiredItems: []
 --- !u!1 &65077814
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 240, y: -210}
+  m_AnchoredPosition: {x: 232, y: -221}
   m_SizeDelta: {x: 848.2, y: 458.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65077816
@@ -421,7 +417,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Quest Requirements:'
+  m_Text: Requirements
 --- !u!222 &65077817
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -847,6 +843,73 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a877371b4d0c11f459efdfe36a0336f2, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &156188031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 156188033}
+  - component: {fileID: 156188032}
+  m_Layer: 0
+  m_Name: StoryLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &156188032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156188031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06b9effeb36e1ff4fac3af059812e6ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyCase: 0
+  dialogs:
+  - dialogText:
+    - I
+    - LOVE
+    - PANCAKEESS!!
+    anim: {fileID: 0}
+  - dialogText:
+    - I
+    - LOVE
+    - PANCAKEESS!!
+    anim: {fileID: 0}
+  - dialogText:
+    - I
+    - LOVE
+    - PANCAKEESS!!
+    anim: {fileID: 0}
+  - dialogText:
+    - I
+    - LOVE
+    - PANCAKEESS!!
+    anim: {fileID: 0}
+  - dialogText:
+    - I
+    - LOVE
+    - PANCAKEESS!!
+    anim: {fileID: 0}
+--- !u!4 &156188033
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 156188031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1067.1238, y: 371.43127, z: -60.200684}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 42
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162701538
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,23 +2276,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df27b9289d1e8c4fb82e0df4f4673ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4294967295
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 1
+  m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 350e39b380e4fe64582d6cacd3f74c92, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &608475376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2576,7 +2639,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000053405776, y: -23}
+  m_AnchoredPosition: {x: -0.000053405776, y: 23}
   m_SizeDelta: {x: 848.2, y: 458.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &672772173
@@ -2611,9 +2674,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Requirements
-
-'
+  m_Text: 'Quest Requirements:'
 --- !u!222 &672772174
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3073,7 +3134,7 @@ MonoBehaviour:
   - {fileID: 610979406}
   - {fileID: 608475376}
   - {fileID: 1805296736}
-  - {fileID: 672772171}
+  - {fileID: 65077814}
   - {fileID: 1818463204}
   - {fileID: 1993816259}
   - {fileID: 453708137}
@@ -3083,8 +3144,7 @@ MonoBehaviour:
   - {fileID: 1730970139}
   - {fileID: 1100261728}
   dialogUI: {fileID: 661194988}
-  UIAnims:
-  - {fileID: 7400000, guid: 365600930d4bd564d9020dbd4814e7e5, type: 2}
+  UIAnims: []
 --- !u!1001 &815271174
 Prefab:
   m_ObjectHideFlags: 0
@@ -3548,8 +3608,8 @@ MonoBehaviour:
     type: 2}
   invenoryInfoPanel: {fileID: 218009325}
   icon: {fileID: 697917286}
-  nameInfo: {fileID: 513481985}
-  info: {fileID: 1686605513}
+  nameInfo: {fileID: 1686605513}
+  info: {fileID: 513481985}
   slots: []
   inventorySwitch: 0
   idSlot: 0
@@ -3566,12 +3626,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  walkSpeed: 4
-  sprintSpeed: 8
-  sprintCost: 1
-  rotateMultiplier: 80
+  walkSpeed: 20
+  sprintSpeed: 20
+  sprintCost: 0
+  rotateMultiplier: 20
   rotateMultiplierBackUp: 0
-  jumpAmt: {x: 0, y: 4, z: 0}
+  jumpAmt: {x: 0, y: 3, z: 0}
   hasQuest: 0
 --- !u!4 &962834753
 Transform:
@@ -4070,7 +4130,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1113167064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6920e8b8cfcb64041b0f420c7bd73d79, type: 3}
   m_Name: 
@@ -4079,26 +4139,26 @@ MonoBehaviour:
   maxHealth: 100
   target: {fileID: 0}
   agent: {fileID: 0}
-  chargeThinkingMax: 3
-  chargeThinkingMin: 1
-  attackPos: {fileID: 1113167068}
-  attackRange: 1
+  chargeThinkingMax: 0
+  chargeThinkingMin: 0
+  attackPos: {fileID: 0}
+  attackRange: 0
   isChasing: 0
   mainchargeThinking: 0
-  randomUnitCircleRadiusMin: 5
-  randomUnitCircleRadiusMax: 10
-  thinkTimerMin: 3
-  thinkTimerMax: 7
+  randomUnitCircleRadiusMin: 0
+  randomUnitCircleRadiusMax: 0
+  thinkTimerMin: 0
+  thinkTimerMax: 0
   attackTime: 1
   attackTimeStart: 0
   randomUnitCircleRadius: 0
-  jumpUp: 75
-  jumpForward: 40
-  jumptime: 1
+  jumpUp: 0
+  jumpForward: 0
+  jumptime: 0
   maxDistance: 0
-  raycastLenght: 50
-  midPoint: {fileID: 1628293010}
-  look: {fileID: 1843166389}
+  raycastLenght: 0
+  midPoint: {fileID: 0}
+  look: {fileID: 0}
 --- !u!54 &1113167071
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4280,7 +4340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateMultiplier: 0
-  interactionRange: 10
+  interactionRange: 0
 --- !u!114 &1136695367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,7 +4352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 524fe7975df25034ca11776b0be45157, type: 2}
+  profile: {fileID: 0}
 --- !u!1 &1143355971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4498,19 +4558,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 73c4c051986dc7d40b5291d5475b27f7, type: 2}
   rewards:
-  - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
-    rewardAmt: 54
+  - itemRewards: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+    rewardAmt: 1
   questType: 1
   currencyReward: 0
-  questName: Find the candy!
-  completionMsg: YOU DID IT TEH CANDYY!!
-  progressMsg: Please find my candy!
-  questDialog: Hey I need someone to find my candy... It is near the workbench
+  questName: MY CANDY
+  completionMsg: YOU DID IT YOU FOUND MY CANDY
+  progressMsg: FIND MY CANDY ALREADY
+  questDialog: Hey.. I have lost my candy somewhere around here.. Could you find it
+    for me?
   completed: 0
   inProgress: 0
   hasItems: 0
   collected: 0
-  questRequirement: Go near the workbench.
+  questRequirement: Find the candy
   questPositions:
   - 13.68
   - -111.625
@@ -5421,7 +5482,7 @@ GameObject:
   m_Layer: 11
   m_Name: MidPointArea
   m_TagString: MidPoint
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5476,7 +5537,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1630070403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa2fc5f84783bf5418ba59182479391c, type: 3}
   m_Name: 
@@ -5485,32 +5546,32 @@ MonoBehaviour:
   maxHealth: 100
   target: {fileID: 0}
   agent: {fileID: 0}
-  chargeThinkingMax: 5
-  chargeThinkingMin: 2
-  attackPos: {fileID: 1822742846}
-  attackRange: 3
+  chargeThinkingMax: 0
+  chargeThinkingMin: 0
+  attackPos: {fileID: 0}
+  attackRange: 0
   isChasing: 0
   mainchargeThinking: 0
-  randomUnitCircleRadiusMin: 5
-  randomUnitCircleRadiusMax: 30
-  thinkTimerMin: 2
-  thinkTimerMax: 10
+  randomUnitCircleRadiusMin: 0
+  randomUnitCircleRadiusMax: 0
+  thinkTimerMin: 0
+  thinkTimerMax: 0
   attackTime: 1
   attackTimeStart: 0
   randomUnitCircleRadius: 0
-  viewRadius: 10
-  viewAngle: 120
+  viewRadius: 0
+  viewAngle: 0
   targetMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 0
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 0
   visibleTarget: []
-  meshResolution: 1
-  edgeResolveInterations: 4
-  edgeDstThreshold: 0.5
-  viewMeshFilter: {fileID: 74137232}
+  meshResolution: 0
+  edgeResolveInterations: 0
+  edgeDstThreshold: 0
+  viewMeshFilter: {fileID: 0}
 --- !u!195 &1630070405
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6224,7 +6285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: -138}
+  m_AnchoredPosition: {x: -2, y: -138}
   m_SizeDelta: {x: 376.4, y: 110.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1818463206

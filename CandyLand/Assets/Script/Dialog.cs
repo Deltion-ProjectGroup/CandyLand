@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Dialog : MonoBehaviour {
+public class Dialog : MonoBehaviour
+{
     public GameObject charName;
     public GameObject charRole;
     public GameObject dialogText;
@@ -13,12 +14,14 @@ public class Dialog : MonoBehaviour {
     int dialogNum;
     float playDialogSpeed = 0.1f;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Input.GetButtonDown("Press[E]"))
         {
             if (dialogDone)
@@ -29,13 +32,16 @@ public class Dialog : MonoBehaviour {
                     dialogNum = 0;
                     if (dialogStats.afterEffect)
                     {
+                        print("SHIT");
+                        StoryLine.storyLine.storyCase = dialogStats.effectIndex;
+                        StartCoroutine(StoryLine.storyLine.Story());
                         //Storyline case run the index
                     }
                     gameObject.SetActive(false);
                 }
                 else
                 {
-                    StartCoroutine(Dialogg(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole));
+                    StartCoroutine(DialogMethod(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole));
                 }
             }
             else
@@ -51,7 +57,7 @@ public class Dialog : MonoBehaviour {
             }
         }
 	}
-    public IEnumerator Dialogg(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0)
+    public IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0)
     {
         if (firstDialog)
         {

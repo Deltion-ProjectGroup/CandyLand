@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour {
     public questOptions cancelQuest;
     public questOptions completeQuest;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         uiManager = this;
 	}
 	
@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour {
     public void Dialog(List<string> dialogText, string charName, string charRole, bool hasAfterEffect = false, int effectIndexNum = 0)
     {
         dialogUI.SetActive(true);
-        StartCoroutine(dialogUI.GetComponent<Dialog>().Dialogg(dialogText, charName, charRole, hasAfterEffect, effectIndexNum));
+        StartCoroutine(dialogUI.GetComponent<Dialog>().DialogMethod(dialogText, charName, charRole, hasAfterEffect, effectIndexNum));
     }
     public void RefreshHealth()
     {
