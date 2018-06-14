@@ -41,7 +41,8 @@ public class CollectionQuest : Quest {
         if (hasStoryEffect)
         {
             StoryLine.storyLine.storyCase = storyEffectIndex;
-            StoryLine.storyLine.Story();
+            Inventory.instance.OnTab();
+            StartCoroutine(StoryLine.storyLine.Story());
         }
     }
     public override void Interact(GameObject interactor)

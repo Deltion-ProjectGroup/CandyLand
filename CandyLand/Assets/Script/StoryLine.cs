@@ -85,6 +85,7 @@ public class StoryLine : MonoBehaviour {
                 // Collection quest turns into NPC text, follow him text
                 break;
             case 6:
+                UIManager.uiManager.dialogUI.SetActive(false);
                 Destroy(Mayor.GetComponent<NPC>());
                 Mayor.AddComponent<LocationQuest>();
                 Mayor.GetComponent<LocationQuest>().questPositions = locQuestPositions[0].coördinates;

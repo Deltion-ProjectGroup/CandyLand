@@ -906,10 +906,9 @@ MonoBehaviour:
     - PANCAKEESS!!
     anim: {fileID: 0}
   - dialogText:
-    - Ah great.. Thank you for getting me these recources.. I gave you some Ah great
-      you got the recources.. I gave you some rock candies.. These are commonly used
-      to craft basic items.. Maybe we should try to craft something together.. Yeah
-      let's do that right now since I have some time left.
+    - Ah great.. Thank you for getting me these recources. I gave you some rock candies..
+      These are commonly used to craft basic items.. Maybe we should try to craft
+      something together.. Yeah let's do that right now since I have some time left.
     - You will just have to keep following me until we are there.. Try not to get
       lost okay?
     anim: {fileID: 0}

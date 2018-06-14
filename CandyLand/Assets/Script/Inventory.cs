@@ -67,18 +67,22 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetButtonDown("Tab"))
         {
-            if (Crafting.crafting.isCrafting)
-            {
-                Crafting.crafting.craftingUI.SetActive(false);
-                Crafting.crafting.isCrafting = false;
-            }
-            if (Quest.interactedQuest)
-            {
-                Quest.interactedQuest = false;
-                UIManager.uiManager.questStuff[UIManager.uiManager.questStuff.Length - 1].SetActive(false);
-            }
-            InventoryOnOff();
+            OnTab();
         }
+    }
+    public void OnTab()
+    {
+        if (Crafting.crafting.isCrafting)
+        {
+            Crafting.crafting.craftingUI.SetActive(false);
+            Crafting.crafting.isCrafting = false;
+        }
+        if (Quest.interactedQuest)
+        {
+            Quest.interactedQuest = false;
+            UIManager.uiManager.questStuff[UIManager.uiManager.questStuff.Length - 1].SetActive(false);
+        }
+        InventoryOnOff();
     }
 
     public void InventoryOnOff()

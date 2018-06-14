@@ -126,7 +126,7 @@ public class Quest : Interactable {
     {
         UIManager.uiManager.questStuff[9].SetActive(true);
         UIManager.uiManager.questStuff[10].GetComponent<Text>().text = "Quest: " + questName;
-        UIManager.uiManager.questStuff[9].GetComponent<Animation>().Play("QuestCompleteAnim");
+        UIManager.uiManager.questStuff[9].GetComponent<Animation>().Play();
         yield return new WaitForEndOfFrame();
         UIManager.uiManager.questStuff[9].SetActive(false);
     }
