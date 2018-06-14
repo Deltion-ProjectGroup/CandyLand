@@ -16,7 +16,7 @@ public class Enemy : Character
     [SerializeField] Transform attackPos;
     [SerializeField] float attackRange;
     public bool isChasing = false;
-    [SerializeField] float mainchargeThinking;
+    float mainchargeThinking;
     RaycastHit hitPartical;
     RaycastHit hit;
 
@@ -34,7 +34,7 @@ public class Enemy : Character
 
     public virtual void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>(); target = GameObject.FindGameObjectWithTag("Player").transform; 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         agent.speed = 1.5f;
     }
@@ -56,7 +56,6 @@ public class Enemy : Character
         // the enemy has to think befor he can charged
         if (isChasing)
         {
-            print(isChasing);
 
             if (mainchargeThinking <= 0)
             {
@@ -98,19 +97,8 @@ public class Enemy : Character
         }
     }
 
-    public virtual void SensField()
-    {
-        DistanceAttack();
-    }
-
     public virtual void DistanceAttack()
     {
-        if (!isChasing)
-        {
-            agent.isStopped = true;
-            isChasing = true;
-        }
-        agent.isStopped = false;
         agent.speed = 3;
         agent.SetDestination(target.position);
     }

@@ -39,11 +39,6 @@ public class BossEnemy : Enemy
         base.isAttacking();
     }
 
-    public override void SensField()
-    {
-        base.SensField();
-    }
-
     [Header("FieldOfView")]
     public float viewRadius;
     [Range(0, 360)]
