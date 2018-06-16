@@ -22,10 +22,10 @@ public class UIManager : MonoBehaviour {
 	void Update () {
 
 	}
-    public void Dialog(List<string> dialogText, string charName, string charRole, bool hasAfterEffect = false, int effectIndexNum = 0)
+    public void Dialog(List<string> dialogText, string charName, string charRole , bool hasAfterEffect = false, int effectIndexNum = 0, bool nextIndexIsDialog = false)
     {
         dialogUI.SetActive(true);
-        StartCoroutine(dialogUI.GetComponent<Dialog>().DialogMethod(dialogText, charName, charRole, hasAfterEffect, effectIndexNum));
+        StartCoroutine(dialogUI.GetComponent<Dialog>().DialogMethod(dialogText, charName, charRole, hasAfterEffect, effectIndexNum, nextIndexIsDialog));
     }
     public void RefreshHealth()
     {

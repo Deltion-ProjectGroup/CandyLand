@@ -8,6 +8,7 @@ public class NPC : Interactable {
     public string characterName;
     public bool hasStoryEffect;
     public int storyEffectIndex;
+    public bool nextIndexIsDialog;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,6 +20,6 @@ public class NPC : Interactable {
 	}
     public override void Interact(GameObject interactor)
     {
-        UIManager.uiManager.Dialog(dialogText, characterName, role, hasStoryEffect, storyEffectIndex);
+        UIManager.uiManager.Dialog(dialogText, characterName, role, hasStoryEffect, storyEffectIndex, nextIndexIsDialog);
     }
 }

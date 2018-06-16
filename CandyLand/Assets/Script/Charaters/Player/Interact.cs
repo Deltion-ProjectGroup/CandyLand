@@ -24,7 +24,7 @@ public class Interact : MonoBehaviour
     {
         if (Physics.Raycast(cameraPosition.position, cameraPosition.forward, out hit, raycastLength))
         {
-            Interactable item = hit.transform.gameObject.GetComponent<Interactable>();
+            GameObject item = hit.transform.gameObject;
 
             if (inventoryActive)
             {
@@ -33,14 +33,17 @@ public class Interact : MonoBehaviour
             }
             else if (!inventoryActive)
             {
-                if (hit.transform.tag == "Interactable")
+                if(item.GetComponent<Interactable>() != null)
                 {
-                    press.SetActive(true);
-                    infoItem.text = item.item.name;
-                    if (Input.GetButtonDown("Press[E]"))
+                    if (hit.transform.tag == "Interactable")
                     {
-                        print("E");
-                        item.Interact(gameObject);
+                        press.SetActive(true);
+                        infoItem.text = item.GetComponent<Interactable>().item.name;
+                        if (Input.GetButtonDown("Press[E]"))
+                        {
+                            print("E");
+                            item.GetComponent<Interactable>().Interact(gameObject);
+                        }
                     }
                 }
                 else

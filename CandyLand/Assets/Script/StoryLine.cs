@@ -45,10 +45,10 @@ public class StoryLine : MonoBehaviour {
                 goto case 1;
             case 1:
                 //Mayor talks to you, change the camera towards him, play anim if he has one
-                UIManager.uiManager.Dialog(dialogs[storyCase].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 3);
+                UIManager.uiManager.Dialog(dialogs[storyCase].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true , 3);
                 break;
             case 3:
-                UIManager.uiManager.dialogUI.SetActive(false);
+               // UIManager.uiManager.dialogUI.SetActive(false);
                 Mayor.AddComponent<NPC>();
                 Mayor.GetComponent<NPC>().item = itemList[2];
                 Mayor.GetComponent<NPC>().characterName = Chars.Names.Frans.ToString();
@@ -61,7 +61,7 @@ public class StoryLine : MonoBehaviour {
                 //Talk with mayor is on NPC script #3.5
                 break;
             case 4:
-                UIManager.uiManager.dialogUI.SetActive(false);
+                //UIManager.uiManager.dialogUI.SetActive(false);
                 Destroy(Mayor.GetComponent<NPC>());
                 Mayor.AddComponent<CollectionQuest>();
                 Mayor.GetComponent<CollectionQuest>().item = itemList[2];
@@ -75,18 +75,11 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 5:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
-                Mayor.AddComponent<NPC>();
-                Mayor.GetComponent<NPC>().item = itemList[2];
-                Mayor.GetComponent<NPC>().characterName = Chars.Names.Frans.ToString();
-                Mayor.GetComponent<NPC>().role = Chars.Roles.Mayor.ToString();
-                Mayor.GetComponent<NPC>().hasStoryEffect = true;
-                Mayor.GetComponent<NPC>().storyEffectIndex = 6;
-                Mayor.GetComponent<NPC>().dialogText = dialogs[5].dialogText;
-                // Collection quest turns into NPC text, follow him text
+                UIManager.uiManager.Dialog(dialogs[5].dialogText, Chars.Names.Frans.ToString(), Chars.Roles.Mayor.ToString(), true, 6);
+                // Collection quest turns into Dialog text, follow him text
                 break;
             case 6:
-                UIManager.uiManager.dialogUI.SetActive(false);
-                Destroy(Mayor.GetComponent<NPC>());
+                //UIManager.uiManager.dialogUI.SetActive(false);
                 Mayor.AddComponent<LocationQuest>();
                 Mayor.GetComponent<LocationQuest>().questPositions = locQuestPositions[0].coördinates;
                 Mayor.GetComponent<LocationQuest>().item = itemList[2];
@@ -105,15 +98,15 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 7:
                 //After collecting the quest turn him into an AI again, he has to go away, he asks you to make the axe, work and come back later.
-                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Frans.ToString(), Chars.Roles.Mayor.ToString());
+                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString());
                 //Mayor goes away
                 break;
             case 8:
                 //play Mayor leaving anim
-                //After crafting the first item case 9 triggers #8.5
                 break;
             case 9:
-                //
+                UIManager.uiManager.Dialog(dialogs[8].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Mayor.ToString());
+                // Happened after first craft
                 break;
 
         }

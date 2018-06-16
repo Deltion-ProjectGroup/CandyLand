@@ -56,10 +56,18 @@ public class LocationQuest : Quest {
                 {
                     inProgress = false;
                     completed = true;
-                    StartCoroutine(Completemsg(questName));
+                    StartCoroutine(CompleteMsg(questName));
                     print("Completed");
                 }
             }
         }
+    }
+    public IEnumerator CompleteMsg(string questName)
+    {
+        UIManager.uiManager.questStuff[9].SetActive(true);
+        UIManager.uiManager.questStuff[10].GetComponent<Text>().text = "Quest: " + questName;
+        UIManager.uiManager.questStuff[9].GetComponent<Animation>().Play();
+        yield return new WaitForSeconds(UIManager.uiManager.questStuff[9].GetComponent<Animation>().clip.length);
+        UIManager.uiManager.questStuff[9].SetActive(false);
     }
 }

@@ -35,7 +35,10 @@ public class Dialog : MonoBehaviour
                         StoryLine.storyLine.storyCase = dialogStats.effectIndex;
                         //Storyline case run the index
                         StartCoroutine(StoryLine.storyLine.Story());
-                        print(dialogStats.effectIndex);
+                        if (!dialogStats.nextIndexIsDialog)
+                        {
+                            gameObject.SetActive(false);
+                        }
                     }
                     else
                     {
@@ -44,7 +47,7 @@ public class Dialog : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(DialogMethod(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole));
+                    StartCoroutine(DialogMethod(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole, dialogStats.afterEffect, dialogStats.effectIndex, dialogStats.nextIndexIsDialog));
                 }
             }
             else
@@ -60,7 +63,7 @@ public class Dialog : MonoBehaviour
             }
         }
 	}
-    public IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0)
+    public IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)
     {
         if (firstDialog)
         {
@@ -69,6 +72,7 @@ public class Dialog : MonoBehaviour
             dialogStats.effectIndex = effectIndex;
             dialogStats.charName = characterName;
             dialogStats.charRole = "-" + characterRole;
+            dialogStats.nextIndexIsDialog = nextIndexIsDialog;
             charName.GetComponent<Text>().text = dialogStats.charName;
             charRole.GetComponent<Text>().text = dialogStats.charRole;
             dialogNum = 0;
@@ -89,6 +93,7 @@ public class Dialog : MonoBehaviour
     {
         public List<string> charTextHolder = new List<string>();
         public bool afterEffect;
+        public bool nextIndexIsDialog;
         public int effectIndex;
         public string charName;
         public string charRole;

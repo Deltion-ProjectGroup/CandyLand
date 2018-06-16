@@ -91,6 +91,13 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         Inventory.instance.Refresh();
         Inventory.instance.Add(craftingBlueprint.craftingItem, 1, false);
+        if (Crafting.crafting.firstCraft)
+        {
+            Crafting.crafting.firstCraft = false;
+            StoryLine.storyLine.storyCase = 9;
+            Inventory.instance.OnTab();
+            StoryLine.storyLine.Story();
+        }
     }
     [System.Serializable]
     public class Itehm

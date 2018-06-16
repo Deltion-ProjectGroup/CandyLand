@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Crafting : Interactable
 {
     public bool isCrafting;
+    public bool firstCraft = true;
     public GameObject craftingUI;
     public GameObject craftingSlotHolder; //To find the components in the UI that will show the cost etc. later
     public GameObject craftingSlot;

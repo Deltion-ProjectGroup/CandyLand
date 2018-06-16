@@ -921,10 +921,12 @@ MonoBehaviour:
       lost okay?
     anim: {fileID: 0}
   - dialogText:
-    - Well I have to go now do something to keep this town great... Maybe you can
-      try to craft something here.. You should really try that!
-    - It was very nice meeting you.. Don't worry we will meet again sometime and then
-      we'll talk again, until then have a great time!
+    - Hey you!! Do I know you from something?... I really think I do so, but I just
+      can't remember where I exactly know you from...
+    - Oh my bad, I forgot to introduce me, I am Pim the hunter in this town.
+    - Oh I have to go to my home, I'll think on my way home about where I know you
+      from.. When I know I will search you for sure don't worry about that.. Oh yeah
+      the Mayor also asked me to tell you to come to the city hall.. See you later!
     anim: {fileID: 0}
   locQuestPositions:
   - "co\xF6rdinates":
@@ -2622,6 +2624,7 @@ MonoBehaviour:
   dialogStats:
     charTextHolder: []
     afterEffect: 0
+    nextIndexIsDialog: 0
     effectIndex: 0
     charName: 
     charRole: 
@@ -6526,6 +6529,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: b351dc00c5a7a224e82773d11d7d1207, type: 2}
   isCrafting: 0
+  firstCraft: 1
   craftingUI: {fileID: 497775532}
   craftingSlotHolder: {fileID: 1166116148}
   craftingSlot: {fileID: 1161655516924132, guid: de7abb62ffeb14c43be89dbff43b006d,
