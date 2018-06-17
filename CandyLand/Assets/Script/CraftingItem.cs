@@ -91,12 +91,19 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         Inventory.instance.Refresh();
         Inventory.instance.Add(craftingBlueprint.craftingItem, 1, false);
-        if (Crafting.crafting.firstCraft)
+        if (Crafting.crafting.firstAxeCraft && craftingBlueprint.craftingItem.itemName == "StarterAxe")
         {
-            Crafting.crafting.firstCraft = false;
+            Crafting.crafting.firstAxeCraft = false;
             StoryLine.storyLine.storyCase = 9;
-            Inventory.instance.OnTab();
             StoryLine.storyLine.Story();
+            Inventory.instance.OnTab();
+        }
+        if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "StarterPickaxe")
+        {
+            Crafting.crafting.firstPicCraft = false;
+            StoryLine.storyLine.storyCase = 15;
+            StoryLine.storyLine.Story();
+            Inventory.instance.OnTab();
         }
     }
     [System.Serializable]

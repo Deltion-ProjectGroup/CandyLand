@@ -928,6 +928,52 @@ MonoBehaviour:
       from.. When I know I will search you for sure don't worry about that.. Oh yeah
       the Mayor also asked me to tell you to come to the city hall.. See you later!
     anim: {fileID: 0}
+  - dialogText:
+    - Hey you!! Do I know you from something?... I really think I do so, but I just
+      can't remember where I exactly know you from...
+    - Oh my bad, I forgot to introduce me, I am Pim the hunter in this town.
+    - Oh I have to go to my home, I'll think on my way home about where I know you
+      from.. When I know I will search you for sure don't worry about that.. Oh yeah
+      the Mayor also asked me to tell you to come to the city hall.. See you later!
+    anim: {fileID: 0}
+  - dialogText:
+    - Ah you came to the town hall, I guess the hunter told you to come towards me?
+    - Yeah I told him to bring you here, there was one thing I forgot to say about
+      the island and gathering recources...
+    - The part where you collected your first materials was a safespot in the island
+      to farm.. But there are many unsafe spots also so be careful please...
+    - I'll bring you to another safe farming spot since I see that you crafted an
+      axe.. Follow me please.
+    anim: {fileID: 0}
+  - dialogText:
+    - You must be the person the Mayor asked me to introduce myself to..
+    - My name is Ashley the miner of this town, without me the town wouldn't even
+      be as big as it is now.
+    - I'd love to talk to you but I really have to keep mining otherwise the town
+      could come in problems...
+    - You know what? You should just come with me.. I'll show you how to mine with
+      your picaxe!! Follow me!
+    anim: {fileID: 0}
+  - dialogText:
+    - Let's get started with the basics of mining... You should grab your pickaxe..
+    - Once you have gotten your pickaxe in front of you, you can just enter the mine
+      and start searching for materials..
+    - A thing to know though is that not every tool is fit for using against every
+      material.. Some are just too weak, in that case you should gather recources
+      to upgrade your current tool.
+    - Another thing is that there could be enemies if you mine at some places.. So
+      always stay aware when mining!!
+    - Now try and bring me the required recources before you leave...
+    anim: {fileID: 0}
+  - dialogText:
+    - Hey!!
+    - Remember me?? The hunter from before.. I have some information you may want
+      to know.. But I cannot tell it to you here...
+    - Come towards my place.. I'll wait there for you..
+    - Don't worry about how to find it.. Just keep searching through the town until
+      you see me! Trust me.. It is worth it..
+    - And oh yeah.. please bring me 12 candies please.. I need them for a new weapon...
+    anim: {fileID: 0}
   locQuestPositions:
   - "co\xF6rdinates":
     - 11.099
@@ -938,11 +984,39 @@ MonoBehaviour:
   - questRewards:
     - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
       rewardAmt: 3
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 25
+  - questRewards:
     - itemRewards: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
       rewardAmt: 10
     requiredItems:
     - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
       requiredAmt: 25
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 4
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 1
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 1
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 1
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      rewardAmt: 21
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 1
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 11
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      requiredAmt: 1
   Mayor: {fileID: 1559875789}
   itemList:
   - {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
@@ -6529,7 +6603,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: b351dc00c5a7a224e82773d11d7d1207, type: 2}
   isCrafting: 0
-  firstCraft: 1
+  firstAxeCraft: 1
+  firstPicCraft: 1
   craftingUI: {fileID: 497775532}
   craftingSlotHolder: {fileID: 1166116148}
   craftingSlot: {fileID: 1161655516924132, guid: de7abb62ffeb14c43be89dbff43b006d,

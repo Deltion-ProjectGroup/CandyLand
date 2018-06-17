@@ -98,17 +98,122 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 7:
                 //After collecting the quest turn him into an AI again, he has to go away, he asks you to make the axe, work and come back later.
-                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString());
+                Destroy(Mayor.GetComponent<LocationQuest>());
+                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 8);
                 //Mayor goes away
                 break;
             case 8:
                 //play Mayor leaving anim
-                break;
+                goto case 9;
             case 9:
-                UIManager.uiManager.Dialog(dialogs[8].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Mayor.ToString());
+                UIManager.uiManager.Dialog(dialogs[8].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 10);
                 // Happened after first craft
                 break;
+            case 10:
+                //Hunter leaving anim
+                goto case 11;
+            case 11:
+                Mayor.AddComponent<NPC>();
+                Mayor.GetComponent<NPC>().item = itemList[2];
+                Mayor.GetComponent<NPC>().characterName = Chars.Names.Frans.ToString();
+                Mayor.GetComponent<NPC>().role = Chars.Roles.Mayor.ToString();
+                Mayor.GetComponent<NPC>().hasStoryEffect = true;
+                Mayor.GetComponent<NPC>().storyEffectIndex = 12;
+                Mayor.GetComponent<NPC>().dialogText = dialogs[9].dialogText;
+                break;
+            case 12:
+                //Mayor moves towards location
+                Destroy(Mayor.GetComponent<NPC>());
+                Mayor.AddComponent<LocationQuest>();
+                Mayor.GetComponent<LocationQuest>().questPositions = locQuestPositions[1].coördinates;
+                Mayor.GetComponent<LocationQuest>().item = itemList[2];
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                Mayor.GetComponent<LocationQuest>().AcceptQuest();
+                Mayor.GetComponent<LocationQuest>().questName = "Follow the Mayor";
+                Mayor.GetComponent<LocationQuest>().questDialog = "Thanks for following me, could you gather me some recources now?";
+                Mayor.GetComponent<LocationQuest>().questRequirement = "Follow the Mayor towards a safe farming spot";
+                Mayor.GetComponent<LocationQuest>().questType = Quest.questTypes.Find;
+                Mayor.GetComponent<LocationQuest>().hasStoryEffect = true;
+                Mayor.GetComponent<LocationQuest>().storyEffectIndex = 13;
+                Mayor.GetComponent<LocationQuest>().rewards = questRequirementList[2].questRewards;
+                break;
+            case 13:
+                Destroy(Mayor.GetComponent<LocationQuest>());
+                Mayor.AddComponent<CollectionQuest>();
+                Mayor.GetComponent<CollectionQuest>().item = itemList[2];
+                Mayor.GetComponent<CollectionQuest>().questName = "GET (TO) DA CHOPPA";
+                Mayor.GetComponent<CollectionQuest>().questType = Quest.questTypes.Collect;
+                Mayor.GetComponent<CollectionQuest>().questDialog = "Since we have finally arrived here, could you collect some candywood, I would really appreciate it if you would.";
+                Mayor.GetComponent<CollectionQuest>().requiredItems = questRequirementList[3].requiredItems;
+                Mayor.GetComponent<CollectionQuest>().rewards = questRequirementList[3].questRewards;
+                Mayor.GetComponent<CollectionQuest>().hasStoryEffect = true;
+                Mayor.GetComponent<CollectionQuest>().storyEffectIndex = 14;
+                break;
+            case 14:
+                Destroy(Mayor.GetComponent<CollectionQuest>());
+                // Dialog that you got a blueprint also from him.
+                //Add the blueprint also in this case.
+                // He'll send a miner he says
+                goto case 15;
+            case 15:
+                UIManager.uiManager.Dialog(dialogs[10].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 16);
+                break;
+            case 16:
+                // MAYOR HAS TO BECOME THE MINER MODEL!!!!
+                //Miner runs
+                Mayor.AddComponent<LocationQuest>();
+                Mayor.GetComponent<LocationQuest>().questPositions = locQuestPositions[2].coördinates;
+                Mayor.GetComponent<LocationQuest>().item = itemList[2];
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                Mayor.GetComponent<LocationQuest>().AcceptQuest();
+                Mayor.GetComponent<LocationQuest>().questName = "Follow the Miner";
+                Mayor.GetComponent<LocationQuest>().questDialog = "Hey good job following me.. Let's start mining!";
+                Mayor.GetComponent<LocationQuest>().questRequirement = "Follow the Miner towards the mining spot";
+                Mayor.GetComponent<LocationQuest>().questType = Quest.questTypes.Find;
+                Mayor.GetComponent<LocationQuest>().hasStoryEffect = true;
+                Mayor.GetComponent<LocationQuest>().storyEffectIndex = 17;
+                Mayor.GetComponent<LocationQuest>().rewards = questRequirementList[4].questRewards;
+                break;
+            case 17:
+                Destroy(Mayor.GetComponent<LocationQuest>());
+                UIManager.uiManager.Dialog(dialogs[11].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 18);
+                break;
+            case 18:
+                // MAYOR HAS TO BECOME THE MINER MODEL!!!!
+                Mayor.AddComponent<CollectionQuest>();
+                Mayor.GetComponent<CollectionQuest>().item = itemList[2];
+                Mayor.GetComponent<CollectionQuest>().questName = "Mine Away";
+                Mayor.GetComponent<CollectionQuest>().questType = Quest.questTypes.Collect;
+                Mayor.GetComponent<CollectionQuest>().questDialog = "Please bring me some of these materials from the mine";
+                Mayor.GetComponent<CollectionQuest>().requiredItems = questRequirementList[5].requiredItems;
+                Mayor.GetComponent<CollectionQuest>().rewards = questRequirementList[5].questRewards;
+                Mayor.GetComponent<CollectionQuest>().hasStoryEffect = true;
+                Mayor.GetComponent<CollectionQuest>().storyEffectIndex = 19;
+                break;
+            case 19:
+                UIManager.uiManager.Dialog(dialogs[12].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 20);
+                break;
+            case 20:
+                //Hunter leaving anim
+                goto case 21;
 
+            case 21:
+                //Add the quest component to the hunter..
+                //Add without the player noticing that you can now forge a sword.
+                break;
+            case 22:
+                //Hunter tells you about how forging swords works and who you are
+                //Also tells you that he forgot his bag and asks you to retreive it.
+                break;
+            case 23:
+                //Adds locationQuest to the bag
+                break;
+            case 24:
+                //Hunter tells you where the final boss is and how to get to it.. But that you need something stronger
+                break;
+            case 25:
+                //BiomeBoss Dialog stuffs
+                break;
         }
     }
     [System.Serializable]
