@@ -921,12 +921,11 @@ MonoBehaviour:
       lost okay?
     anim: {fileID: 0}
   - dialogText:
-    - Hey you!! Do I know you from something?... I really think I do so, but I just
-      can't remember where I exactly know you from...
-    - Oh my bad, I forgot to introduce me, I am Pim the hunter in this town.
-    - Oh I have to go to my home, I'll think on my way home about where I know you
-      from.. When I know I will search you for sure don't worry about that.. Oh yeah
-      the Mayor also asked me to tell you to come to the city hall.. See you later!
+    - Ah you came, this is the place where everyone is able to craft their tools.
+    - Ofcourse to be able to create some tools you'll need blueprints to learn them
+      and materials to craft them.
+    - I will have to go now though, but you should really try out to craft your first
+      item.
     anim: {fileID: 0}
   - dialogText:
     - Hey you!! Do I know you from something?... I really think I do so, but I just
@@ -974,6 +973,34 @@ MonoBehaviour:
       you see me! Trust me.. It is worth it..
     - And oh yeah.. please bring me 12 candies please.. I need them for a new weapon...
     anim: {fileID: 0}
+  - dialogText:
+    - Ah I see you came with some of the recources I asked for...
+    - To learn to make some tools you will need to get blueprints of them, once you
+      have those you can try to craft them at the blacksmith.
+    - Oh.. I wanted to give you a blueprint to try it out, but I apparently lost my
+      bag somewhere in the woods of this island... Could you please find it for me???
+    - Don't worry about enemies I'll give you this blueprint in my pocket for a basic
+      sword..
+    - Well besides that I would like to tell you something about who you are...
+    - You are one of the people in the rebellion against the dictator of this island..
+      You wanted to fight for your freedom.
+    - You can still accomplish that goal, and I will help you with it if you help
+      me out... Good Luck!
+    anim: {fileID: 0}
+  - dialogText:
+    - Thank you for bringing me back the bag, you can now craft some more things at
+      the blacksmith.
+    - I know you can beat the dicator of this island, you just have to find his base...
+    - But to get to it you would need some stronger tools of the best materials...
+    - You can already collect them, you just have to find them.
+    - Be aware though, the dicator doesn't like rebellion.. If you fail, you're dead!
+    - You are one of the people in the rebellion against the dictator of this island..
+      You wanted to fight for your freedom.
+    anim: {fileID: 0}
+  - dialogText:
+    - The dictator is very close, you just need to find his hidden spot..
+    - Also, don't forget you need a certain strength of your tools to get to him.
+    anim: {fileID: 0}
   locQuestPositions:
   - "co\xF6rdinates":
     - 11.099
@@ -1016,6 +1043,18 @@ MonoBehaviour:
       rewardAmt: 11
     requiredItems:
     - requiredItem: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      requiredAmt: 1
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 11
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
+      requiredAmt: 1
+  - questRewards:
+    - itemRewards: {fileID: 11400000, guid: 3f77053f4e6260e42867548f09706f58, type: 2}
+      rewardAmt: 11
+    requiredItems:
+    - requiredItem: {fileID: 11400000, guid: 715da1349066d0748b36ebb99d7443d9, type: 2}
       requiredAmt: 1
   Mayor: {fileID: 1559875789}
   itemList:
