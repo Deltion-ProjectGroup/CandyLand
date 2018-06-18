@@ -101,7 +101,7 @@ public class Inventory : MonoBehaviour
             inventoryPanel.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             playerSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
-            camemraSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;
+            camemraSpeed.rotateMultiplier = playerSpeed.rotateMultipierBackUpUpDown;
             switchSlot = true;
             ClearColorSlots(idSlot);
         }
