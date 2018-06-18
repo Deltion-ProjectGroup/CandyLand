@@ -14,7 +14,9 @@ public class Player : Character
     public float sprintCost;
     [Header("Camera")]
     Vector3 camRotate;
-    public float rotateMultiplier = 20;
+    public float rotateMultiplier;
+    public float rotateMultiplierUpDowm;
+    public float rotateMultipierBackUpUpDown;
     public float rotateMultiplierBackUp;
     [Header("Jumping")]
     public Vector3 jumpAmt;
@@ -27,6 +29,7 @@ public class Player : Character
 	void Start ()
     {
         baseWalkSpeed = walkSpeed;
+        rotateMultipierBackUpUpDown = rotateMultiplierUpDowm;
         rotateMultiplierBackUp = rotateMultiplier;
 	}
 	

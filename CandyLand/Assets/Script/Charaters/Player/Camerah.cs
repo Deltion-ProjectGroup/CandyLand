@@ -12,14 +12,15 @@ public class Camerah : MonoBehaviour
         done
     }
     private Vector3 rotatePos;
-    public float rotateMultiplier;
+    [SerializeField] float clamp;
+    [HideInInspector] public float rotateMultiplier;
     public float interactionRange;
     public RaycastHit hit;
     // Use this for initialization
     void Start ()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        rotateMultiplier = GetComponentInParent<Player>().rotateMultiplier;
+        rotateMultiplier = GetComponentInParent<Player>().rotateMultiplierUpDowm;
 	}
 	
 	// Update is called once per frame
@@ -31,7 +32,9 @@ public class Camerah : MonoBehaviour
 
     public void RotateCam(Vector3 rotator, float speed)
     {
-        rotator.x = - Input.GetAxis("Mouse Y");
-        transform.Rotate(rotator * speed * Time.deltaTime);
+        rotator.x -= Input.GetAxis("Mouse Y") * speed;
+        rotator.x = Mathf.Clamp(rotator.x, -clamp, clamp);
+        transform.eulerAngles = (new Vector3(rotator.x, transform.eulerAngles.y, 0.0f));
+        rotatePos.x = rotator.x;
     }
 }
