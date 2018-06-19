@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour
 
     //[HideInInspector] public delegate void OnItemChanged();
     //[HideInInspector] public OnItemChanged onItemChangedCallback;
-    [HideInInspector] public List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> slots = new List<GameObject>();
     [HideInInspector] public bool inventorySwitch;
     [HideInInspector] public int idSlot;
 
