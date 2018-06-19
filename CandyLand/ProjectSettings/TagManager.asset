@@ -10,6 +10,8 @@ TagManager:
   - InventoryPanel
   - SlotPanel
   - MidPoint
+  - ToolPoint
+  - Enemy
   layers:
   - Default
   - TransparentFX
