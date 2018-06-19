@@ -4210,11 +4210,12 @@ MonoBehaviour:
   nameInfo: {fileID: 1686605513}
   info: {fileID: 513481985}
   slots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1852482604}
+  - {fileID: 2012340071}
+  - {fileID: 1936283403}
+  - {fileID: 1634434900}
+  - {fileID: 1605945160}
+  allItems: []
   inventorySwitch: 0
   idSlot: 0
 --- !u!114 &962834752
