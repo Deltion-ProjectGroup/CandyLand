@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public Sprite icon;
     public GameObject itemObject;
     public int amount;
+    public int itemIndex;
     public int maxAmount;
     public bool isStackable;
     

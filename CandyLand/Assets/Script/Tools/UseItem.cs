@@ -16,4 +16,8 @@ public class UseItem : MonoBehaviour
         yield return new WaitForSeconds(0);
         canUse = true;
     }
+    public virtual void Equip()
+    {
+        print("Equipped");
+    }
 }

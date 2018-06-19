@@ -32,6 +32,7 @@ public class Inventory : MonoBehaviour
     //[HideInInspector] public delegate void OnItemChanged();
     //[HideInInspector] public OnItemChanged onItemChangedCallback;
     public List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> allItems = new List<GameObject>();
     [HideInInspector] public bool inventorySwitch;
     [HideInInspector] public int idSlot;
 
@@ -65,6 +66,10 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Jump"))
+        {
+            allItems[slots[0].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+        }
         if (Input.GetButtonDown("Tab"))
         {
             OnTab();
