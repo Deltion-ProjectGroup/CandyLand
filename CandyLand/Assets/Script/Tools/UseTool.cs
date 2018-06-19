@@ -84,5 +84,12 @@ public class UseTool : UseItem
             }
         }
     }
+    public override void Equip()
+    {
+        GameObject tool = Instantiate(gameObject, GameObject.FindGameObjectWithTag("ToolPoint").transform.position, Quaternion.identity);
+        tool.transform.SetParent(GameObject.FindGameObjectWithTag("MainCamera").transform);
+        Inventory.instance.equippedItem = tool;
+        base.Equip();
+    }
 }
 

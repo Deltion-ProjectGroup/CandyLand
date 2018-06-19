@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
     public List<GameObject> allItems = new List<GameObject>();
     [HideInInspector] public bool inventorySwitch;
     [HideInInspector] public int idSlot;
-
+    public GameObject equippedItem;
     GameObject slotPanel;
     InventoryItem ivi;
     Item itemCal;
@@ -68,7 +68,19 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            if(equippedItem != null)
+            {
+                Destroy(equippedItem);
+            }
             allItems[slots[0].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+        }
+        if (Input.GetButtonDown("Press[E]"))
+        {
+            if (equippedItem != null)
+            {
+                Destroy(equippedItem);
+            }
+            allItems[slots[1].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
         }
         if (Input.GetButtonDown("Tab"))
         {

@@ -21,6 +21,7 @@ public class UseSword : UseItem {
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            print("Used");
             RaycastHit hit;
             Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, weaponStats.range);
             if(hit.transform != null)
@@ -34,9 +35,10 @@ public class UseSword : UseItem {
                     }
                     else
                     {
-                        //GameObject blood = Instantiate(bloodParticles, hit.point, Quaternion.identity);
-                        // blood.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
-                        //Destroy(blood, 1);
+                        GameObject blood = Instantiate(bloodParticles, hit.point, Quaternion.identity);
+                        blood.transform.LookAt(GameObject.FindGameObjectWithTag("Player").transform);
+                        blood.transform.SetParent(hit.transform);
+                        Destroy(blood, 4);
                     }
                 }
             }
@@ -47,6 +49,7 @@ public class UseSword : UseItem {
     {
         GameObject tool = Instantiate(gameObject, GameObject.FindGameObjectWithTag("ToolPoint").transform.position, Quaternion.identity);
         tool.transform.SetParent(GameObject.FindGameObjectWithTag("MainCamera").transform);
+        Inventory.instance.equippedItem = tool;
         base.Equip();
     }
 }

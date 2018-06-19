@@ -272,4 +272,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canUse: 1
   weaponStats: {fileID: 11400000, guid: 9fe7ee3adc5f0c642b4b16039b71ce7c, type: 2}
-  bloodParticles: {fileID: 0}
+  bloodParticles: {fileID: 1090034557877386, guid: 23f040c10ef070c46aa964f30a68519b,
+    type: 2}
