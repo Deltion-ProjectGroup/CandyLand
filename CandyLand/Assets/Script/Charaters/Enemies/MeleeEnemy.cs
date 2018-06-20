@@ -8,29 +8,30 @@ public class MeleeEnemy : Enemy
     [Header("Jump")]
     [SerializeField] float jumpUp;
     [SerializeField] float jumpForward;
-    bool isjumping;
     [SerializeField] float jumptime;
+    bool isjumping;
     float jumpTime;
 
     [Header("WalkField")]
     [SerializeField] float maxDistance;
-    [SerializeField] int raycastLenght;
     [SerializeField] Transform midPoint;
-    [SerializeField] Transform look;
     float distance;
-    RaycastHit walk;
+
+    [Header("MarshMello Pack")]
+    RaycastHit searchAlliance;
 
     public override void Start()
     {
         jumpTime = jumptime;
+        //StartCoroutine(Jump(jumpTime));
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void Update()
     {
         base.Update();
-        Jump();
         WalkField();
+        isJumping();
     }
 
     public override void RandomPos()
@@ -49,12 +50,19 @@ public class MeleeEnemy : Enemy
         base.ThinkTimer();
     }
 
-    void Jump()
+    /*
+    IEnumerator Jump(float delay)
+    {
+        print(jumptime);
+        yield return new WaitForSeconds(delay);
+    }
+    */
+    void isJumping()
     {
         if (isjumping)
         {
             jumpTime -= Time.deltaTime;
-            if (jumpTime <=0)
+            if (jumpTime <= 0)
             {
                 jumpTime = jumptime;
                 GetComponent<Rigidbody>().AddForce(transform.up * jumpUp * 3);
@@ -74,4 +82,14 @@ public class MeleeEnemy : Enemy
             transform.LookAt(midPoint);
         }
     }
+
+    void MarshmelloPack()
+    {
+
+    }
+    public override void DrawFieldOfView()
+    {
+        base.DrawFieldOfView();
+    }
+
 }

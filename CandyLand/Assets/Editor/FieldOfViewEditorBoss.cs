@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor (typeof (BossEnemy))]
-public class FieldOfViewEditor : Editor
+public class FieldOfViewEditorBoss : Editor
 {
     void OnSceneGUI()
     {
