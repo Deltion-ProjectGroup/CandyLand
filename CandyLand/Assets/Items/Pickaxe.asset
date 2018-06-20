@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef504ab65b1a672408dc460dbfcb34c1, type: 3}
   m_Name: Pickaxe
   m_EditorClassIdentifier: 
-  itemName: Pickaxe
-  description: mine candy.
+  itemName: StarterPickaxe
+  description: The weakest of the weakest, can almost mine nothing.
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   itemObject: {fileID: 1941890794245240, guid: 711b7559c9fef404e84fc1c08f4ebe18, type: 2}
   amount: 0

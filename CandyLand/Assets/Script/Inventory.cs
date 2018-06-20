@@ -63,24 +63,35 @@ public class Inventory : MonoBehaviour
         slotAvailable = true;
         maxAmount = false;
     }
-
+    void EquipItem(int index)
+    {
+        if (equippedItem != null)
+        {
+            Destroy(equippedItem);
+        }
+        allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+    }
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("1"))
         {
-            if(equippedItem != null)
-            {
-                Destroy(equippedItem);
-            }
-            allItems[slots[0].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+            EquipItem(0);
         }
-        if (Input.GetButtonDown("Press[E]"))
+        if (Input.GetButtonDown("2"))
         {
-            if (equippedItem != null)
-            {
-                Destroy(equippedItem);
-            }
-            allItems[slots[1].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+            EquipItem(1);
+        }
+        if (Input.GetButtonDown("3"))
+        {
+            EquipItem(2);
+        }
+        if (Input.GetButtonDown("4"))
+        {
+            EquipItem(3);
+        }
+        if (Input.GetButtonDown("5"))
+        {
+            EquipItem(4);
         }
         if (Input.GetButtonDown("Tab"))
         {

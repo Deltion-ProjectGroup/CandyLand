@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f706d9f25bb31614892adf38a65ef5b5, type: 3}
-  m_Name: RockCandy
+  m_Name: PaperStick
   m_EditorClassIdentifier: 
-  itemName: RockCandy
-  description: Candeh
-  icon: {fileID: 21300000, guid: d6d4c9aa34d531f418f17aa0b6ba08d5, type: 3}
-  itemObject: {fileID: 1043315037973206, guid: a2472ca80e87be24e86d8e0a02c0e976, type: 2}
+  itemName: PaperStick
+  description: The base of crafting tools!
+  icon: {fileID: 21300000, guid: c54ec1a5253828341aeae9a6df9c0cfb, type: 3}
+  itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}
   amount: 0
   itemIndex: 0
-  maxAmount: 100
+  maxAmount: 5
   isStackable: 1
   isDefaultItem: 0

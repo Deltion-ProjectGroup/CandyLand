@@ -31,9 +31,9 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             {
                 if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>() != null)
                 {
-                    if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemI == craftingBlueprint.requiredItems[q].requiredItem)
+                    if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemI == craftingBlueprint.requiredItems[i].requiredItem)
                     {
-                        if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount >= craftingBlueprint.requiredItems[q].requiredAmt)
+                        if (Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>().itemAmount >= craftingBlueprint.requiredItems[i].requiredAmt)
                         {
                             acquired = true;
                             foundHolder.Add(Inventory.instance.slots[q].GetComponentInChildren<InventoryItem>());

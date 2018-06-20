@@ -13,10 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Candy
   description: 'You can craft items with it '
-  icon: {fileID: 21300000, guid: 867d15332415af24f9e1625ba02f0d0d, type: 3}
+  icon: {fileID: 21300000, guid: 9f5c648be3952864caa7278d8b6ac72c, type: 3}
   itemObject: {fileID: 1171707615120084, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
   amount: 20
+  itemIndex: 0
   maxAmount: 100
   isStackable: 1
-  animation: {fileID: 0}
   isDefaultItem: 0
