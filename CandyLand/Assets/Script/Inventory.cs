@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] GameObject inventoryPanel;
+    [SerializeField] GameObject hotbarPanel;
     public GameObject inventorySlot;
     public GameObject inventoryItem;
 
@@ -54,7 +55,7 @@ public class Inventory : MonoBehaviour
     {
         switchSlot = false;
         beginswitch = true;
-        slotAmount = 15;
+        slotAmount = 20;
         CreateSlots(slotAmount);
         playerSpeed = GetComponent<Player>();
         camemraSpeed = gameObject.GetComponentInChildren<Camerah>();
@@ -257,6 +258,10 @@ public class Inventory : MonoBehaviour
                 {
                     if (slots[sl].transform.childCount == 0)
                     {
+                        if (sl < slotAmount * 0.25f)
+                        {
+                            
+                        }
                         if (maxAmount)
                         {
                             stackFull = false;
@@ -308,6 +313,12 @@ public class Inventory : MonoBehaviour
             slots.Add(Instantiate(inventorySlot));
             slots[s].GetComponent<InventorySlot>().slotID = s;
             slots[s].transform.SetParent(slotPanel.transform);
+            if (s < slotAmount * 0.25f)
+            {
+                slots.Add(Instantiate(inventorySlot));
+                slots[s].GetComponent<InventorySlot>().slotID = s;
+                slots[s].transform.SetParent(hotbarPanel.transform);
+            }
         }
     }
     public void Refresh()
