@@ -49,7 +49,7 @@ public class UseTool : UseItem
                         if (harvestSO.mineID[i] == hit.transform.GetComponent<HarvestableItem>().requiredID) //Each resource has its own ID value
                         {
                             hit.transform.GetComponent<HarvestableItem>().Drop(harvestSO.minHarvest, harvestSO.maxHarvest + 1);
-                            hit.transform.GetComponent<HarvestableItem>().health -= Random.Range(10, 51);
+                            hit.transform.GetComponent<HarvestableItem>().health -= Random.Range(harvestSO.minHarvest, harvestSO.maxHarvest);
                             if (hit.transform.GetComponent<HarvestableItem>().health <= 0)
                             {
                                 hit.transform.GetComponent<HarvestableItem>().Death();

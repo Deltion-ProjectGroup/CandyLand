@@ -23,7 +23,6 @@ public class MeleeEnemy : Enemy
     public override void Start()
     {
         jumpTime = jumptime;
-        //StartCoroutine(Jump(jumpTime));
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -50,13 +49,6 @@ public class MeleeEnemy : Enemy
         base.ThinkTimer();
     }
 
-    /*
-    IEnumerator Jump(float delay)
-    {
-        print(jumptime);
-        yield return new WaitForSeconds(delay);
-    }
-    */
     void isJumping()
     {
         if (isjumping)
@@ -87,6 +79,7 @@ public class MeleeEnemy : Enemy
     {
 
     }
+
     public override void DrawFieldOfView()
     {
         base.DrawFieldOfView();

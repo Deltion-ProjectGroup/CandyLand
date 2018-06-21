@@ -23,4 +23,4 @@ MonoBehaviour:
   durability: 10
   mineID: 0000000001000000
   minHarvest: 5
-  maxHarvest: 10
+  maxHarvest: 2
