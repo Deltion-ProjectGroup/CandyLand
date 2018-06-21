@@ -19,7 +19,7 @@ MonoBehaviour:
   itemIndex: 1
   maxAmount: 1
   isStackable: 0
-  isDefaultItem: 1
+  isDefaultItem: 0
   durability: 10
   mineID: 0000000001000000
   minHarvest: 5

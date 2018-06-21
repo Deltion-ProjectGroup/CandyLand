@@ -67,8 +67,8 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         transform.localScale = new Vector3(backUpScale.x + 0.05f, backUpScale.y + 0.05f, backUpScale.z + 0.05f);
         Crafting.crafting.craftingStuff[0].GetComponentInChildren<Image>().sprite = craftingBlueprint.craftingItem.icon;
-        Crafting.crafting.craftingStuff[1].GetComponent<Text>().text = "Name: " + craftingBlueprint.craftingItem.itemName;
-        Crafting.crafting.craftingStuff[2].GetComponent<Text>().text = "Description: " + craftingBlueprint.craftingItem.description;
+        Crafting.crafting.craftingStuff[1].GetComponent<Text>().text = "Name:\n" + craftingBlueprint.craftingItem.itemName;
+        Crafting.crafting.craftingStuff[2].GetComponent<Text>().text = "Description:\n" + craftingBlueprint.craftingItem.description;
         Crafting.crafting.craftingStuff[4].GetComponent<Text>().text = null;
         for (int i = 0; i < craftingBlueprint.requiredItems.Length; i++)
         {
@@ -91,18 +91,18 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         Inventory.instance.Refresh();
         Inventory.instance.Add(craftingBlueprint.craftingItem, 1, false);
-        if (Crafting.crafting.firstAxeCraft && craftingBlueprint.craftingItem.itemName == "StarterAxe")
+        if (Crafting.crafting.firstAxeCraft && craftingBlueprint.craftingItem.itemName == "Marshmallow")
         {
             Crafting.crafting.firstAxeCraft = false;
             StoryLine.storyLine.storyCase = 9;
-            StoryLine.storyLine.Story();
+            StartCoroutine(StoryLine.storyLine.Story());
             Inventory.instance.OnTab();
         }
-        if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "StarterPickaxe")
+        if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "Spekkie")
         {
             Crafting.crafting.firstPicCraft = false;
+            StartCoroutine(StoryLine.storyLine.Story());
             StoryLine.storyLine.storyCase = 15;
-            StoryLine.storyLine.Story();
             Inventory.instance.OnTab();
         }
     }

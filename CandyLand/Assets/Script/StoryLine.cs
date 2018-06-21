@@ -27,6 +27,7 @@ public class StoryLine : MonoBehaviour {
     public class PosCordinates
     {
         public float[] coördinates;
+        public Vector3 movePosNPC;
     }
     [System.Serializable]
     public class ColQuestReq
@@ -80,6 +81,9 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 6:
                 //UIManager.uiManager.dialogUI.SetActive(false);
+                Mayor.AddComponent<NPCFollow>();
+                Mayor.GetComponent<NPCFollow>().targetLocation = locQuestPositions[0].movePosNPC;
+                StartCoroutine(Mayor.GetComponent<NPCFollow>().StartMove());
                 Mayor.AddComponent<LocationQuest>();
                 Mayor.GetComponent<LocationQuest>().questPositions = locQuestPositions[0].coördinates;
                 Mayor.GetComponent<LocationQuest>().item = itemList[2];
@@ -104,7 +108,7 @@ public class StoryLine : MonoBehaviour {
                 break;
             case 8:
                 //play Mayor leaving anim
-                goto case 9;
+
             case 9:
                 UIManager.uiManager.Dialog(dialogs[8].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 10);
                 // Happened after first craft
