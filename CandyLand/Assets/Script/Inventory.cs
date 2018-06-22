@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
@@ -26,12 +27,9 @@ public class Inventory : MonoBehaviour
     public Text nameInfo;
     public Text info;
 
-    //Camera Movement
     Player playerSpeed;
     Camerah camemraSpeed;
 
-    //[HideInInspector] public delegate void OnItemChanged();
-    //[HideInInspector] public OnItemChanged onItemChangedCallback;
     public List<GameObject> slots = new List<GameObject>();
     public List<GameObject> allItems = new List<GameObject>();
     [HideInInspector] public bool inventorySwitch;
@@ -50,6 +48,7 @@ public class Inventory : MonoBehaviour
     bool maxAmount;
     bool switchSlot;
     bool beginswitch;
+
 
     void Start()
     {
@@ -196,6 +195,7 @@ public class Inventory : MonoBehaviour
         amountI = amount;
         itemCal = item;
         itemAmount = 0;
+        print(itemCal);
 
         if (!item.isDefaultItem)
         {
@@ -258,39 +258,47 @@ public class Inventory : MonoBehaviour
                 {
                     if (slots[sl].transform.childCount == 0)
                     {
-                        if (sl < slotAmount * 0.25f)
+                        if (itemCal.typeOf == Item.TypeOf.Weapon || itemCal.typeOf == Item.TypeOf.HarvestItem)
                         {
-                            
-                        }
-                        if (maxAmount)
-                        {
-                            stackFull = false;
-                            inventoryItem.GetComponent<InventoryItem>().AddItem(item, slotCalculatoin(addAmount), stackFull);
-                            maxAmount = false;
+                            if (sl < slotAmount * 0.25f)
+                            {
+                                stackFull = false;
+                                inventoryItem.GetComponent<InventoryItem>().AddItem(item, amountI, stackFull);
+                                maxAmount = false;
+                            }
+                            inventoryItem.GetComponent<InventoryItem>().slot = sl;
+                            GameObject itemObj = Instantiate(inventoryItem);
+                            itemObj.transform.SetParent(slots[sl].transform, false);
+                            break;
                         }
                         else
                         {
-                            stackFull = false;
-                            inventoryItem.GetComponent<InventoryItem>().AddItem(item, amountI, stackFull);
-                            maxAmount = false;
+                            if (sl > slotAmount * 0.25f - 1)
+                            {
+                                print(sl);
+
+                                if (maxAmount)
+                                {
+                                    stackFull = false;
+                                    inventoryItem.GetComponent<InventoryItem>().AddItem(item, slotCalculatoin(addAmount), stackFull);
+                                    maxAmount = false;
+                                }
+                                else
+                                {
+                                    stackFull = false;
+                                    inventoryItem.GetComponent<InventoryItem>().AddItem(item, amountI, stackFull);
+                                    maxAmount = false;
+                                }
+
+                                inventoryItem.GetComponent<InventoryItem>().slot = sl;
+                                GameObject itemObj = Instantiate(inventoryItem);
+                                itemObj.transform.SetParent(slots[sl].transform, false);
+                                break;
+                            }
                         }
-                        inventoryItem.GetComponent<InventoryItem>().slot = sl;
-                        GameObject itemObj = Instantiate(inventoryItem);
-                        itemObj.transform.SetParent(slots[sl].transform, false);
-                        break;
                     }
                 }
             }
-
-            #region necessary!?
-            /*
-            // i have to take a look if it is even necessary
-            if (onItemChangedCallback != null)
-            {
-                onItemChangedCallback.Invoke();
-            }
-            */
-            #endregion
         }
         return true;
     }

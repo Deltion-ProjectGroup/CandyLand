@@ -15,6 +15,7 @@ MonoBehaviour:
   description: The softest material around!
   icon: {fileID: 21300000, guid: 5bb10576a8dbd0c44a8d883a24f4f6dc, type: 3}
   itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}
+  typeOf: 2
   amount: 10
   itemIndex: 0
   maxAmount: 20

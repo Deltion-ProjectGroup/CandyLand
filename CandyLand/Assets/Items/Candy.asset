@@ -15,6 +15,7 @@ MonoBehaviour:
   description: 'You can craft items with it '
   icon: {fileID: 21300000, guid: 9f5c648be3952864caa7278d8b6ac72c, type: 3}
   itemObject: {fileID: 1171707615120084, guid: d4e15ad0014d66c4c9330b8dc61080a8, type: 2}
+  typeOf: 2
   amount: 20
   itemIndex: 0
   maxAmount: 100

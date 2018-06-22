@@ -15,6 +15,7 @@ MonoBehaviour:
   description: The strongest form of cookies!
   icon: {fileID: 21300000, guid: c798407af2b2b5e4ea111e74ace1368c, type: 3}
   itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}
+  typeOf: 2
   amount: 10
   itemIndex: 0
   maxAmount: 30

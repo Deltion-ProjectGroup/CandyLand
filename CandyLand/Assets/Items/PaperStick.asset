@@ -15,6 +15,7 @@ MonoBehaviour:
   description: The base of crafting tools!
   icon: {fileID: 21300000, guid: c54ec1a5253828341aeae9a6df9c0cfb, type: 3}
   itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}
+  typeOf: 2
   amount: 0
   itemIndex: 0
   maxAmount: 5

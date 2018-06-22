@@ -15,6 +15,7 @@ MonoBehaviour:
   description: Candeh
   icon: {fileID: 21300000, guid: d6d4c9aa34d531f418f17aa0b6ba08d5, type: 3}
   itemObject: {fileID: 1043315037973206, guid: a2472ca80e87be24e86d8e0a02c0e976, type: 2}
+  typeOf: 2
   amount: 0
   itemIndex: 0
   maxAmount: 100

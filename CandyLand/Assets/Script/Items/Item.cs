@@ -10,6 +10,8 @@ public class Item : ScriptableObject
     public string description;
     public Sprite icon;
     public GameObject itemObject;
+    public enum TypeOf {Weapon, HarvestItem, Other }
+    public TypeOf typeOf;
     public int amount;
     public int itemIndex;
     public int maxAmount;

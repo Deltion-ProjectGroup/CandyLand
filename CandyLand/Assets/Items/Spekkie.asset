@@ -15,6 +15,7 @@ MonoBehaviour:
   description: Stronger than marshmallow, though still soft.
   icon: {fileID: 21300000, guid: 601e569294a4c814586d4831cb8541d1, type: 3}
   itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}
+  typeOf: 2
   amount: 7
   itemIndex: 0
   maxAmount: 7

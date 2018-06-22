@@ -61,7 +61,7 @@ public class UseTool : UseItem
             Debug.DrawRay(transform.position, transform.forward * raylenght, Color.yellow);
         }
     }
-
+    /*
     public void OnTriggerEnter(Collider hit)
     {
         if (hit.gameObject.tag == "Harvestable")
@@ -84,6 +84,7 @@ public class UseTool : UseItem
             }
         }
     }
+    */
     public override void Equip()
     {
         GameObject tool = Instantiate(gameObject, GameObject.FindGameObjectWithTag("ToolPoint").transform.position, Quaternion.identity);

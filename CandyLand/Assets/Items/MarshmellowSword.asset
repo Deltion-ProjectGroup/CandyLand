@@ -15,6 +15,7 @@ MonoBehaviour:
   description: Sticky swordy
   icon: {fileID: 21300000, guid: 09a91ba51884c5a4e86ed8113e320b84, type: 3}
   itemObject: {fileID: 1808899414681900, guid: caaab279713fd97449a30516f3533e3d, type: 2}
+  typeOf: 0
   amount: 0
   itemIndex: 0
   maxAmount: 1
