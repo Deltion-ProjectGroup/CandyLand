@@ -8,6 +8,7 @@ public class BossEnemy : Enemy
     public override void Start()
     {
         base.Start();
+        agent.speed = 1.5f;
     }
 
     public override void Update()
