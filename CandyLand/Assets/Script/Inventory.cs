@@ -258,7 +258,7 @@ public class Inventory : MonoBehaviour
                 {
                     if (slots[sl].transform.childCount == 0)
                     {
-                        if (itemCal.typeOf == Item.TypeOf.Weapon || itemCal.typeOf == Item.TypeOf.HarvestItem)
+                        if (itemCal.typeOf == Item.TypeOf.Weapon || itemCal.typeOf == Item.TypeOf.HarvestTool)
                         {
                             if (sl < slotAmount * 0.25f)
                             {
@@ -275,8 +275,6 @@ public class Inventory : MonoBehaviour
                         {
                             if (sl > slotAmount * 0.25f - 1)
                             {
-                                print(sl);
-
                                 if (maxAmount)
                                 {
                                     stackFull = false;
