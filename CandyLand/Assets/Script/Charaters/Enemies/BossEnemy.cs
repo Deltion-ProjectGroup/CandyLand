@@ -30,11 +30,6 @@ public class BossEnemy : Enemy
         base.isAttacking();
     }
 
-    public override void DrawFieldOfView()
-    {
-        base.DrawFieldOfView();
-    }
-
     public override void LoseEnemy()
     {
         base.LoseEnemy();

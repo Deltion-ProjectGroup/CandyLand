@@ -75,14 +75,13 @@ public class MeleeEnemy : Enemy
         }
     }
 
+    public override void FindVisibleTarget()
+    {
+        base.FindVisibleTarget();
+    }
+
     void MarshmelloPack()
     {
 
     }
-
-    public override void DrawFieldOfView()
-    {
-        base.DrawFieldOfView();
-    }
-
 }

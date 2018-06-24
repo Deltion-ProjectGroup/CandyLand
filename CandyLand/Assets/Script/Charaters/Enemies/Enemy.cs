@@ -163,7 +163,6 @@ public class Enemy : Character
 
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
-                    print(!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask));
                     visibleTarget.Add(target);
                     transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
                     isChasing = true;
@@ -230,6 +229,7 @@ public class Enemy : Character
 
     public virtual void DrawFieldOfView()
     {
+    /*
         int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
         float stepAngleSize = viewAngle / stepCount;
         List<Vector3> viewPoints = new List<Vector3>();
@@ -283,6 +283,7 @@ public class Enemy : Character
         viewMesh.vertices = vertices;
         viewMesh.triangles = triangles;
         viewMesh.RecalculateNormals();
+    */
     }
 
     public Vector3 DirFromAngel(float angleInDegrees, bool angleIsGlobal)
