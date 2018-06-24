@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4087383207161836}
   - component: {fileID: 33598177869659038}
   - component: {fileID: 23754225837084338}
+  - component: {fileID: 65604299899325452}
   m_Layer: 0
   m_Name: WP_Base3
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926483454354416}
   m_Mesh: {fileID: 4300000, guid: c7a9628133d79764da8517ead23b4b26, type: 3}
+--- !u!65 &65604299899325452
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926483454354416}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9535427, y: 1.9535422, z: 1.0000001}
+  m_Center: {x: 0.023228735, y: -0.023228971, z: 0.50000006}
