@@ -40,14 +40,14 @@ public class UseTool : UseItem
         {
             if (hit.transform.tag == "Harvestable")
             {
-                GameObject n = Instantiate(partical, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
-                n.transform.parent = hit.transform;
                 if (canUse != true)// set to true after we have animations, right now it is just on collision
                 {
                     for (int i = 0; i < harvestSO.mineID.Length; i++)
                     {
                         if (harvestSO.mineID[i] == hit.transform.GetComponent<HarvestableItem>().requiredID) //Each resource has its own ID value
                         {
+                            GameObject n = Instantiate(partical, hit.point, Quaternion.FromToRotation(Vector3.forward, hit.normal));
+                            n.transform.parent = hit.transform;
                             hit.transform.GetComponent<HarvestableItem>().Drop(harvestSO.minHarvest, harvestSO.maxHarvest + 1);
                             hit.transform.GetComponent<HarvestableItem>().health -= Random.Range(harvestSO.minHarvest, harvestSO.maxHarvest);
                             if (hit.transform.GetComponent<HarvestableItem>().health <= 0)
@@ -94,4 +94,5 @@ public class UseTool : UseItem
         base.Equip();
     }
 }
+
 
