@@ -6,10 +6,17 @@ using UnityEngine.AI;
 public class MeleeEnemy : Enemy
 {
     [Header("Jump")]
-    [SerializeField] float jumpUp;
-    [SerializeField] float jumpForward;
+    [SerializeField] float minJumpUp;
+    [SerializeField] float maxJumpUp;
+    [SerializeField] float jumpforward;
+    [SerializeField] float runjumpForward;
     [SerializeField] float minJumpTime;
     [SerializeField] float maxJumpTime;
+
+    float jumpUp;
+    float runJumpForward;
+    float jumpForward;
+
     bool isjumping;
     float jumpTime;
 
@@ -25,6 +32,9 @@ public class MeleeEnemy : Enemy
 
     public override void Start()
     {
+        runJumpForward = runjumpForward;
+        jumpUp = Random.Range(minJumpUp, maxJumpUp);
+
         base.Start();
         jumpTime = Random.Range(minJumpTime, maxJumpTime);
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -60,9 +70,10 @@ public class MeleeEnemy : Enemy
             jumpTime -= Time.deltaTime;
             if (jumpTime <= 0)
             {
+                jumpUp = Random.Range(minJumpUp, maxJumpUp);
                 jumpTime = Random.Range(minJumpTime, maxJumpTime);
                 GetComponent<Rigidbody>().AddForce(transform.up * jumpUp * 3);
-                GetComponent<Rigidbody>().AddForce(transform.forward * jumpForward * 3);
+                GetComponent<Rigidbody>().AddForce(transform.forward * jumpforward * 3);
             }
         }
     }
@@ -102,6 +113,13 @@ public class MeleeEnemy : Enemy
                     print("I have a Aliance");
                 }
             }
+        }
+    }
+    public override void ChasePos()
+    {
+        if (isChasing)
+        {
+            jumpForward = runJumpForward;
         }
     }
 

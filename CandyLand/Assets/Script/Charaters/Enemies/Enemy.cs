@@ -154,7 +154,7 @@ public class Enemy : Character
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTarget.Add(target);
-                    transform.GetComponentInChildren<EnemyIsAttack>().LookAt(target);
+                    transform.LookAt(target);
                     isChasing = true;
                 }
 
