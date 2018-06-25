@@ -66,7 +66,7 @@ public class Enemy : Character
     public virtual void RandomPos()
     {
         // Think if Not Chasing
-        if (isChasing == false)
+        if (!isChasing)
         {
             // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
             Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
@@ -154,7 +154,10 @@ public class Enemy : Character
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTarget.Add(target);
-                    transform.LookAt(target);
+
+                    Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                    transform.LookAt(targetPosition);
+
                     isChasing = true;
                 }
 
