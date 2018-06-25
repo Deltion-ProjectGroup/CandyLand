@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour {
     public void Dialog(List<string> dialogText, string charName, string charRole , bool hasAfterEffect = false, int effectIndexNum = 0, bool nextIndexIsDialog = false)
     {
         dialogUI.SetActive(true);
-        StartCoroutine(dialogUI.GetComponent<Dialog>().DialogMethod(dialogText, charName, charRole, hasAfterEffect, effectIndexNum, nextIndexIsDialog));
+        dialogUI.GetComponent<Dialog>().startDialog(dialogText, charName, charRole, hasAfterEffect, effectIndexNum, nextIndexIsDialog);
     }
     public void RefreshHealth()
     {

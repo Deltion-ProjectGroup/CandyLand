@@ -12,7 +12,7 @@ public class Dialog : MonoBehaviour
     bool dialogDone = true;
     bool firstDialog = true;
     int dialogNum;
-    float playDialogSpeed = 0.1f;
+    float playDialogSpeed = 0;
     // Use this for initialization
     void Start ()
     {
@@ -47,24 +47,30 @@ public class Dialog : MonoBehaviour
                 }
                 else
                 {
-                    StartCoroutine(DialogMethod(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole, dialogStats.afterEffect, dialogStats.effectIndex, dialogStats.nextIndexIsDialog));
+                    startDialog(dialogStats.charTextHolder, dialogStats.charName, dialogStats.charRole, dialogStats.afterEffect, dialogStats.effectIndex, dialogStats.nextIndexIsDialog);
                 }
             }
             else
             {
-                playDialogSpeed = 0;
-            }
-        }
-        if (Input.GetButtonUp("Press[E]"))
-        {
-            if (!dialogDone)
-            {
-                playDialogSpeed = 0.1f;
+                //First dialog text won't do its thing, if it is played normally the rest will work also.. 
+                if(dialogNum >= 0)
+                {
+                    StopAllCoroutines();
+                    print(dialogNum);
+                    dialogText.GetComponent<Text>().text = dialogStats.charTextHolder[dialogNum];
+                    dialogNum++;
+                    dialogDone = true;
+                }
             }
         }
 	}
-    public IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)
+    public void startDialog(List<string> dialogs, string charNames, string charRoles, bool hasAfterEffect = false, int effectNum = 0, bool nextIsDialog = false)
     {
+        StartCoroutine(DialogMethod(dialogs, charNames, charRoles, hasAfterEffect, effectNum, nextIsDialog));
+    }
+    IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)
+    {
+        dialogDone = false;
         if (firstDialog)
         {
             dialogStats.charTextHolder = dialog;
@@ -78,12 +84,11 @@ public class Dialog : MonoBehaviour
             dialogNum = 0;
             firstDialog = false;
         }
-        dialogDone = false;
         dialogText.GetComponent<Text>().text = null;
         for (int i = 0; i < dialog[dialogNum].Length; i++)
         {
             dialogText.GetComponent<Text>().text += dialogStats.charTextHolder[dialogNum][i];
-            yield return new WaitForSeconds(playDialogSpeed);
+            yield return new WaitForSeconds(0.1f);
         }
         dialogNum++;
         dialogDone = true;

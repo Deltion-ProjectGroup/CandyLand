@@ -34129,7 +34129,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1044000052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.32000732, y: -0.53700006, z: 45.869995}
+  m_LocalPosition: {x: 0, y: -0.53700006, z: 0}
   m_LocalScale: {x: 0.5, y: 1.8, z: 0.5}
   m_Children: []
   m_Father: {fileID: 962834753}
@@ -35764,12 +35764,18 @@ MonoBehaviour:
   meshResolution: 2
   edgeResolveInterations: 2
   edgeDstThreshold: 2
-  viewMeshFilter: {fileID: 1843166392}
-  jumpUp: 70
-  jumpForward: 30
-  jumptime: 3
+  minJumpUp: 0
+  maxJumpUp: 0
+  jumpforward: 0
+  runjumpForward: 0
+  minJumpTime: 0
+  maxJumpTime: 0
   maxDistance: 20
   midPoint: {fileID: 1628293010}
+  allianceMask:
+    serializedVersion: 2
+    m_Bits: 0
+  visibleAlliance: []
 --- !u!54 &1113167071
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -36653,7 +36659,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1136695361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32000732, y: -0.08400011, z: 45.869995}
+  m_LocalPosition: {x: 0, y: -0.08400011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1805739379}
@@ -36673,6 +36679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074ed2118c0b5684d8fef679addbc7c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCamShakes: 20
   clamp: 60
   rotateMultiplier: 0
   interactionRange: 0
@@ -51749,7 +51756,6 @@ MonoBehaviour:
   meshResolution: 2
   edgeResolveInterations: 2
   edgeDstThreshold: 2
-  viewMeshFilter: {fileID: 74137232}
 --- !u!195 &1630070405
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -59794,6 +59800,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: fcbc80772cb4e4a4a925cf87771d82bb,
         type: 2}
+    - target: {fileID: 114890232044365592, guid: a2472ca80e87be24e86d8e0a02c0e976,
+        type: 2}
+      propertyPath: requiredID
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2472ca80e87be24e86d8e0a02c0e976, type: 2}
   m_IsPrefabParent: 0

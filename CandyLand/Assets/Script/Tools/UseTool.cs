@@ -54,11 +54,12 @@ public class UseTool : UseItem
                             {
                                 hit.transform.GetComponent<HarvestableItem>().Death();
                             }
+                            return;
                         }
                     }
+                    StartCoroutine(Camerah.camerah.ScreenShake(0.05f));
                 }
             }
-            Debug.DrawRay(transform.position, transform.forward * raylenght, Color.yellow);
         }
     }
     /*

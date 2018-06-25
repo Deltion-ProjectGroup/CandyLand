@@ -32,6 +32,7 @@ public class UseSword : UseItem {
                     if (hit.transform.gameObject.GetComponent<Enemy>().health <= 0)
                     {
                         hit.transform.gameObject.GetComponent<Enemy>().Death();
+                        StartCoroutine(Camerah.camerah.ScreenShake());
                     }
                     else
                     {
