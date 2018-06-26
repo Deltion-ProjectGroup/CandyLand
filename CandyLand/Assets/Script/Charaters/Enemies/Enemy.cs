@@ -87,7 +87,6 @@ public class Enemy : Character
             mainchargeThinking -= Time.deltaTime;
             if (mainchargeThinking <= 0)
             {
-                print("charge");
                 mainchargeThinking = Random.Range(chargeThinkingMin, chargeThinkingMax);
                 isChasing = true;
             }

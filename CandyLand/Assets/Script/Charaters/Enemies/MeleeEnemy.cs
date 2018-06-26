@@ -148,10 +148,20 @@ public class MeleeEnemy : Enemy
 
     void MarshmelloPack(Transform alliance)
     {
-        if (isChasing)
+        if (alliance.GetComponentInParent<MeleeEnemy>().isChasing)
         {
-            Vector3 alliancePosition = new Vector3(alliance.transform.position.x, transform.position.y, alliance.transform.position.z);
-            transform.LookAt(alliancePosition);
+
+            distance = Vector3.Distance(transform.position, alliance.position);
+            if (distance < 5)
+            {
+                Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
+                transform.LookAt(targetPosition);
+            }
+            else
+            {
+                Vector3 alliancePosition = new Vector3(alliance.transform.position.x, transform.position.y, alliance.transform.position.z);
+                transform.LookAt(alliancePosition);
+            }
         }
     }
 
