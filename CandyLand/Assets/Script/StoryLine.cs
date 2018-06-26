@@ -15,6 +15,7 @@ public class StoryLine : MonoBehaviour
     public GameObject Hunter;
     public GameObject Miner;
     public Item[] itemList;
+    public Camera storyCam;
     // Use this for initialization
     void Awake()
     {
@@ -43,6 +44,7 @@ public class StoryLine : MonoBehaviour
             case 0:
                 //start animation of waking up
                 yield return new WaitForSeconds(0); // wait till anim is over + 1 sec or so
+                //storyCam.enabled = true;
                 storyCase++;
                 goto case 1;
             case 1:
@@ -109,7 +111,7 @@ public class StoryLine : MonoBehaviour
                 Destroy(Mayor.GetComponent<SphereCollider>());
                 //After collecting the quest turn him into an AI again, he has to go away, he asks you to make the axe, work and come back later.
                 Destroy(Mayor.GetComponent<LocationQuest>());
-                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Frans.ToString(), Chars.Roles.Mayor.ToString(), true, 8);
+                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 8);
                 //Mayor goes away
                 break;
             case 8:
@@ -196,10 +198,21 @@ public class StoryLine : MonoBehaviour
                 break;
             case 15:
                 UIManager.uiManager.Dialog(dialogs[10].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 16);
+                Miner.AddComponent<NPCFollow>();
+                NPCFollow minerFollow = Miner.GetComponent<NPCFollow>();
+                minerFollow.needsPlayer = false;
+                playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+                playerPos.z += 3f;
+                minerFollow.targetLocation = playerPos;
+                StartCoroutine(minerFollow.StartMove(1));
                 break;
             case 16:
                 // MAYOR HAS TO BECOME THE MINER MODEL!!!!
                 //Miner runs
+                NPCFollow minerFollow2 = Miner.GetComponent<NPCFollow>();
+                minerFollow2.needsPlayer = false;
+                minerFollow2.targetLocation = locQuestPositions[6].movePosNPC;
+                StartCoroutine(minerFollow2.StartMove(1));
                 Miner.AddComponent<LocationQuest>();
                 LocationQuest minerLoc = Miner.GetComponent<LocationQuest>();
                 minerLoc.questPositions = locQuestPositions[0].coördinates;
@@ -215,6 +228,8 @@ public class StoryLine : MonoBehaviour
                 minerLoc.rewards = questRequirementList[4].questRewards;
                 break;
             case 17:
+                Destroy(Miner.GetComponent<NPCFollow>());
+                Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Miner.GetComponent<LocationQuest>());
                 UIManager.uiManager.Dialog(dialogs[11].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 18);
                 break;
@@ -233,14 +248,26 @@ public class StoryLine : MonoBehaviour
                 break;
             case 19:
                 Destroy(Miner.GetComponent<CollectionQuest>());
+                Hunter.AddComponent<NPCFollow>();
+                NPCFollow hunterFollow = Hunter.GetComponent<NPCFollow>();
+                hunterFollow.needsPlayer = false;
+                playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
+                playerPos.z += 3f;
+                hunterFollow.targetLocation = playerPos;
+                StartCoroutine(hunterFollow.StartMove(1));
                 UIManager.uiManager.Dialog(dialogs[12].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 20);
                 break;
             case 20:
+                NPCFollow hunterFollow2 = Hunter.GetComponent<NPCFollow>();
+                hunterFollow2.targetLocation = locQuestPositions[8].movePosNPC;
+                StartCoroutine(hunterFollow2.StartMove(1));
                 //Hunter leaving anim
                 goto case 21;
 
             case 21:
                 //MAYOR IS HUNTER
+                Destroy(Hunter.GetComponent<NPCFollow>());
+                Destroy(Hunter.GetComponent<SphereCollider>());
                 Hunter.AddComponent<CollectionQuest>();
                 CollectionQuest hunterCol = Hunter.GetComponent<CollectionQuest>();
                 hunterCol.item = itemList[2];
