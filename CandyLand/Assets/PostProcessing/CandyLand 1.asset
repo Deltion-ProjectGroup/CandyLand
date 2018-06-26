@@ -121,10 +121,10 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 60
-        tint: 15
+        temperature: 41
+        tint: 0
         hueShift: 0
-        saturation: 2
+        saturation: 0.91
         contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
@@ -329,7 +329,7 @@ MonoBehaviour:
       opacity: 1
       rounded: 0
   dithering:
-    m_Enabled: 1
+    m_Enabled: 0
   monitors:
     currentMonitorID: 0
     refreshOnPlay: 0

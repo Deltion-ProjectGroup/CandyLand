@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 65588965538232254}
   - component: {fileID: 65250223248144748}
   - component: {fileID: 65393063723319086}
+  - component: {fileID: 65250754631969498}
   m_Layer: 0
   m_Name: WP_Corner
   m_TagString: Terrain
@@ -37,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1335977628906966}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -154, y: 0, z: 10}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -110, y: -10, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &23671241187125898
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -87,6 +88,18 @@ MeshFilter:
   m_GameObject: {fileID: 1335977628906966}
   m_Mesh: {fileID: 4300000, guid: 21f1fd9130668204e8b31e5c4882dec5, type: 3}
 --- !u!65 &65250223248144748
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1335977628906966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9999998, y: 1.9999998, z: 0.9999999}
+  m_Center: {x: 0.00000035762787, y: 0, z: 0.49999994}
+--- !u!65 &65250754631969498
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
