@@ -23,11 +23,6 @@ public class MeleeEnemy : Enemy
     bool isjumping;
     float jumpTime;
 
-    [Header("WalkField")]
-    [SerializeField] float maxDistance;
-    [SerializeField] Transform midPoint;
-    float distance;
-
     [Header("MarshMello Pack")]
     public LayerMask allianceMask;
     public List<Transform> visibleAlliance = new List<Transform>();
@@ -47,7 +42,6 @@ public class MeleeEnemy : Enemy
     public override void Update()
     {
         base.Update();
-        WalkField();
         isJumping();
     }
 
@@ -95,20 +89,9 @@ public class MeleeEnemy : Enemy
         }
     }
 
-    void WalkField()
+    public override void WalkField()
     {
-        //transform.GetComponentInChildren<MidArea>().Mid(midPoint);
-
-        distance = Vector3.Distance(transform.position, midPoint.position);
-
-        if (distance > maxDistance)
-        {
-            if (!isChasing)
-            {
-                Vector3 midPosition = new Vector3(midPoint.transform.position.x, transform.position.y, midPoint.transform.position.z);
-                transform.LookAt(midPosition);
-            }
-        }
+        base.WalkField();
     }
 
     public override void FindVisibleTarget()
@@ -136,14 +119,6 @@ public class MeleeEnemy : Enemy
                 }
             }
         }
-    }
-    public override void ChasePos()
-    {
-        //nothing
-    }
-    public override void isAttacking()
-    {
-        //nothing
     }
 
     void MarshmelloPack(Transform alliance)

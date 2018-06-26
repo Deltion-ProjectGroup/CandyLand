@@ -8,4 +8,12 @@ public class EnemyIsAttack : MonoBehaviour
     {
         transform.LookAt(target);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            gameObject.transform.GetComponentInParent<BossEnemy>().isChasing = true;
+        }
+    }
 }
