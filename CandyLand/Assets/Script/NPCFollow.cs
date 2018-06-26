@@ -21,7 +21,7 @@ public class NPCFollow : MonoBehaviour
 
         if (other.gameObject.tag == "Player" && needsPlayer)
         {
-            StartCoroutine(StartMove());
+            StartCoroutine(StartMove(1));
         }
     }
     public void OnTriggerExit(Collider other)
@@ -31,10 +31,10 @@ public class NPCFollow : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().isStopped = true;
         }
     }
-    public IEnumerator StartMove()
+    public IEnumerator StartMove(float waitTime)
     {
         print("Enum");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(waitTime);
         if (gameObject.GetComponent<NavMeshAgent>().isStopped)
         {
             gameObject.GetComponent<NavMeshAgent>().isStopped = false;

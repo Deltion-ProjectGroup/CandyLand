@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f706d9f25bb31614892adf38a65ef5b5, type: 3}
   m_Name: Spekkie
   m_EditorClassIdentifier: 
-  itemName: Spek
+  itemName: Spekkie
   description: Stronger than marshmallow, though still soft.
   icon: {fileID: 21300000, guid: 601e569294a4c814586d4831cb8541d1, type: 3}
   itemObject: {fileID: 100000, guid: a6db77627f33ab54a84481ff6c5db93f, type: 3}

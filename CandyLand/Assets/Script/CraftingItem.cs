@@ -101,8 +101,8 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "Spekkie")
         {
             Crafting.crafting.firstPicCraft = false;
-            StartCoroutine(StoryLine.storyLine.Story());
             StoryLine.storyLine.storyCase = 15;
+            StartCoroutine(StoryLine.storyLine.Story());
             Inventory.instance.OnTab();
         }
     }
