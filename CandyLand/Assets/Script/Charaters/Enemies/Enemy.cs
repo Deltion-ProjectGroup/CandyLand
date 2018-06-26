@@ -12,14 +12,11 @@ public class Enemy : Character
     Transform pos;
 
     [Header("isAttacking/isChasing")]
-    [SerializeField] float chargeThinkingMax;
     [SerializeField] float chargeThinkingMin;
-    [SerializeField] Transform attackPos;
-    [SerializeField] float attackRange;
+    [SerializeField] float chargeThinkingMax;
     float mainchargeThinking;
     public bool isChasing = false;
     RaycastHit hitPartical;
-    RaycastHit hit;
 
 
 
@@ -47,6 +44,7 @@ public class Enemy : Character
     public int edgeResolveInterations;
     public float edgeDstThreshold;
 
+    [HideInInspector] public float distance;
 
     public virtual void Start()
     {
@@ -58,8 +56,12 @@ public class Enemy : Character
     public virtual void Update()
     {
         ThinkTimer();
-        isAttacking();
-        ChasePos();
+        WalkField();
+    }
+
+    public virtual void WalkField()
+    {
+
     }
 
 
@@ -114,26 +116,6 @@ public class Enemy : Character
     {
         transform.LookAt(null);
         isChasing = false;
-    }
-
-    public virtual void ChasePos()
-    {
-        if (isChasing)
-        {
-            agent.speed = 3;
-            agent.SetDestination(target.position);
-        }
-    }
-    public virtual void isAttacking()
-    {
-        if (Physics.Raycast(attackPos.position, attackPos.forward, out hit, attackRange))
-        {
-            if (hit.transform.tag == "Player")
-            {
-                print("hit player");
-            }
-        }
-        Debug.DrawRay(attackPos.position, attackPos.forward * attackRange, Color.red);
     }
 
     public virtual void FindVisibleTarget()

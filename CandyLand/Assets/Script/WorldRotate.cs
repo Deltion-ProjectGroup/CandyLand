@@ -9,7 +9,7 @@ public class WorldRotate : MonoBehaviour
     {
         for (int i = 0; i < world.Count; i++)
         {
-            world[i].transform.localEulerAngles = new Vector3(Mathf.RoundToInt(-90), transform.rotation.y, 0);
+            world[i].transform.localEulerAngles = new Vector3(-90, transform.rotation.y, 0);
         }
     }
 }
