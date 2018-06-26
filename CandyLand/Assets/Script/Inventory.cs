@@ -69,7 +69,17 @@ public class Inventory : MonoBehaviour
         {
             Destroy(equippedItem);
         }
-        allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+        if(allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex] != null)
+        {
+            allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+        }
+        else
+        {
+            if(equippedItem != null)
+            {
+                Destroy(equippedItem);
+            }
+        }
     }
     void Update()
     {
