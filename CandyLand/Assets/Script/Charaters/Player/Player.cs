@@ -37,7 +37,6 @@ public class Player : Character
 	void Update ()
     {
         RotateCam(camRotate, rotateMultiplier);
-        Movement(movePos, walkSpeed);
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
@@ -65,6 +64,10 @@ public class Player : Character
             }
         }
 	}
+    private void FixedUpdate()
+    {
+        Movement(movePos, walkSpeed);
+    }
     public override void Movement(Vector3 mover, float speed)
     {
         mover.x = Input.GetAxis("Horizontal");
