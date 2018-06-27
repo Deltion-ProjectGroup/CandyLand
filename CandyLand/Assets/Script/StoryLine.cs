@@ -15,7 +15,7 @@ public class StoryLine : MonoBehaviour
     public GameObject Hunter;
     public GameObject Miner;
     public Item[] itemList;
-    public Camera storyCam;
+    public GameObject storyCam;
     // Use this for initialization
     void Awake()
     {
@@ -43,13 +43,16 @@ public class StoryLine : MonoBehaviour
         {
             case 0:
                 //start animation of waking up
-                yield return new WaitForSeconds(0); // wait till anim is over + 1 sec or so
-                //storyCam.enabled = true;
-                storyCase++;
-                goto case 1;
+                UIManager.uiManager.Dialog(dialogs[1].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 1, true);
+                yield return new WaitForEndOfFrame(); // wait till anim is over + 1 sec or so
+                break;
             case 1:
                 //Mayor talks to you, change the camera towards him, play anim if he has one
-                UIManager.uiManager.Dialog(dialogs[storyCase].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 3);
+                yield return new WaitForEndOfFrame();
+                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 3);
+                storyCam.SetActive(true);
+                storyCam.GetComponent<Animation>().Play();
+                Destroy(storyCam, storyCam.GetComponent<Animation>().clip.length);
                 break;
             case 3:
                 Mayor.AddComponent<NPC>();
