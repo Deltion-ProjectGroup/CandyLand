@@ -31,15 +31,17 @@ public class UseTool : UseItem
     {
         base.Use();
         Harvest();
-        anim.SetTrigger("Pick");
+        //anim.SetTrigger("Pick");
     }
 
     void Harvest()
     {
-        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, raylenght))
+        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, 100))
         {
-            if (hit.transform.tag == "Harvestable")
+            print("Raycasted");
+            if (hit.transform.gameObject.tag == "Harvestable")
             {
+                print("JEEEZZ");    
                 if (canUse != true)// set to true after we have animations, right now it is just on collision
                 {
                     for (int i = 0; i < harvestSO.mineID.Length; i++)
@@ -88,8 +90,7 @@ public class UseTool : UseItem
     */
     public override void Equip()
     {
-        GameObject tool = Instantiate(gameObject, GameObject.FindGameObjectWithTag("ToolPoint").transform.position, Quaternion.identity);
-        tool.transform.SetParent(GameObject.FindGameObjectWithTag("MainCamera").transform);
+        GameObject tool = Instantiate(gameObject, GameObject.FindGameObjectWithTag("ToolPoint").transform.position,  new Quaternion(-89.98f, 0, 97.86001f, 0), GameObject.FindGameObjectWithTag("MainCamera").transform);
         Inventory.instance.equippedItem = tool;
         base.Equip();
     }

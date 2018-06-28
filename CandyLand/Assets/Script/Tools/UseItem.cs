@@ -13,7 +13,7 @@ public class UseItem : MonoBehaviour
     }
     public IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(1);
         canUse = true;
     }
     public virtual void Equip()

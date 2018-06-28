@@ -67,17 +67,18 @@ public class Inventory : MonoBehaviour
     {
         if (equippedItem != null)
         {
-            Destroy(equippedItem);
+            equippedItem.SetActive(false);
         }
         if(allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex] != null)
         {
-            allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].GetComponent<UseItem>().Equip();
+            allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].SetActive(true);
+            equippedItem = allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].gameObject;
         }
         else
         {
             if(equippedItem != null)
             {
-                Destroy(equippedItem);
+                equippedItem.SetActive(false);
             }
         }
     }
