@@ -3968,7 +3968,7 @@ MonoBehaviour:
   - {fileID: 1941890794245240, guid: 711b7559c9fef404e84fc1c08f4ebe18, type: 2}
   inventorySwitch: 0
   idSlot: 0
-  equippedItem: {fileID: 0}
+  equippedItem: {fileID: 1143355971}
 --- !u!114 &962834752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3985,11 +3985,11 @@ MonoBehaviour:
   currentHealth: 0
   walkSpeed: 4
   sprintSpeed: 5.5
-  sprintCost: 0
+  sprintCost: 1
   rotateMultiplier: 90
   rotateMultiplierUpDowm: 1
-  rotateMultipierBackUpUpDown: 0
-  rotateMultiplierBackUp: 0
+  rotateMultipierBackUpUpDown: 2
+  rotateMultiplierBackUp: 2
   jumpAmt: {x: 0, y: 3, z: 0}
   hasQuest: 0
   healthBar: {fileID: 1143355972}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -25,9 +26,13 @@ public class Player : Character
     public bool hasQuest;
     public delegate void delegatVoids();
     public delegatVoids movementDelegate;
+
+    public Transform healthBar;
 	// Use this for initialization
 	void Start ()
     {
+        currentHealth = maxHealth;
+        healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
         baseWalkSpeed = walkSpeed;
         rotateMultipierBackUpUpDown = rotateMultiplierUpDowm;
         rotateMultiplierBackUp = rotateMultiplier;
@@ -68,6 +73,13 @@ public class Player : Character
     {
         Movement(movePos, walkSpeed);
     }
+
+        public override void Health(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
+    }
+
     public override void Movement(Vector3 mover, float speed)
     {
         mover.x = Input.GetAxis("Horizontal");
