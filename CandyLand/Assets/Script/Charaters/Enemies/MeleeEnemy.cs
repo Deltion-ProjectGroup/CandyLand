@@ -16,6 +16,12 @@ public class MeleeEnemy : Enemy
     [SerializeField] float minSpeedJumpTime;
     [SerializeField] float maxSpeedJumpTime;
 
+    [SerializeField] float speed;
+    float step;
+    Vector3 newPosition;
+
+    public Animator anim;
+
     float jumpUp;
     float runJumpForward;
     float jumpForward;
@@ -30,6 +36,8 @@ public class MeleeEnemy : Enemy
 
     public override void Start()
     {
+        anim = GetComponentInChildren<Animator>();
+
         runJumpForward = runjumpForward;
         jumpUp = Random.Range(minJumpUp, maxJumpUp);
         jumpForward = Random.Range(minJumpForward, maxJumpForward);
@@ -45,14 +53,17 @@ public class MeleeEnemy : Enemy
         isJumping();
     }
 
+
     public override void RandomPos()
     {
         if (!isChasing)
         {
+
             // Pick a random point in the insideUnitCircle for X and Y and set it in a vector3
             Vector3 newPos = transform.position + new Vector3(Random.insideUnitCircle.x * randomUnitCircleRadius, transform.position.y, Random.insideUnitCircle.y * randomUnitCircleRadius);
             // Put the newPos in the setDestination   
-            Vector3 newPosition = new Vector3(newPos.x, transform.position.y, newPos.z);
+            newPosition = new Vector3(newPos.x, transform.position.y, newPos.z);
+
             transform.LookAt(newPosition);
             // has to jump Jump()
             // disable navmeshAgent
@@ -83,6 +94,7 @@ public class MeleeEnemy : Enemy
                     jumpForward = Random.Range(minJumpForward, maxJumpForward);
                     jumpTime = Random.Range(minJumpTime, maxJumpTime);
                 }
+                anim.SetTrigger("Jump");
                 GetComponent<Rigidbody>().AddForce(transform.up * jumpUp * 3);
                 GetComponent<Rigidbody>().AddForce(transform.forward * jumpForward * 3);
             }
@@ -150,6 +162,6 @@ public class MeleeEnemy : Enemy
 
     void Attack()
     {
-        print("Hit");
+        target.GetComponent<Player>().Health(damage);
     }
 }

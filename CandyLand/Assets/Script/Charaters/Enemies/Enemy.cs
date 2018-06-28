@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
+    [Header("Attack")]
+    public float damage;
+
     public RaycastHit searchRay;
     [HideInInspector] public Transform target;
     [HideInInspector] public NavMeshAgent agent;
@@ -48,6 +51,7 @@ public class Enemy : Character
 
     public virtual void Start()
     {
+
         agent = GetComponent<NavMeshAgent>(); target = GameObject.FindGameObjectWithTag("Player").transform; 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("FindTargetWithDelay", 0.2f);
@@ -59,11 +63,15 @@ public class Enemy : Character
         WalkField();
     }
 
+    public override void Health(float damage)
+    {
+        base.Health(damage);
+    }
+
     public virtual void WalkField()
     {
 
     }
-
 
     public virtual void RandomPos()
     {
