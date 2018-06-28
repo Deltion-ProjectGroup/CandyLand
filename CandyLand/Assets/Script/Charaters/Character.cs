@@ -9,7 +9,10 @@ public class Character : MonoBehaviour
     public int health = 100;
     public int maxHealth = 100;
     [HideInInspector] public float currentHealth;
-
+    public virtual void Awake() 
+    {
+        StartCoroutine(Regeneration());
+    }
     public virtual void Movement(Vector3 movePos, float moveSpeed)
     {
 
@@ -30,5 +33,14 @@ public class Character : MonoBehaviour
     public virtual void Death()
     {
         Destroy(gameObject);
+    }
+    public virtual IEnumerator Regeneration()
+    {
+        if(health < maxHealth)
+        {
+            health += 1;
+        }
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Regeneration());
     }
 }

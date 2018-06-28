@@ -37,7 +37,6 @@ public class Player : Character
         rotateMultipierBackUpUpDown = rotateMultiplierUpDowm;
         rotateMultiplierBackUp = rotateMultiplier;
 	}
-	
 	// Update is called once per frame
 	void Update ()
     {
@@ -90,6 +89,16 @@ public class Player : Character
             movementDelegate();
         }
     }
+    public override IEnumerator Regeneration()
+    {
+        if(health < maxHealth)
+        {
+            health += 1;
+        }
+        UIManager.uiManager.RefreshHealth();
+        yield return new WaitForSeconds(2);
+        StartCoroutine(Regeneration());
+    }
     public void RotateCam(Vector3 rotator, float speed)
     {
         rotator.y = Input.GetAxis("Mouse X");
@@ -110,4 +119,5 @@ public class Player : Character
             canJump = true;
         }
     }
+
 }
