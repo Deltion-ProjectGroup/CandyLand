@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33840095854915640}
   - component: {fileID: 23571763215162870}
   - component: {fileID: 114437758806880836}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CandyPickaxe_Use
   m_TagString: Untagged
   m_Icon: {fileID: 0}

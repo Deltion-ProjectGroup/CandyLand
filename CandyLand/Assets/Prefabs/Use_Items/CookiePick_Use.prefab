@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33459092141280362}
   - component: {fileID: 23246955820329790}
   - component: {fileID: 114801951629411204}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CookiePick_Use
   m_TagString: Untagged
   m_Icon: {fileID: 0}

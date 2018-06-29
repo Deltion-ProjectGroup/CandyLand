@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33316304065075108}
   - component: {fileID: 23600323555269528}
   - component: {fileID: 114231363284689724}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Epic_Sword_Use
   m_TagString: Untagged
   m_Icon: {fileID: 0}
