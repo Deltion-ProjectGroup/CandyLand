@@ -21,16 +21,7 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health -= 10;
-            RefreshHealth();
-        }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health += 40;
-            RefreshHealth();
-        }
+
 	}
     public void Dialog(List<string> dialogText, string charName, string charRole , bool hasAfterEffect = false, int effectIndexNum = 0, bool nextIndexIsDialog = false)
     {

@@ -36,7 +36,7 @@ public class UseTool : UseItem
 
     void Harvest()
     {
-        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, transform.forward, out hit, 100))
+        if (Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, 0.9f))
         {
             print("Raycasted");
             if (hit.transform.gameObject.tag == "Harvestable")
