@@ -38,11 +38,15 @@ public class Dialog : MonoBehaviour
                         if (!dialogStats.nextIndexIsDialog)
                         {
                             gameObject.SetActive(false);
+                            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
+                            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = true;
                         }
                     }
                     else
                     {
                         gameObject.SetActive(false);
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = true;
                     }
                 }
                 else
@@ -66,6 +70,8 @@ public class Dialog : MonoBehaviour
 	}
     public void startDialog(List<string> dialogs, string charNames, string charRoles, bool hasAfterEffect = false, int effectNum = 0, bool nextIsDialog = false)
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = false;
         StartCoroutine(DialogMethod(dialogs, charNames, charRoles, hasAfterEffect, effectNum, nextIsDialog));
     }
     IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)

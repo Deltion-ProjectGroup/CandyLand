@@ -106,7 +106,10 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetButtonDown("Tab"))
         {
-            OnTab();
+            if(GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract == true)
+            {
+                OnTab();
+            }
         }
     }
     public void OnTab()
@@ -130,6 +133,7 @@ public class Inventory : MonoBehaviour
 
         if (inventorySwitch)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
             inventoryPanel.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             playerSpeed.rotateMultiplier = 0;
@@ -137,6 +141,7 @@ public class Inventory : MonoBehaviour
         }
         else if (!inventorySwitch)
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
             inventoryPanel.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             playerSpeed.rotateMultiplier = playerSpeed.rotateMultiplierBackUp;

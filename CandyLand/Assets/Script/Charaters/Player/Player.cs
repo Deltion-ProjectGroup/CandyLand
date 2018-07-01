@@ -9,11 +9,12 @@ public class Player : Character
     Vector3 movePos;
     public float walkSpeed;
     public float sprintSpeed;
-    float baseWalkSpeed;
+    public float baseWalkSpeed;
     float stamina = 100;
     float maxStamina = 100;
     public float sprintCost;
     [Header("Camera")]
+    public bool canInteract = true;
     Vector3 camRotate;
     public float rotateMultiplier;
     public float rotateMultiplierUpDowm;
@@ -24,12 +25,13 @@ public class Player : Character
     bool canJump = true;
     [Header("Quest")]
     public bool hasQuest;
+    public bool isInStory = true;
     public delegate void delegatVoids();
     public delegatVoids movementDelegate;
 
     public Transform healthBar;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         currentHealth = maxHealth;
         healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
@@ -58,13 +60,16 @@ public class Player : Character
         }
         else
         {
-            if(walkSpeed != baseWalkSpeed)
+            if (!isInStory)
             {
-                walkSpeed = baseWalkSpeed;
-            }
-            if(stamina < maxStamina)
-            {
-                stamina += 0.01f;
+                if (walkSpeed != baseWalkSpeed)
+                {
+                    walkSpeed = baseWalkSpeed;
+                }
+                if (stamina < maxStamina)
+                {
+                    stamina += 0.01f;
+                }
             }
         }
 	}
@@ -118,6 +123,20 @@ public class Player : Character
         {
             canJump = true;
         }
+    }
+    public void Freeze()
+    {
+        gameObject.GetComponent<Player>().isInStory = true;
+        gameObject.GetComponent<Player>().walkSpeed = 0;
+        gameObject.GetComponent<Player>().rotateMultiplier = 0;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 0;
+    }
+    public void UnFreeze()
+    {
+        gameObject.GetComponent<Player>().isInStory = false;
+        gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
+        gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
     }
 
 }

@@ -16,13 +16,27 @@ public class StoryLine : MonoBehaviour
     public GameObject Miner;
     public Item[] itemList;
     public GameObject storyCam;
+    bool storyCamDel = false;
     // Use this for initialization
+    private void Update()
+    {
+        if(storyCamDel != true)
+        {
+            if (storyCam == null)
+            {
+                storyCamDel = true;
+                storyCase = 3;
+                StartCoroutine(Story());
+            }
+        }
+    }
     void Awake()
     {
         storyLine = this;
     }
     private void Start()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
         StartCoroutine(Story());
     }
     [System.Serializable]
@@ -49,12 +63,13 @@ public class StoryLine : MonoBehaviour
             case 1:
                 //Mayor talks to you, change the camera towards him, play anim if he has one
                 yield return new WaitForEndOfFrame();
-                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 3);
+                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
                 storyCam.SetActive(true);
                 storyCam.GetComponent<Animation>().Play();
                 Destroy(storyCam, storyCam.GetComponent<Animation>().clip.length);
                 break;
             case 3:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                 Mayor.AddComponent<NPC>();
                 NPC mayorNPC = Mayor.GetComponent<NPC>();
                 Mayor.GetComponent<NPC>().item = itemList[2];
@@ -81,6 +96,8 @@ public class StoryLine : MonoBehaviour
                 mayorColl.rewards = questRequirementList[0].questRewards;
                 mayorColl.hasStoryEffect = true;
                 mayorColl.storyEffectIndex = 5;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                mayorColl.AcceptQuest();
                 break;
             case 5:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
@@ -190,6 +207,8 @@ public class StoryLine : MonoBehaviour
                 mayorCol2.rewards = questRequirementList[3].questRewards;
                 mayorCol2.hasStoryEffect = true;
                 mayorCol2.storyEffectIndex = 14;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                mayorCol2.AcceptQuest();
                 break;
             case 14:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
@@ -248,6 +267,8 @@ public class StoryLine : MonoBehaviour
                 minerCol.rewards = questRequirementList[5].questRewards;
                 minerCol.hasStoryEffect = true;
                 minerCol.storyEffectIndex = 19;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                minerCol.AcceptQuest();
                 break;
             case 19:
                 Destroy(Miner.GetComponent<CollectionQuest>());
@@ -282,6 +303,8 @@ public class StoryLine : MonoBehaviour
                 hunterCol.hasStoryEffect = true;
                 hunterCol.storyEffectIndex = 22;
                 Crafting.crafting.AddBlueprint(blueprints[1]);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                hunterCol.AcceptQuest();
                 //Add the quest component to the hunter..
                 //Add without the player noticing that you can now forge a sword.
                 break;
@@ -302,6 +325,8 @@ public class StoryLine : MonoBehaviour
                 hunterCol2.rewards = questRequirementList[7].questRewards;
                 hunterCol2.hasStoryEffect = true;
                 hunterCol2.storyEffectIndex = 24;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
+                hunterCol2.AcceptQuest();
                 //Adds locationQuest to the bag
                 break;
             case 24:

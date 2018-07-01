@@ -14,7 +14,7 @@ public class Camerah : MonoBehaviour
     public float interactionRange;
     public RaycastHit hit;
     // Use this for initialization
-    void Start ()
+    void Awake ()
     {
         camerah = this;
         Cursor.lockState = CursorLockMode.Locked;
