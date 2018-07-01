@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour {
     public questOptions acceptQuest;
     public questOptions cancelQuest;
     public questOptions completeQuest;
-    int backUpHealth = 100;
 	// Use this for initialization
 	void Awake () {
         uiManager = this;
@@ -30,7 +29,7 @@ public class UIManager : MonoBehaviour {
     }
     public void RefreshHealth()
     {
-        StartCoroutine(RefreshHP());
+        
     }
     public void AcceptQuest()
     {
@@ -43,28 +42,5 @@ public class UIManager : MonoBehaviour {
     public void CompleteQuest()
     {
         completeQuest();
-    }
-    IEnumerator RefreshHP()
-    {
-        yield return new WaitForEndOfFrame();
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health < backUpHealth)
-        {
-            for(int i = 0; healthBar.GetComponent<Image>().fillAmount > ((float)1 / GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().maxHealth) * GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().health; i++)
-            {
-                healthBar.GetComponent<Image>().fillAmount -= 0.003f;
-                yield return new WaitForEndOfFrame();
-            }
-            print("Hi");
-        }
-        else
-        {
-            while (healthBar.GetComponent<Image>().fillAmount < ((float)1 / GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().maxHealth) * GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().health)
-            {
-                healthBar.GetComponent<Image>().fillAmount += 0.003f;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        backUpHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
-        //healthBar.GetComponent<Image>().fillAmount = (1 / GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().maxHealth) * GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().health;
     }
 }

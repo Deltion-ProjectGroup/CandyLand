@@ -49,9 +49,13 @@ public class Enemy : Character
 
     [HideInInspector] public float distance;
 
+    [Header("WalkField")]
+    public float maxDistance;
+    public Transform midPoint;
+
     public virtual void Start()
     {
-
+        midPoint = GameObject.FindGameObjectWithTag("MidPoint").transform;
         agent = GetComponent<NavMeshAgent>(); target = GameObject.FindGameObjectWithTag("Player").transform; 
         target = GameObject.FindGameObjectWithTag("Player").transform;
         StartCoroutine("FindTargetWithDelay", 0.2f);

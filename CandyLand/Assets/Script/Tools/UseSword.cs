@@ -28,6 +28,7 @@ public class UseSword : UseItem {
             {
                 if (hit.transform.gameObject.tag == "Enemy")
                 {
+                    print("hit");
                     hit.transform.gameObject.GetComponent<Enemy>().health -= weaponStats.dmg;
                     if (hit.transform.gameObject.GetComponent<Enemy>().health <= 0)
                     {

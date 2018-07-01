@@ -17,10 +17,9 @@ public class MeleeEnemy : Enemy
     [SerializeField] float maxSpeedJumpTime;
 
     [SerializeField] float speed;
-    float step;
     Vector3 newPosition;
 
-    public Animator anim;
+    Animator anim;
 
     float jumpUp;
     float runJumpForward;
@@ -103,7 +102,15 @@ public class MeleeEnemy : Enemy
 
     public override void WalkField()
     {
-        base.WalkField();
+        distance = Vector3.Distance(transform.position, midPoint.position);
+
+        if (distance > maxDistance)
+        {
+            if (!isChasing)
+            {
+                transform.LookAt(midPoint);
+            }
+        }
     }
 
     public override void FindVisibleTarget()
