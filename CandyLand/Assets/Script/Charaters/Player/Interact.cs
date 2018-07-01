@@ -39,7 +39,7 @@ public class Interact : MonoBehaviour
                     {
                         press.SetActive(true);
                         infoItem.text = item.GetComponent<Interactable>().item.name;
-                        if (Input.GetButtonDown("Press[E]") && GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract == true)
+                        if (Input.GetButtonDown("Press[E]"))
                         {
                             print("E");
                             item.GetComponent<Interactable>().Interact(gameObject);
