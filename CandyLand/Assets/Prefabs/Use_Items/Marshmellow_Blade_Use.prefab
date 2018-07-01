@@ -60,7 +60,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1783727881604500
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUse: 1
-  weaponStats: {fileID: 11400000, guid: 9fe7ee3adc5f0c642b4b16039b71ce7c, type: 2}
+  weaponStats: {fileID: 0}
   bloodParticles: {fileID: 1090034557877386, guid: 23f040c10ef070c46aa964f30a68519b,
     type: 2}

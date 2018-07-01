@@ -30,8 +30,19 @@ public class Player : Character
     public delegatVoids movementDelegate;
 
     public Transform healthBar;
+<<<<<<< HEAD
 	// Use this for initialization
 	void Awake ()
+=======
+
+    public virtual void Awake()
+    {
+       // StartCoroutine(Regeneration());
+    }
+
+    // Use this for initialization
+    void Start ()
+>>>>>>> 61bfbcecd62a04fd738299e6c5591e5b3d0de082
     {
         currentHealth = maxHealth;
         healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
@@ -62,6 +73,7 @@ public class Player : Character
         {
             if (!isInStory)
             {
+<<<<<<< HEAD
                 if (walkSpeed != baseWalkSpeed)
                 {
                     walkSpeed = baseWalkSpeed;
@@ -70,6 +82,13 @@ public class Player : Character
                 {
                     stamina += 0.01f;
                 }
+=======
+                walkSpeed = baseWalkSpeed;
+            }
+            if(stamina < (maxStamina))
+            {
+                stamina += 0.01f;
+>>>>>>> 61bfbcecd62a04fd738299e6c5591e5b3d0de082
             }
         }
 	}
@@ -94,16 +113,41 @@ public class Player : Character
             movementDelegate();
         }
     }
-    public override IEnumerator Regeneration()
+    /*
+    public IEnumerator Regeneration()
     {
-        if(health < maxHealth)
+        if(currentHealth > maxHealth * 0.6)
         {
-            health += 1;
+            currentHealth += 1;
         }
         UIManager.uiManager.RefreshHealth();
         yield return new WaitForSeconds(2);
         StartCoroutine(Regeneration());
     }
+    */
+
+    IEnumerator RefreshHP()
+    {
+        yield return new WaitForEndOfFrame();
+        if (currentHealth < health * 0.6)
+        {
+            for (int i = 0; healthBar.GetComponent<Image>().fillAmount > ((float)(1 / maxHealth) * currentHealth); i++)
+            {
+                healthBar.GetComponent<Image>().fillAmount -= 0.003f;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else
+        {
+            while (healthBar.GetComponent<Image>().fillAmount < ((float)(1 / maxHealth) * currentHealth))
+            {
+                healthBar.GetComponent<Image>().fillAmount += 0.003f;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+
+
     public void RotateCam(Vector3 rotator, float speed)
     {
         rotator.y = Input.GetAxis("Mouse X");

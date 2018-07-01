@@ -11,9 +11,10 @@ public class BossEnemy : Enemy
     [SerializeField] float attackRange;
     RaycastHit hit;
 
-    [Header("WalkField")]
-    [SerializeField] float maxDistance;
-    [SerializeField] Transform midPoint;
+    [Header("SecondStage")]
+    public Transform secondStage;
+    [SerializeField] float amountOfEnemies;
+
 
     public override void Start()
     {
@@ -26,6 +27,10 @@ public class BossEnemy : Enemy
         base.Update();
         ChasePos();
         isAttacking();
+        if (health <= 0)
+        {
+            Death();
+        }
     }
 
     public override void ThinkTimer()
@@ -76,5 +81,15 @@ public class BossEnemy : Enemy
     {
         base.LoseEnemy();
         agent.speed = walkSpeed;
+    }
+
+    public override void Death()
+    {
+        for (int i = 0; i < amountOfEnemies; i++)
+        {
+            Vector3 randompos = new Vector3(transform.position.x, Random.Range(0.5f, 1.5f), transform.position.x);
+            Instantiate(secondStage, randompos, transform.rotation);
+        }
+        base.Death();
     }
 }
