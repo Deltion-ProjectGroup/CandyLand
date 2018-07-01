@@ -16,7 +16,10 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
-        InveractObj();
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract)
+        {
+            InveractObj();
+        }
         inventoryActive = gameObject.GetComponentInChildren<Inventory>().inventorySwitch;
     }
 
