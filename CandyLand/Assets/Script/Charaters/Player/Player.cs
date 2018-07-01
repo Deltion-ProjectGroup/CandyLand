@@ -28,11 +28,6 @@ public class Player : Character
     public delegatVoids movementDelegate;
 
     public Transform healthBar;
-<<<<<<< HEAD
-	// Use this for initialization
-<<<<<<< HEAD
-	void Awake ()
-=======
 
     public virtual void Awake()
     {
@@ -40,11 +35,7 @@ public class Player : Character
     }
 
     // Use this for initialization
-    void Start ()
->>>>>>> 61bfbcecd62a04fd738299e6c5591e5b3d0de082
-=======
 	void Start ()
->>>>>>> parent of abb8521... Quick Update
     {
         currentHealth = maxHealth;
         healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
@@ -75,8 +66,6 @@ public class Player : Character
         {
             if(walkSpeed != baseWalkSpeed)
             {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 if (walkSpeed != baseWalkSpeed)
                 {
                     walkSpeed = baseWalkSpeed;
@@ -85,20 +74,16 @@ public class Player : Character
                 {
                     stamina += 0.01f;
                 }
-=======
                 walkSpeed = baseWalkSpeed;
             }
             if(stamina < (maxStamina))
             {
                 stamina += 0.01f;
->>>>>>> 61bfbcecd62a04fd738299e6c5591e5b3d0de082
-=======
                 walkSpeed = baseWalkSpeed;
             }
             if(stamina < maxStamina)
             {
                 stamina += 0.01f;
->>>>>>> parent of abb8521... Quick Update
             }
         }
 	}
