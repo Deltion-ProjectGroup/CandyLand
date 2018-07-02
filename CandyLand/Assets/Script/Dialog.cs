@@ -67,13 +67,13 @@ public class Dialog : MonoBehaviour
             }
         }
 	}
-    public void startDialog(List<string> dialogs, string charNames, string charRoles, bool hasAfterEffect = false, int effectNum = 0, bool nextIsDialog = false)
+    public void startDialog(List<string> dialogs, Sprite charNames, Sprite charRoles, bool hasAfterEffect = false, int effectNum = 0, bool nextIsDialog = false)
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = false;
         StartCoroutine(DialogMethod(dialogs, charNames, charRoles, hasAfterEffect, effectNum, nextIsDialog));
     }
-    IEnumerator DialogMethod(List<string> dialog, string characterName, string characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)
+    IEnumerator DialogMethod(List<string> dialog, Sprite characterName, Sprite characterRole, bool afterEffect = false, int effectIndex = 0, bool nextIndexIsDialog = false)
     {
         dialogDone = false;
         if (firstDialog)
@@ -82,10 +82,10 @@ public class Dialog : MonoBehaviour
             dialogStats.afterEffect = afterEffect;
             dialogStats.effectIndex = effectIndex;
             dialogStats.charName = characterName;
-            dialogStats.charRole = "-" + characterRole;
+            dialogStats.charRole = characterRole;
             dialogStats.nextIndexIsDialog = nextIndexIsDialog;
-            charName.GetComponent<Text>().text = dialogStats.charName;
-            charRole.GetComponent<Text>().text = dialogStats.charRole;
+            charName.GetComponent<Image>().sprite = dialogStats.charName;
+            charRole.GetComponent<Image>().sprite = dialogStats.charRole;
             dialogNum = 0;
             firstDialog = false;
         }
@@ -105,7 +105,7 @@ public class Dialog : MonoBehaviour
         public bool afterEffect;
         public bool nextIndexIsDialog;
         public int effectIndex;
-        public string charName;
-        public string charRole;
+        public Sprite charName;
+        public Sprite charRole;
     }
 }

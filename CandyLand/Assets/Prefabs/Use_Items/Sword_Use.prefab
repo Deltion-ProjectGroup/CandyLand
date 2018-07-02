@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33133660877851664}
   - component: {fileID: 23421363255837246}
   - component: {fileID: 114588311259446828}
+  - component: {fileID: 95572709547613108}
   m_Layer: 10
   m_Name: Sword_Use
   m_TagString: Untagged
@@ -84,6 +85,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1690260227368080}
   m_Mesh: {fileID: 4300000, guid: d65c59602669c204e8f0531aa89a4538, type: 3}
+--- !u!95 &95572709547613108
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1690260227368080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53074c5783ec48543ab13ef4142dc3ae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114588311259446828
 MonoBehaviour:
   m_ObjectHideFlags: 1

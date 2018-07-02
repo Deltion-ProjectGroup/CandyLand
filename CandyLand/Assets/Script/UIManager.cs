@@ -7,6 +7,8 @@ public class UIManager : MonoBehaviour {
     bool isInGame;
     bool paused;
     public GameObject healthBar;
+    public Sprite[] charNames;
+    public Sprite[] charRoles;
     public GameObject[] questStuff;
     public GameObject dialogUI;
     public GameObject[] menuScreens;
@@ -37,7 +39,7 @@ public class UIManager : MonoBehaviour {
             }
         }
 	}
-    public void Dialog(List<string> dialogText, string charName, string charRole , bool hasAfterEffect = false, int effectIndexNum = 0, bool nextIndexIsDialog = false)
+    public void Dialog(List<string> dialogText, Sprite charName, Sprite charRole , bool hasAfterEffect = false, int effectIndexNum = 0, bool nextIndexIsDialog = false)
     {
         dialogUI.SetActive(true);
         dialogUI.GetComponent<Dialog>().startDialog(dialogText, charName, charRole, hasAfterEffect, effectIndexNum, nextIndexIsDialog);

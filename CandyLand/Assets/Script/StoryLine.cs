@@ -53,13 +53,13 @@ public class StoryLine : MonoBehaviour
         {
             case 0:
                 //start animation of waking up
-                UIManager.uiManager.Dialog(dialogs[1].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 1, true);
+                UIManager.uiManager.Dialog(dialogs[1].dialogText, UIManager.uiManager.charNames[0], UIManager.uiManager.charRoles[0], true, 1, true);
                 yield return new WaitForEndOfFrame(); // wait till anim is over + 1 sec or so
                 break;
             case 1:
                 //Mayor talks to you, change the camera towards him, play anim if he has one
                 yield return new WaitForEndOfFrame();
-                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
+                UIManager.uiManager.Dialog(dialogs[17].dialogText, UIManager.uiManager.charNames[0], UIManager.uiManager.charRoles[0]);
                 storyCam.SetActive(true);
                 hotBar.SetActive(false);
                 storyCam.GetComponent<Animation>().Play();
@@ -72,8 +72,8 @@ public class StoryLine : MonoBehaviour
                 NPC mayorNPC = Mayor.GetComponent<NPC>();
                 Mayor.GetComponent<NPC>().item = itemList[2];
                 //mayorNPC.item = itemList[2];
-                mayorNPC.characterName = Chars.Names.Frank.ToString();
-                mayorNPC.role = Chars.Roles.Mayor.ToString();
+                mayorNPC.characterName = UIManager.uiManager.charNames[0];
+                mayorNPC.role = UIManager.uiManager.charRoles[0];
                 mayorNPC.hasStoryEffect = true;
                 mayorNPC.storyEffectIndex = 4;
                 mayorNPC.dialogText = dialogs[3].dialogText;
@@ -97,7 +97,7 @@ public class StoryLine : MonoBehaviour
                 break;
             case 5:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[5].dialogText, Chars.Names.Frans.ToString(), Chars.Roles.Mayor.ToString(), true, 6);
+                UIManager.uiManager.Dialog(dialogs[5].dialogText, UIManager.uiManager.charNames[0], UIManager.uiManager.charRoles[0], true, 6);
                 // Collection quest turns into Dialog text, follow him text
                 break;
             case 6:
@@ -127,7 +127,7 @@ public class StoryLine : MonoBehaviour
                 Destroy(Mayor.GetComponent<SphereCollider>());
                 //After collecting the quest turn him into an AI again, he has to go away, he asks you to make the axe, work and come back later.
                 Destroy(Mayor.GetComponent<LocationQuest>());
-                UIManager.uiManager.Dialog(dialogs[7].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 8);
+                UIManager.uiManager.Dialog(dialogs[7].dialogText, UIManager.uiManager.charNames[0], UIManager.uiManager.charRoles[0], true, 8);
                 //Mayor goes away
                 break;
             case 8:
@@ -142,7 +142,7 @@ public class StoryLine : MonoBehaviour
                 Vector3 playerPos;
                 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
                 playerPos.z += 3f;
-                UIManager.uiManager.Dialog(dialogs[8].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 10);
+                UIManager.uiManager.Dialog(dialogs[8].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 10);
                 Destroy(Mayor.GetComponent<NPCFollow>());
                 Destroy(Mayor.GetComponent<SphereCollider>());
                 Hunter.AddComponent<NPCFollow>();
@@ -162,8 +162,8 @@ public class StoryLine : MonoBehaviour
                 Mayor.AddComponent<NPC>();
                 NPC mayorNPC2 = Mayor.GetComponent<NPC>();
                 mayorNPC2.item = itemList[2];
-                mayorNPC2.characterName = Chars.Names.Frans.ToString();
-                mayorNPC2.role = Chars.Roles.Mayor.ToString();
+                mayorNPC2.characterName = UIManager.uiManager.charNames[0];
+                mayorNPC2.role = UIManager.uiManager.charRoles[0];
                 mayorNPC2.hasStoryEffect = true;
                 mayorNPC2.storyEffectIndex = 12;
                 mayorNPC2.dialogText = dialogs[9].dialogText;
@@ -206,14 +206,14 @@ public class StoryLine : MonoBehaviour
                 break;
             case 14:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[16].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
+                UIManager.uiManager.Dialog(dialogs[16].dialogText, UIManager.uiManager.charNames[0], UIManager.uiManager.charRoles[0]);
                 Crafting.crafting.AddBlueprint(blueprints[0]);
                 // Dialog that you got a blueprint also from him.
                 //Add the blueprint also in this case.
                 // He'll send a miner he says
                 break;
             case 15:
-                UIManager.uiManager.Dialog(dialogs[10].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 16);
+                UIManager.uiManager.Dialog(dialogs[10].dialogText, UIManager.uiManager.charNames[2], UIManager.uiManager.charRoles[2], true, 16);
                 Miner.AddComponent<NPCFollow>();
                 NPCFollow minerFollow = Miner.GetComponent<NPCFollow>();
                 minerFollow.needsPlayer = false;
@@ -247,7 +247,7 @@ public class StoryLine : MonoBehaviour
                 Destroy(Miner.GetComponent<NPCFollow>());
                 Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Miner.GetComponent<LocationQuest>());
-                UIManager.uiManager.Dialog(dialogs[11].dialogText, Chars.Names.Ashley.ToString(), Chars.Roles.Miner.ToString(), true, 18);
+                UIManager.uiManager.Dialog(dialogs[11].dialogText, UIManager.uiManager.charNames[2], UIManager.uiManager.charRoles[2], true, 18);
                 break;
             case 18:
                 // MAYOR HAS TO BECOME THE MINER MODEL!!!!
@@ -271,7 +271,7 @@ public class StoryLine : MonoBehaviour
                 playerPos.z += 3f;
                 hunterFollow.targetLocation = playerPos;
                 StartCoroutine(hunterFollow.StartMove(1));
-                UIManager.uiManager.Dialog(dialogs[12].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 20);
+                UIManager.uiManager.Dialog(dialogs[12].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 20);
                 break;
             case 20:
                 NPCFollow hunterFollow2 = Hunter.GetComponent<NPCFollow>();
@@ -300,7 +300,7 @@ public class StoryLine : MonoBehaviour
                 Destroy(Hunter.GetComponent<NPCFollow>());
                 Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Hunter.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[13].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 24);
+                UIManager.uiManager.Dialog(dialogs[13].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 24);
                 //Hunter tells you about how forging swords works and who you are
                 //Also tells you that he forgot his bag and asks you to retreive it.
                 break;
@@ -319,14 +319,14 @@ public class StoryLine : MonoBehaviour
                 break;
             case 24:
                 //Destroy(Hunter.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[14].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 25);
+                UIManager.uiManager.Dialog(dialogs[14].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 25);
                 //Hunter tells you where the final boss is and how to get to it.. But that you need something stronger
                 break;
             case 25:
                 Hunter.AddComponent<NPC>();
                 Hunter.GetComponent<NPC>().item = itemList[2];
-                Hunter.GetComponent<NPC>().characterName = Chars.Names.Pim.ToString();
-                Hunter.GetComponent<NPC>().role = Chars.Roles.Hunter.ToString();
+                Hunter.GetComponent<NPC>().characterName = UIManager.uiManager.charNames[1];
+                Hunter.GetComponent<NPC>().role = UIManager.uiManager.charRoles[1];
                 Hunter.GetComponent<NPC>().hasStoryEffect = false;
                 Hunter.GetComponent<NPC>().dialogText = dialogs[15].dialogText;
                 break;
