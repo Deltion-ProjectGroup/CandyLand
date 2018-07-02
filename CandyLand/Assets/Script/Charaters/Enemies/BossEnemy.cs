@@ -92,14 +92,4 @@ public class BossEnemy : Enemy
         }
         base.Death();
     }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            print("i hit the player");
-            //gameObject.transform.GetComponentInParent<BossEnemy>().isChasing = true;
-            isChasing = true;
-        }
-    }
 }

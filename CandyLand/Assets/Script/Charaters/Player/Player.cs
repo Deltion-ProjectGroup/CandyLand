@@ -31,6 +31,9 @@ public class Player : Character
 
     public Transform healthBar;
     [SerializeField] bool test;
+    [Header("Die")]
+    [SerializeField] GameObject diePanel;
+    bool paused;
 
     public virtual void Awake()
     {
@@ -47,6 +50,7 @@ public class Player : Character
     {
 
 	}
+
 	// Update is called once per frame
 	void Update ()
     {
@@ -94,6 +98,23 @@ public class Player : Character
                 {
                     stamina += 0.01f;
                 }
+            }
+        }
+
+        if (currentHealth <= 0)
+        {
+            print("You are dead");
+            paused = !paused;
+            if (paused)
+            {
+                Time.timeScale = 0;
+            }
+            currentHealth = 0;
+            diePanel.SetActive(true);
+            Cursor.visible = true;
+            if (Cursor.lockState != CursorLockMode.None)
+            {
+                Cursor.lockState = CursorLockMode.None;
             }
         }
 	}
@@ -183,12 +204,20 @@ public class Player : Character
     
     public void UnFreeze()
     {
-        if (StoryLine.storyLine.destroyCam)
+        if (test)
         {
-            gameObject.GetComponent<Player>().isInStory = false;
-            gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
-            gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
+            if (StoryLine.storyLine.destroyCam)
+            {
+                gameObject.GetComponent<Player>().isInStory = false;
+                gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
+                gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
+            }
         }
+    }
+
+    public void ResetLevel()
+    {
+        Time.timeScale = 1;
     }
 }

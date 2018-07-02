@@ -6,6 +6,7 @@ public class EnemyIsAttack : MonoBehaviour
 {
     void OnTriggerStay(Collider other)
     {
+        print(other.name);
         if (other.transform.tag == "Player")
         {
             print("i hit the player");
