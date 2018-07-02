@@ -14,6 +14,7 @@ public class Player : Character
     float maxStamina = 100;
     public float sprintCost;
     [Header("Camera")]
+    public bool canInteract;
     Vector3 camRotate;
     public float rotateMultiplier;
     public float rotateMultiplierUpDowm;
@@ -24,6 +25,7 @@ public class Player : Character
     bool canJump = true;
     [Header("Quest")]
     public bool hasQuest;
+    public bool isInStory;
     public delegate void delegatVoids();
     public delegatVoids movementDelegate;
 
@@ -31,17 +33,18 @@ public class Player : Character
 
     public virtual void Awake()
     {
-       // StartCoroutine(Regeneration());
-    }
-
-    // Use this for initialization
-	void Start ()
-    {
+        // StartCoroutine(Regeneration());
         currentHealth = maxHealth;
         healthBar.GetComponent<Image>().fillAmount = CalculateHealth();
         baseWalkSpeed = walkSpeed;
         rotateMultipierBackUpUpDown = rotateMultiplierUpDowm;
         rotateMultiplierBackUp = rotateMultiplier;
+    }
+
+    // Use this for initialization
+	void Start ()
+    {
+
 	}
 	// Update is called once per frame
 	void Update ()
@@ -53,37 +56,43 @@ public class Player : Character
         }
         if (Input.GetButton("Sprint"))
         {
-            if(stamina >= sprintCost)
+            if (!isInStory)
             {
-                if(walkSpeed != sprintSpeed)
+                if (stamina >= sprintCost)
                 {
-                    walkSpeed = sprintSpeed;
+                    if (walkSpeed != sprintSpeed)
+                    {
+                        walkSpeed = sprintSpeed;
+                    }
+                    stamina -= sprintCost;
                 }
-                stamina -= sprintCost;
             }
         }
         else
         {
-            if(walkSpeed != baseWalkSpeed)
+            if (!isInStory)
             {
                 if (walkSpeed != baseWalkSpeed)
                 {
+                    if (walkSpeed != baseWalkSpeed)
+                    {
+                        walkSpeed = baseWalkSpeed;
+                    }
+                    if (stamina < maxStamina)
+                    {
+                        stamina += 0.01f;
+                    }
+                    walkSpeed = baseWalkSpeed;
+                }
+                if (stamina < (maxStamina))
+                {
+                    stamina += 0.01f;
                     walkSpeed = baseWalkSpeed;
                 }
                 if (stamina < maxStamina)
                 {
                     stamina += 0.01f;
                 }
-                walkSpeed = baseWalkSpeed;
-            }
-            if(stamina < (maxStamina))
-            {
-                stamina += 0.01f;
-                walkSpeed = baseWalkSpeed;
-            }
-            if(stamina < maxStamina)
-            {
-                stamina += 0.01f;
             }
         }
 	}
@@ -163,5 +172,21 @@ public class Player : Character
             canJump = true;
         }
     }
-
+    public void Freeze()
+    {
+        gameObject.GetComponent<Player>().isInStory = true;
+        gameObject.GetComponent<Player>().walkSpeed = 0;
+        gameObject.GetComponent<Player>().rotateMultiplier = 0;
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 0;
+    }
+    public void UnFreeze()
+    {
+        if (StoryLine.storyLine.destroyCam)
+        {
+            gameObject.GetComponent<Player>().isInStory = false;
+            gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
+            gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
+        }
+    }
 }

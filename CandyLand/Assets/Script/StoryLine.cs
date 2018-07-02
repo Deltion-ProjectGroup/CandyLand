@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class StoryLine : MonoBehaviour
 {
+    public bool destroyCam;
     public int storyCase;
     public Dialogs[] dialogs;
     public PosCordinates[] locQuestPositions;
@@ -25,6 +26,18 @@ public class StoryLine : MonoBehaviour
     {
         StartCoroutine(Story());
     }
+    public void Update()
+    {
+        if (!destroyCam)
+        {
+            if (storyCam == null)
+            {
+                destroyCam = true;
+                storyCase = 3;
+                StartCoroutine(Story());
+            }
+        }
+    }
     [System.Serializable]
     public class PosCordinates
     {
@@ -43,18 +56,20 @@ public class StoryLine : MonoBehaviour
         {
             case 0:
                 //start animation of waking up
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
                 UIManager.uiManager.Dialog(dialogs[1].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 1, true);
                 yield return new WaitForEndOfFrame(); // wait till anim is over + 1 sec or so
                 break;
             case 1:
                 //Mayor talks to you, change the camera towards him, play anim if he has one
                 yield return new WaitForEndOfFrame();
-                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 3);
+                UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
                 storyCam.SetActive(true);
                 storyCam.GetComponent<Animation>().Play();
                 Destroy(storyCam, storyCam.GetComponent<Animation>().clip.length);
                 break;
             case 3:
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                 Mayor.AddComponent<NPC>();
                 NPC mayorNPC = Mayor.GetComponent<NPC>();
                 Mayor.GetComponent<NPC>().item = itemList[2];
