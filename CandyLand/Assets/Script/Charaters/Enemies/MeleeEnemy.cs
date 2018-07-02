@@ -35,6 +35,7 @@ public class MeleeEnemy : Enemy
 
     public override void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponentInChildren<Animator>();
 
         runJumpForward = runjumpForward;
@@ -43,7 +44,6 @@ public class MeleeEnemy : Enemy
 
         base.Start();
         jumpTime = Random.Range(minJumpTime, maxJumpTime);
-        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public override void Update()

@@ -87,9 +87,19 @@ public class BossEnemy : Enemy
     {
         for (int i = 0; i < amountOfEnemies; i++)
         {
-            Vector3 randompos = new Vector3(transform.position.x, Random.Range(0.5f, 1.5f), transform.position.x);
-            Instantiate(secondStage, randompos, transform.rotation);
+            Vector3 randompos = new Vector3(Random.Range(1, 5), Random.Range(1, 5), Random.Range(1, 5));
+            Instantiate(secondStage, transform.position + randompos, transform.rotation);
         }
         base.Death();
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.transform.tag == "Player")
+        {
+            print("i hit the player");
+            //gameObject.transform.GetComponentInParent<BossEnemy>().isChasing = true;
+            isChasing = true;
+        }
     }
 }
