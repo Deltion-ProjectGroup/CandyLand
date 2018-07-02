@@ -300,7 +300,7 @@ public class StoryLine : MonoBehaviour
                 Destroy(Hunter.GetComponent<NPCFollow>());
                 Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Hunter.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[13].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 23);
+                UIManager.uiManager.Dialog(dialogs[13].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 24);
                 //Hunter tells you about how forging swords works and who you are
                 //Also tells you that he forgot his bag and asks you to retreive it.
                 break;
@@ -318,7 +318,7 @@ public class StoryLine : MonoBehaviour
                 //Adds locationQuest to the bag
                 break;
             case 24:
-                Destroy(Hunter.GetComponent<CollectionQuest>());
+                //Destroy(Hunter.GetComponent<CollectionQuest>());
                 UIManager.uiManager.Dialog(dialogs[14].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 25);
                 //Hunter tells you where the final boss is and how to get to it.. But that you need something stronger
                 break;
