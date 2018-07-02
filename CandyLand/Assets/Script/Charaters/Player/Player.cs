@@ -183,15 +183,12 @@ public class Player : Character
     
     public void UnFreeze()
     {
-        if (test)
+        if (StoryLine.storyLine.destroyCam)
         {
-            if (StoryLine.storyLine.destroyCam)
-            {
-                gameObject.GetComponent<Player>().isInStory = false;
-                gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
-                gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
-            }
+            gameObject.GetComponent<Player>().isInStory = false;
+            gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
+            gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
         }
     }
 }
