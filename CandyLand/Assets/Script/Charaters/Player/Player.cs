@@ -204,8 +204,6 @@ public class Player : Character
     
     public void UnFreeze()
     {
-        if (test)
-        {
             if (StoryLine.storyLine.destroyCam)
             {
                 gameObject.GetComponent<Player>().isInStory = false;
@@ -213,7 +211,6 @@ public class Player : Character
                 gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
             }
-        }
     }
 
     public void ResetLevel()

@@ -18,6 +18,6 @@ MonoBehaviour:
   typeOf: 2
   amount: 7
   itemIndex: 0
-  maxAmount: 7
+  maxAmount: 10
   isStackable: 1
   isDefaultItem: 0

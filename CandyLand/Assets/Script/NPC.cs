@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class NPC : Interactable {
     public List<string> dialogText = new List<string>();
-    public string role;
-    public string characterName;
+    public Sprite role;
+    public Sprite characterName;
     public bool hasStoryEffect;
     public int storyEffectIndex;
     public bool nextIndexIsDialog;
