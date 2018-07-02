@@ -30,6 +30,7 @@ public class Dialog : MonoBehaviour
                 {
                     firstDialog = true;
                     dialogNum = 0;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                     if (dialogStats.afterEffect)
                     {
                         StoryLine.storyLine.storyCase = dialogStats.effectIndex;
@@ -39,14 +40,12 @@ public class Dialog : MonoBehaviour
                         {
                             gameObject.SetActive(false);
                             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = true;
-                            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                         }
                     }
                     else
                     {
                         gameObject.SetActive(false);
                         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().canInteract = true;
-                        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                     }
                 }
                 else

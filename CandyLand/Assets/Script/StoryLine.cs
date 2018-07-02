@@ -15,16 +15,13 @@ public class StoryLine : MonoBehaviour
     public GameObject Mayor;
     public GameObject Hunter;
     public GameObject Miner;
+    public GameObject hotBar;
     public Item[] itemList;
     public GameObject storyCam;
     // Use this for initialization
     void Awake()
     {
         storyLine = this;
-    }
-    private void Start()
-    {
-        StartCoroutine(Story());
     }
     public void Update()
     {
@@ -56,7 +53,6 @@ public class StoryLine : MonoBehaviour
         {
             case 0:
                 //start animation of waking up
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
                 UIManager.uiManager.Dialog(dialogs[1].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString(), true, 1, true);
                 yield return new WaitForEndOfFrame(); // wait till anim is over + 1 sec or so
                 break;
@@ -65,10 +61,12 @@ public class StoryLine : MonoBehaviour
                 yield return new WaitForEndOfFrame();
                 UIManager.uiManager.Dialog(dialogs[17].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
                 storyCam.SetActive(true);
+                hotBar.SetActive(false);
                 storyCam.GetComponent<Animation>().Play();
                 Destroy(storyCam, storyCam.GetComponent<Animation>().clip.length);
                 break;
             case 3:
+                hotBar.SetActive(true);
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
                 Mayor.AddComponent<NPC>();
                 NPC mayorNPC = Mayor.GetComponent<NPC>();

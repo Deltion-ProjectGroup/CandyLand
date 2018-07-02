@@ -12,6 +12,11 @@ TagManager:
   - MidPoint
   - ToolPoint
   - Enemy
+  - QualitySlider
+  - SensitivitySlider
+  - SoundSlider
+  - ScreensizeButton
+  - Hotbar
   layers:
   - Default
   - TransparentFX
