@@ -173,11 +173,11 @@ public class StoryLine : MonoBehaviour
                 Destroy(Mayor.GetComponent<NPC>());
                 Mayor.AddComponent<NPCFollow>();
                 Mayor.GetComponent<NPCFollow>().needsPlayer = false;
-                Mayor.GetComponent<NPCFollow>().targetLocation = locQuestPositions[0].movePosNPC; // leave 4 free
+                Mayor.GetComponent<NPCFollow>().targetLocation = locQuestPositions[4].movePosNPC; // leave 4 free
                 StartCoroutine(Mayor.GetComponent<NPCFollow>().StartMove(1));
                 Mayor.AddComponent<LocationQuest>();
                 LocationQuest mayorLoc2 = Mayor.GetComponent<LocationQuest>();
-                mayorLoc2.questPositions = locQuestPositions[0].coördinates;
+                mayorLoc2.questPositions = locQuestPositions[4].coördinates;
                 mayorLoc2.item = itemList[2];
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
                 mayorLoc2.AcceptQuest();
@@ -206,7 +206,7 @@ public class StoryLine : MonoBehaviour
                 break;
             case 14:
                 Destroy(Mayor.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[16].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString());
+                UIManager.uiManager.Dialog(dialogs[16].dialogText, Chars.Names.Frank.ToString(), Chars.Roles.Mayor.ToString());
                 Crafting.crafting.AddBlueprint(blueprints[0]);
                 // Dialog that you got a blueprint also from him.
                 //Add the blueprint also in this case.
@@ -231,7 +231,7 @@ public class StoryLine : MonoBehaviour
                 StartCoroutine(minerFollow2.StartMove(1));
                 Miner.AddComponent<LocationQuest>();
                 LocationQuest minerLoc = Miner.GetComponent<LocationQuest>();
-                minerLoc.questPositions = locQuestPositions[0].coördinates;
+                minerLoc.questPositions = locQuestPositions[6].coördinates;
                 minerLoc.item = itemList[2];
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().hasQuest = false;
                 minerLoc.AcceptQuest();
@@ -282,8 +282,6 @@ public class StoryLine : MonoBehaviour
 
             case 21:
                 //MAYOR IS HUNTER
-                Destroy(Hunter.GetComponent<NPCFollow>());
-                Destroy(Hunter.GetComponent<SphereCollider>());
                 Hunter.AddComponent<CollectionQuest>();
                 CollectionQuest hunterCol = Hunter.GetComponent<CollectionQuest>();
                 hunterCol.item = itemList[2];
@@ -299,6 +297,8 @@ public class StoryLine : MonoBehaviour
                 //Add without the player noticing that you can now forge a sword.
                 break;
             case 22:
+                Destroy(Hunter.GetComponent<NPCFollow>());
+                Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Hunter.GetComponent<CollectionQuest>());
                 UIManager.uiManager.Dialog(dialogs[13].dialogText, Chars.Names.Pim.ToString(), Chars.Roles.Hunter.ToString(), true, 23);
                 //Hunter tells you about how forging swords works and who you are
