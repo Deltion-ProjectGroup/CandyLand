@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33459092141280362}
   - component: {fileID: 23246955820329790}
   - component: {fileID: 114801951629411204}
+  - component: {fileID: 95082917040721280}
   m_Layer: 10
   m_Name: CookiePick_Use
   m_TagString: Untagged
@@ -84,6 +85,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162240285882226}
   m_Mesh: {fileID: 4300000, guid: bef6d562af7a467459c345c6f0e1e03f, type: 3}
+--- !u!95 &95082917040721280
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162240285882226}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0ce2f5804379c140921727eb76aa7d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114801951629411204
 MonoBehaviour:
   m_ObjectHideFlags: 1

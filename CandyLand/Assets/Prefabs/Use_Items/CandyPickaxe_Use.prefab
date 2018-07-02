@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33840095854915640}
   - component: {fileID: 23571763215162870}
   - component: {fileID: 114437758806880836}
+  - component: {fileID: 95070004962118354}
   m_Layer: 10
   m_Name: CandyPickaxe_Use
   m_TagString: Untagged
@@ -84,6 +85,24 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1387466171655878}
   m_Mesh: {fileID: 4300000, guid: bef6d562af7a467459c345c6f0e1e03f, type: 3}
+--- !u!95 &95070004962118354
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1387466171655878}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0ce2f5804379c140921727eb76aa7d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114437758806880836
 MonoBehaviour:
   m_ObjectHideFlags: 1
