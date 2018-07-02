@@ -4,39 +4,18 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cube.000
-    100004: Spekkies
-    100006: Spekkies.001
-    100008: Spekkies.002
-    100010: Trunk
+    100002: Spek
+    100004: Stam
     400000: //RootNode
-    400002: Cube.000
-    400004: Spekkies
-    400006: Spekkies.001
-    400008: Spekkies.002
-    400010: Trunk
-    2100000: SpekjesM
-    2100002: Material.001
-    2100004: Material.002
-    2100006: Material
-    2100008: SpekjesM.001
-    2100010: SpekjesM.002
-    2300000: Cube.000
-    2300002: Spekkies
-    2300004: Spekkies.001
-    2300006: Spekkies.002
-    2300008: Trunk
-    3300000: Cube.000
-    3300002: Spekkies
-    3300004: Spekkies.001
-    3300006: Spekkies.002
-    3300008: Trunk
-    4300000: Spekkies
-    4300002: Trunk
-    4300004: Cube.000
-    4300006: Spekkies.001
-    4300008: Spekkies.002
-    2186277476908879412: ImportLogs
+    400002: Spek
+    400004: Stam
+    2100000: No Name
+    2300000: Spek
+    2300002: Stam
+    3300000: Spek
+    3300002: Stam
+    4300000: Spek
+    4300002: Stam
   externalObjects: {}
   materials:
     importMaterials: 1
