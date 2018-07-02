@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseSword : UseItem {
+public class UseSword : UseItem
+{
     public Melee weaponStats;
     public GameObject bloodParticles;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    Animator anim;
+    // Use this for initialization
+    void Start ()
+    {
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -19,9 +22,9 @@ public class UseSword : UseItem {
 	}
     public override void Use()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Inventory.instance.inventorySwitch)
         {
-            print("Used");
+            anim.SetTrigger("Slash");
             RaycastHit hit;
             Physics.Raycast(GameObject.FindGameObjectWithTag("MainCamera").transform.position, GameObject.FindGameObjectWithTag("MainCamera").transform.forward, out hit, weaponStats.range);
             if(hit.transform != null)

@@ -21,5 +21,5 @@ MonoBehaviour:
   maxAmount: 1
   isStackable: 0
   isDefaultItem: 0
-  dmg: 15
+  dmg: 5
   range: 10

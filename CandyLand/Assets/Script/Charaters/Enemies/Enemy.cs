@@ -18,7 +18,7 @@ public class Enemy : Character
     [SerializeField] float chargeThinkingMin;
     [SerializeField] float chargeThinkingMax;
     float mainchargeThinking;
-    public bool isChasing = false;
+    public bool isChasing;
     RaycastHit hitPartical;
 
 
@@ -55,9 +55,10 @@ public class Enemy : Character
 
     public virtual void Start()
     {
-        midPoint = GameObject.FindGameObjectWithTag("MidPoint").transform;
-        agent = GetComponent<NavMeshAgent>(); target = GameObject.FindGameObjectWithTag("Player").transform; 
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        agent = GetComponent<NavMeshAgent>(); target = GameObject.FindGameObjectWithTag("Player").transform; 
+        isChasing = false;
+        midPoint = GameObject.FindGameObjectWithTag("MidPoint").transform;
         StartCoroutine("FindTargetWithDelay", 0.2f);
     }
 
@@ -149,7 +150,7 @@ public class Enemy : Character
                     visibleTarget.Add(target);
 
                     Vector3 targetPosition = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
-                    transform.LookAt(targetPosition);
+                    transform.GetComponentInChildren<EnemyIsAttack>().Look(targetPosition);
 
                     isChasing = true;
                 }

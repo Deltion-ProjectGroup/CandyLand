@@ -19,7 +19,7 @@ public class UseTool : UseItem
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") || Inventory.instance.inventorySwitch)
         {
             if (!Inventory.instance.inventorySwitch)
             {
@@ -31,7 +31,7 @@ public class UseTool : UseItem
     {
         base.Use();
         Harvest();
-        //anim.SetTrigger("Pick");
+        anim.SetTrigger("Pick");
     }
 
     void Harvest()

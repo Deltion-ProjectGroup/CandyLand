@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114612933369103616}
   - component: {fileID: 54982966955430522}
   - component: {fileID: 114720209140932014}
+  - component: {fileID: 114033881046685582}
   m_Layer: 14
   m_Name: MiniMarshMello (1)
   m_TagString: Enemy
@@ -150,6 +151,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114033881046685582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1322802251429290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c524b8224c1ac42b5d5e1c2ddf065f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114612933369103616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6920e8b8cfcb64041b0f420c7bd73d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 20
   maxHealth: 100
   currentHealth: 0
   damage: 10
@@ -190,6 +202,8 @@ MonoBehaviour:
   edgeResolveInterations: 2
   edgeDstThreshold: 2
   distance: 0
+  maxDistance: 0
+  midPoint: {fileID: 0}
   minJumpUp: 70
   maxJumpUp: 90
   minJumpForward: 15
@@ -200,7 +214,6 @@ MonoBehaviour:
   minSpeedJumpTime: 0.5
   maxSpeedJumpTime: 1
   speed: 5
-  anim: {fileID: 0}
   allianceMask:
     serializedVersion: 2
     m_Bits: 16384

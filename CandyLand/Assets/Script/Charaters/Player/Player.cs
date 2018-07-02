@@ -30,6 +30,7 @@ public class Player : Character
     public delegatVoids movementDelegate;
 
     public Transform healthBar;
+    [SerializeField] bool test;
 
     public virtual void Awake()
     {
@@ -179,14 +180,18 @@ public class Player : Character
         gameObject.GetComponent<Player>().rotateMultiplier = 0;
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 0;
     }
+    
     public void UnFreeze()
     {
-        if (StoryLine.storyLine.destroyCam)
+        if (test)
         {
-            gameObject.GetComponent<Player>().isInStory = false;
-            gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
-            gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
+            if (StoryLine.storyLine.destroyCam)
+            {
+                gameObject.GetComponent<Player>().isInStory = false;
+                gameObject.GetComponent<Player>().walkSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().baseWalkSpeed;
+                gameObject.GetComponent<Player>().rotateMultiplier = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().rotateMultiplierBackUp;
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camerah>().rotateMultiplier = 1;
+            }
         }
     }
 }
