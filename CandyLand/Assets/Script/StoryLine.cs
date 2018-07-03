@@ -303,12 +303,12 @@ public class StoryLine : MonoBehaviour
                 Destroy(Hunter.GetComponent<NPCFollow>());
                 Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Hunter.GetComponent<CollectionQuest>());
-                UIManager.uiManager.Dialog(dialogs[13].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 24);
+                UIManager.uiManager.Dialog(dialogs[13].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 25);
                 //Hunter tells you about how forging swords works and who you are
                 //Also tells you that he forgot his bag and asks you to retreive it.
                 break;
             case 23:
-                Hunter.AddComponent<CollectionQuest>();
+                /*Hunter.AddComponent<CollectionQuest>();
                 CollectionQuest hunterCol2 = Hunter.GetComponent<CollectionQuest>();
                 hunterCol2.item = itemList[2];
                 hunterCol2.questName = "Bag-O-Blueprints";
@@ -317,9 +317,9 @@ public class StoryLine : MonoBehaviour
                 hunterCol2.requiredItems = questRequirementList[7].requiredItems;
                 hunterCol2.rewards = questRequirementList[7].questRewards;
                 hunterCol2.hasStoryEffect = true;
-                hunterCol2.storyEffectIndex = 24;
+                hunterCol2.storyEffectIndex = 24;*/
                 //Adds locationQuest to the bag
-                break;
+                goto case 24;
             case 24:
                 //Destroy(Hunter.GetComponent<CollectionQuest>());
                 UIManager.uiManager.Dialog(dialogs[14].dialogText, UIManager.uiManager.charNames[1], UIManager.uiManager.charRoles[1], true, 25);

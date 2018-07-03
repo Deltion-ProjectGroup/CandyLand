@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4209682579598320}
   - component: {fileID: 136374922861197118}
+  - component: {fileID: 114831100391473194}
   m_Layer: 0
   m_Name: Boom_Spekkie6
-  m_TagString: Untagged
+  m_TagString: Harvestable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +190,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749266650335090}
   m_Mesh: {fileID: 4300002, guid: e5f9f4bd4df38ea4bbd84a81494332d5, type: 3}
+--- !u!114 &114831100391473194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176510477315954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4c97a5b673d147b27fc916e9f5b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredID: 10
+  health: 10
+  item: {fileID: 11400000, guid: 15d1841c1a76fe348be961c07e7a2d52, type: 2}
 --- !u!136 &136374922861197118
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4674545520957692}
   - component: {fileID: 33836710365970068}
   - component: {fileID: 23786268557499328}
+  - component: {fileID: 114149202728859046}
   m_Layer: 0
   m_Name: Boom_Gingerbread_Large
-  m_TagString: Untagged
+  m_TagString: Harvestable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +84,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214685593248140}
   m_Mesh: {fileID: 4300000, guid: ed3f0aac00125444c817cab78997a0b5, type: 3}
+--- !u!114 &114149202728859046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214685593248140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f4c97a5b673d147b27fc916e9f5b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  requiredID: 10
+  health: 10
+  item: {fileID: 11400000, guid: 15d1841c1a76fe348be961c07e7a2d52, type: 2}
