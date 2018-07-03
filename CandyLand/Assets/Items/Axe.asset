@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: MarshAxe
   description: The weakest and only axe in this world.. Used to chop trees!
-  icon: {fileID: 21300000, guid: 930e7591a91059b4e8c7528ce52bb750, type: 3}
+  icon: {fileID: 21300000, guid: 834d7bae695eecb4ea1e0f0d079fffc4, type: 3}
   itemObject: {fileID: 1868415532018004, guid: 66b75a1b51ea8e94984633a9b8a9b4b4, type: 2}
   typeOf: 1
   amount: 1

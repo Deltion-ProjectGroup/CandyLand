@@ -71,8 +71,11 @@ public class Inventory : MonoBehaviour
         }
         if(allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex] != null)
         {
-            allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].SetActive(true);
-            equippedItem = allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].gameObject;
+            if(allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex] != null)
+            {
+                allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].SetActive(true);
+                equippedItem = allItems[slots[index].GetComponentInChildren<InventoryItem>().itemI.itemIndex].gameObject;
+            }
         }
         else
         {

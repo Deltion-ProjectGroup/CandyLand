@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: ChocolateChipper
   description: One of the stronger pickaxes in this world. Can break trough almost
     everthing!
-  icon: {fileID: 21300000, guid: 930e7591a91059b4e8c7528ce52bb750, type: 3}
+  icon: {fileID: 21300000, guid: 7758d1e945728b543954c6b37d078783, type: 3}
   itemObject: {fileID: 1783346931529288, guid: fe17b5dd7f6e27e48b947ee74b663985, type: 2}
   typeOf: 1
   amount: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: Epic Sword
   description: All the candies combined into one huge sword.. Even the strongest creature
     will at least be hurt by this.
-  icon: {fileID: 21300000, guid: 74f06cc36bee06c4ebbed22a45f8cbf2, type: 3}
+  icon: {fileID: 21300000, guid: bbe4460f450fbca49813f55e1d10c614, type: 3}
   itemObject: {fileID: 1282791838790208, guid: 8e1787dd8d6351f489bd856dc68b2f27, type: 2}
   typeOf: 0
   amount: 1

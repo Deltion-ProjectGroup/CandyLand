@@ -17,7 +17,7 @@ MonoBehaviour:
   itemObject: {fileID: 1038946124194824, guid: 5c4973eb613bb3841a3949d7a379c6d5, type: 2}
   typeOf: 2
   amount: 7
-  itemIndex: 0
+  itemIndex: 50
   maxAmount: 10
   isStackable: 1
   isDefaultItem: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   itemName: Candy Pickaxe
   description: The strongest pickaxe there is, nothing can compete against the power
     of this pickaxe.
-  icon: {fileID: 21300000, guid: 930e7591a91059b4e8c7528ce52bb750, type: 3}
+  icon: {fileID: 21300000, guid: 7758d1e945728b543954c6b37d078783, type: 3}
   itemObject: {fileID: 1600539516756994, guid: 1d876e4ce7ccb7a429989addbfc9b286, type: 2}
   typeOf: 1
   amount: 1

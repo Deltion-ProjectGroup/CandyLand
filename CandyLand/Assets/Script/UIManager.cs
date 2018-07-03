@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
     bool isInGame;
     bool paused;
+    public AudioClip[] music;
     public GameObject healthBar;
     public Sprite[] charNames;
     public Sprite[] charRoles;
@@ -73,6 +74,8 @@ public class UIManager : MonoBehaviour {
                 menuScreens[i].SetActive(false);
             }
             Cursor.lockState = CursorLockMode.Locked;
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().clip = music[1];
+            GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>().Play();
             StartCoroutine(StoryLine.storyLine.Story());
         }
     }
