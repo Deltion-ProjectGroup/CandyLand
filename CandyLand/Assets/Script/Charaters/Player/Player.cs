@@ -30,7 +30,6 @@ public class Player : Character
     public delegatVoids movementDelegate;
 
     public Transform healthBar;
-    [SerializeField] bool test;
     [Header("Die")]
     [SerializeField] GameObject diePanel;
     bool paused;

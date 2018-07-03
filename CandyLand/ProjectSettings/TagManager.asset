@@ -17,6 +17,7 @@ TagManager:
   - SoundSlider
   - ScreensizeButton
   - Hotbar
+  - Player2
   layers:
   - Default
   - TransparentFX

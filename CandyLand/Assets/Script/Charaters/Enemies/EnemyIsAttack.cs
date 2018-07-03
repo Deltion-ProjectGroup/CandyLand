@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EnemyIsAttack : MonoBehaviour
 {
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        print(other.name);
-        if (other.transform.tag == "Player")
+        if (other.gameObject.tag == "Player2")
         {
-            print("i hit the player");
-            gameObject.transform.GetComponentInParent<BossEnemy>().isChasing = true;
+            transform.GetComponentInParent<BossEnemy>().isChasing = true;
         }
     }
 
