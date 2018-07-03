@@ -17,7 +17,6 @@ public class Camerah : MonoBehaviour
     void Awake ()
     {
         camerah = this;
-        //Cursor.lockState = CursorLockMode.Locked;
         rotateMultiplier = GetComponentInParent<Player>().rotateMultiplierUpDowm;
 	}
 	

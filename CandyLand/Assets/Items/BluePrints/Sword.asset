@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems:
   - requiredItem: {fileID: 11400000, guid: fcbc80772cb4e4a4a925cf87771d82bb, type: 2}
-    requiredAmt: 1
+    requiredAmt: 5
   - requiredItem: {fileID: 11400000, guid: 15d1841c1a76fe348be961c07e7a2d52, type: 2}
-    requiredAmt: 1
-  craftingItem: {fileID: 11400000, guid: 9fe7ee3adc5f0c642b4b16039b71ce7c, type: 2}
+    requiredAmt: 12
+  craftingItem: {fileID: 11400000, guid: 680a68cc24f91954fb92991b16aed5f1, type: 2}

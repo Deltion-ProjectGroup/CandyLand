@@ -135,6 +135,7 @@ public class StoryLine : MonoBehaviour
                 Mayor.GetComponent<NPCFollow>().needsPlayer = false;
                 Mayor.GetComponent<NPCFollow>().targetLocation = locQuestPositions[1].movePosNPC;
                 StartCoroutine(Mayor.GetComponent<NPCFollow>().StartMove(0));
+                Crafting.crafting.AddBlueprint(blueprints[4]);
                 break;
             //play Mayor leaving anim
 
@@ -196,7 +197,7 @@ public class StoryLine : MonoBehaviour
                 Mayor.AddComponent<CollectionQuest>();
                 CollectionQuest mayorCol2 = Mayor.GetComponent<CollectionQuest>();
                 mayorCol2.item = itemList[2];
-                mayorCol2.questName = "GET (TO) DA CHOPPA";
+                mayorCol2.questName = "Chop it";
                 mayorCol2.questType = Quest.questTypes.Collect;
                 mayorCol2.questDialog = "Since we have finally arrived here, could you collect some candywood, I would really appreciate it if you would.";
                 mayorCol2.requiredItems = questRequirementList[3].requiredItems;
@@ -263,6 +264,7 @@ public class StoryLine : MonoBehaviour
                 minerCol.storyEffectIndex = 19;
                 break;
             case 19:
+                Crafting.crafting.AddBlueprint(blueprints[3]);
                 Destroy(Miner.GetComponent<CollectionQuest>());
                 Hunter.AddComponent<NPCFollow>();
                 NPCFollow hunterFollow = Hunter.GetComponent<NPCFollow>();
@@ -292,11 +294,12 @@ public class StoryLine : MonoBehaviour
                 hunterCol.rewards = questRequirementList[6].questRewards;
                 hunterCol.hasStoryEffect = true;
                 hunterCol.storyEffectIndex = 22;
-                Crafting.crafting.AddBlueprint(blueprints[1]);
                 //Add the quest component to the hunter..
                 //Add without the player noticing that you can now forge a sword.
                 break;
             case 22:
+                Crafting.crafting.AddBlueprint(blueprints[1]);
+                Crafting.crafting.AddBlueprint(blueprints[2]);
                 Destroy(Hunter.GetComponent<NPCFollow>());
                 Destroy(Hunter.GetComponent<SphereCollider>());
                 Destroy(Hunter.GetComponent<CollectionQuest>());

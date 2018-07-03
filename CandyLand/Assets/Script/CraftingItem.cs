@@ -91,14 +91,14 @@ public class CraftingItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
         Inventory.instance.Refresh();
         Inventory.instance.Add(craftingBlueprint.craftingItem, 1, false);
-        if (Crafting.crafting.firstAxeCraft && craftingBlueprint.craftingItem.itemName == "Marshmallow" && StoryLine.storyLine.storyCase == 8)
+        if (Crafting.crafting.firstAxeCraft && craftingBlueprint.craftingItem.itemName == "MarshAxe" && StoryLine.storyLine.storyCase == 8)
         {
             Crafting.crafting.firstAxeCraft = false;
             StoryLine.storyLine.storyCase = 9;
             StartCoroutine(StoryLine.storyLine.Story());
             Inventory.instance.OnTab();
         }
-        if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "Spekkie" && StoryLine.storyLine.storyCase == 14)
+        if (Crafting.crafting.firstPicCraft && craftingBlueprint.craftingItem.itemName == "StarterPickaxe" && StoryLine.storyLine.storyCase == 14)
         {
             Crafting.crafting.firstPicCraft = false;
             StoryLine.storyLine.storyCase = 15;

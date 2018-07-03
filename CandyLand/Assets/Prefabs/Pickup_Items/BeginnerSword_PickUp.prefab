@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23067677147629342}
   - component: {fileID: 114131149133165050}
   - component: {fileID: 65972068355571186}
+  - component: {fileID: 54686993086855264}
   m_Layer: 0
   m_Name: BeginnerSword_PickUp
   m_TagString: Interactable
@@ -85,6 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827251340379088}
   m_Mesh: {fileID: 4300000, guid: d65c59602669c204e8f0531aa89a4538, type: 3}
+--- !u!54 &54686993086855264
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827251340379088}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65972068355571186
 BoxCollider:
   m_ObjectHideFlags: 1

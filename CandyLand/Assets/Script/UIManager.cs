@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour {
             {
                 menuScreens[i].SetActive(false);
             }
+            Cursor.lockState = CursorLockMode.Locked;
             StartCoroutine(StoryLine.storyLine.Story());
         }
     }
@@ -97,6 +98,7 @@ public class UIManager : MonoBehaviour {
     {
         if (paused)
         {
+            Cursor.lockState = CursorLockMode.Locked;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().UnFreeze();
             Time.timeScale = 1;
             paused = false;
@@ -107,6 +109,7 @@ public class UIManager : MonoBehaviour {
         }
         else
         {
+            Cursor.lockState = CursorLockMode.None;
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().Freeze();
             Time.timeScale = 0;
             paused = true;
