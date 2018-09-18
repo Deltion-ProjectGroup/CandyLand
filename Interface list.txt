@@ -1,0 +1,55 @@
+Inventory
+- 15 slots
+- info schermpje
+  - tekst
+  - icon
+- slectie kleur
+
+hotbar
+- 5 slots
+
+Healthbar
+- alleen health
+
+Quest ui
+- quest naam
+- info van quest
+  - collection
+    - Wat moet je halen info
+  - location
+  - reward
+  - description
+- accept button
+- cancel button
+- comple/collect reward
+
+Dialogue
+- name
+- Rol
+- tekst vak
+- personarge
+
+achievement
+- quest comple
+- welke quest
+
+Main Menu
+- start
+- options
+  - volume
+  - sensitivity
+  - quality
+  - fullscreen
+  - screen size
+- exit
+- credits
+? useles button
+
+Crafting
+- plaatje dit maakje
+- spullen die je nodig hebt vakjes
+  - max 3
+- name
+- discription
+- scrollbar item select
+ 
